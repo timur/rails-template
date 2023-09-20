@@ -98,6 +98,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.5.9)
+      rails
     drb (2.1.1)
       ruby2_keywords
     error_highlight (0.5.1)
@@ -253,6 +255,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  dockerfile-rails (>= 1.5)
   error_highlight (>= 0.4.0)
   importmap-rails
   jbuilder

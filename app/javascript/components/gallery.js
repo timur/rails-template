@@ -5,8 +5,8 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import photos from "./photos";
-import h from "components/htm_create_element";
+import photos from "photos";
+import h from "htm_create_element";
 
 export default function Gallery() {
   const [index, setIndex] = useState(-1);
