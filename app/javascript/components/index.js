@@ -8,15 +8,23 @@ export default function Wrapper() {
   const node = document.getElementById("photos");
   const photos = JSON.parse(node.getAttribute("data"));
 
-  const handleClick = () => {
-    if (layout === "rows") {
-      setLayout("columns");
-    } else {
-      setLayout("rows");
-    }
+  const handleClick = (layout) => {
+    setLayout(layout);
   };
 
-  return h`<button class="btn btn-blue" onClick="${handleClick}">Change Layout</button><${Gallery} photos=${photos} layout="${layout}"/><div>1</div>`;
+  return h`
+  <div class="space-x-2 mb-2">
+  <button class="btn btn-blue" onClick="${() =>
+    handleClick("masonry")}">Masonry</button>
+
+  <button class="btn btn-blue" onClick="${() =>
+    handleClick("rows")}">Rows</button>
+
+  <button class="btn btn-blue" onClick="${() =>
+    handleClick("columns")}">Columns</button>
+    </div>
+  
+  <${Gallery} photos=${photos} layout="${layout}"/><div>1</div>`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
