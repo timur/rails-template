@@ -5,10 +5,9 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import photos from "components/photos";
 import h from "components/htm_create_element";
 
-export default function Gallery() {
+export default function Gallery({ photos }) {
   const [index, setIndex] = useState(-1);
 
   return h`<${PhotoAlbum} layout="rows" spacing="5" photos="${photos}" onClick=${({
