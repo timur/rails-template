@@ -63,6 +63,8 @@ group :development do
 
   # Use Redis adapter to run Action Cable in production
   gem "redis", ">= 4.0.1"
+  gem "dockerfile-rails", ">= 1.5"
+  gem "hotwire-livereload", "~> 1.2"
 end
 
 group :test do
@@ -72,8 +74,7 @@ group :test do
 
 end
 
-gem "dockerfile-rails", ">= 1.5", :group => :development
+gem "litestack", "~> 0.3.0", :group => :development
+gem "aws-sdk-s3", "~> 1.135"
 
-gem "litestack", "~> 0.3.0"
-
-gem "hotwire-livereload", "~> 1.2", :group => :development
+gem 'dotenv-rails', groups: [:development, :test]
