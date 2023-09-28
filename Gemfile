@@ -74,7 +74,7 @@ group :test do
 
 end
 
-gem "litestack", "~> 0.3.0", :group => :development
+gem "litestack", "~> 0.3.0"
 gem "aws-sdk-s3", "~> 1.135"
 
 gem 'dotenv-rails', groups: [:development, :test]
