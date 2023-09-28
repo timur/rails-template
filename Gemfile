@@ -62,9 +62,7 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 
   # Use Redis adapter to run Action Cable in production
-  gem "redis", ">= 4.0.1"
   gem "dockerfile-rails", ">= 1.5"
-  gem "hotwire-livereload", "~> 1.2"
 end
 
 group :test do
@@ -76,5 +74,5 @@ end
 
 gem "litestack", "~> 0.3.0"
 gem "aws-sdk-s3", "~> 1.135"
-
 gem 'dotenv-rails', groups: [:development, :test]
+
