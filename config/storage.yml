@@ -31,3 +31,6 @@ production:
   secret_access_key: <%= Rails.application.credentials.dig(:wasabi, :S3_SECRET_ACCESS_KEY) %>
   region: eu-central-2
   bucket: rails-wasabi
+
+imagekitio:
+  service: ImageKitIo
