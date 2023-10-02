@@ -11,14 +11,32 @@
   </head>
 
   <body>
-    <nav class="bg-slate-50 p-4 top-0 sticky">
-      Navigation
-    </nav>
+    <div class="sticky top-0 z-10" data-controller="navbar" data-action="resize@window->navbar#closeOnBigScreen keyup@window->navbar#closeWithKeyboard">
+      <nav id="main-nav" class="flex bg-slate-50 p-4 top-0 h-16 items-center justify-between">
+        <div>Logo</div>
+        <div class="flex space-x-2 items-center">
+          <div>Email</div>
+          <div class="md:hidden text-3xl" role="button" data-action="click->navbar#toggle">
+            &#9776;
+          </div>
+        </div>
+      </nav>
+      <nav class="bg-rose-300 hidden absolute w-full text-center h-80 overflow-y-auto top-4 m-4" data-navbar-target="content">
+        <% (300..400).each do |i| %>
+          <p><%= i %></p>
+        <% end %>
+      </nav>
+    </div> 
     <div class="flex">
-      <aside class="p-4 bg-slate-100 w-1/6">
-        Sidebar
+      <aside class="p-4 hidden md:flex flex-col justify-between bg-slate-100 w-1/6 sticky top-16 h-[calc(100vh-64px)]">
+        <div>
+          Sidebar top
+        </div>
+        <div>
+          Sidebar bottom
+        </div>
       </aside>
-      <main class="bg-slate-200 w-5/6 p-4">
+      <main class="bg-slate-200 w-5/6 p-4 flex-grow">
         Main
         <% (1..100).each do |i| %>
           <p><%= i %></p>
