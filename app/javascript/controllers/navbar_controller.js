@@ -1,9 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
+// https://github.com/stimulus-use/stimulus-use/blob/main/docs/use-click-outside.md
+import { useClickOutside } from "stimulus-use";
 
 // Connects to data-controller="navbar"
 export default class extends Controller {
   static targets = ["content"];
   connect() {
+    useClickOutside(this);
+    this.close();
+  }
+
+  clickOutside(event) {
     this.close();
   }
 
@@ -31,8 +38,8 @@ export default class extends Controller {
     this.contentTarget.classList.remove("hidden");
     let main = document.querySelector("main");
     let mainNav = document.getElementById("main-nav");
-    mainNav.classList.add("hidden");
     main.classList.add("blur");
+    mainNav.classList.add("blur");
     document.body.classList.add("overflow-hidden");
     // main.classList.add('hidden')
   }
@@ -41,8 +48,8 @@ export default class extends Controller {
     this.contentTarget.classList.add("hidden");
     let main = document.querySelector("main");
     let mainNav = document.getElementById("main-nav");
-    mainNav.classList.remove("hidden");
     main.classList.remove("blur");
+    mainNav.classList.remove("blur");
     document.body.classList.remove("overflow-hidden");
     // main.classList.remove('hidden')
   }
