@@ -76,3 +76,5 @@ gem "litestack", "~> 0.3.0"
 gem "aws-sdk-s3", "~> 1.135"
 gem 'dotenv-rails', groups: [:development, :test]
 
+
+gem "inline_svg", "~> 1.9"
