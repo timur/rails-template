@@ -1,0 +1,8 @@
+<li>
+  <%= link_to path, class: link_classes do %>
+    <% if svg %>
+      <%= inline_svg_tag svg, class: "text-gray-400" %>
+    <% end %>
+    <%= text %>
+  <% end %>
+</li>
