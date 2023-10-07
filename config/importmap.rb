@@ -5,6 +5,7 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin "@rails/activestorage", to: "https://ga.jspm.io/npm:@rails/activestorage@7.0.8/app/assets/javascripts/activestorage.esm.js", preload: true
+pin "alpine-turbo-drive-adapter", to: "https://ga.jspm.io/npm:alpine-turbo-drive-adapter@2.1.0/dist/alpine-turbo-drive-adapter.esm.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 pin "htm", to: "https://ga.jspm.io/npm:htm@3.1.1/dist/htm.module.js"
@@ -20,3 +21,4 @@ pin "yet-another-react-lightbox/plugins/thumbnails", to: "https://ga.jspm.io/npm
 pin "yet-another-react-lightbox/plugins/zoom", to: "https://ga.jspm.io/npm:yet-another-react-lightbox@3.12.2/dist/plugins/zoom/index.js"
 pin_all_from "app/javascript/components", under: "components"
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.52.0/dist/index.js"
+pin "alpinejs", to: "https://ga.jspm.io/npm:alpinejs@3.13.1/dist/module.esm.js"

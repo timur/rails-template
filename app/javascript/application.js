@@ -2,7 +2,10 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import * as ActiveStorage from "@rails/activestorage";
-
+import "alpine-turbo-drive-adapter";
+import Alpine from "alpinejs";
 import "components";
 
 ActiveStorage.start();
+window.Alpine = Alpine;
+Alpine.start();

@@ -28,5 +28,8 @@ export default function Wrapper() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  render(h`<${Wrapper} />`, document.getElementById("root"));
+  const root = document.getElementById("root");
+  if (root) {
+    render(h`<${Wrapper} />`, document.getElementById("root"));
+  }
 });
