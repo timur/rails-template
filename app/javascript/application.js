@@ -4,7 +4,12 @@ import "controllers";
 import * as ActiveStorage from "@rails/activestorage";
 import "alpine-turbo-drive-adapter";
 import Alpine from "alpinejs";
+import ui from "@alpinejs/ui";
+import focus from "@alpinejs/focus";
 import "components";
+
+Alpine.plugin(ui);
+Alpine.plugin(focus);
 
 ActiveStorage.start();
 window.Alpine = Alpine;
