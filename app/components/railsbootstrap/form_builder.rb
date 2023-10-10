@@ -1,19 +1,26 @@
 class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, options = {})
-    error_class = @object.errors[method].any? ? "text-red-600" : ""
+    error_class = @object.errors[method].any? ? "text-red-500" : ""
     options[:class] = @template.tw("#{options[:class]} #{error_class}")
     @template.render_label(name: "#{object_name}[#{method}]", label: label_for(@object, method), **options)
   end
 
   def text_field(method, options = {})
-    error_class = @object.errors[method].any? ? "error" : ""
+    error_class = @object.errors[method].any? ? "ring-red-300 placeholder:text-red-300 focus:ring-red-500" : ""
     options[:class] = @template.tw("#{options[:class]} #{error_class}")
+    options[:has_error] = @object.errors[method].any?
+    options[:errors] = @object.errors[method]
     @template.render_input(
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
       value: @object.send(method),
-      type: "text", **options
+      type: "text", 
+      **options
     )
+  end
+
+  def submit(value = nil, options = {})
+    @template.render_button(value, **options)
   end
 
   # def password_field(method, options = {})
@@ -48,10 +55,6 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   #     type: "text", **options
   #   )
   # end
-  
-  def submit(value = nil, options = {})
-    @template.render_button(value, **options)
-  end
 
   private
 
