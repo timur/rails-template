@@ -1,0 +1,22 @@
+<%= render_form_for(form, url: dashboard_index_path, class: "w-4/12 mt-8") do |f| %>
+   <% if form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(form.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+        <% form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :firstname, label: "Vorname" %>
+  <div class="mt-2">
+    <%= f.text_field :firstname, placeholder: "Vorname" %>
+  </div>
+  <%= f.label :lastname, class: "mt-6", label: "Nachname" %>
+  <div class="mt-2">
+    <%= f.text_field :lastname, class: "" %>
+  </div>
+  <%= f.submit "Speichern"%>
+<% end %>

@@ -2,6 +2,7 @@ require "tailwind_merge"
 
 module ComponentsHelper
   def tw(*classes)
+    #Rails.logger.debug "CALL tw #{classes}"
     TailwindMerge::Merger.new.merge(classes.join(" "))
   end
 
