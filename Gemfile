@@ -63,6 +63,7 @@ group :development do
 
   # Use Redis adapter to run Action Cable in production
   gem "dockerfile-rails", ">= 1.5"
+  gem "rails_live_reload"
 end
 
 group :test do
@@ -78,3 +79,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 
 gem "inline_svg", "~> 1.9"
+
+gem "tailwind_merge", "~> 0.8.1"
