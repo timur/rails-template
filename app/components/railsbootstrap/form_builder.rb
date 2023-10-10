@@ -1,6 +1,6 @@
 class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, options = {})
-    error_class = @object.errors[method].any? ? "error" : ""
+    error_class = @object.errors[method].any? ? "text-red-600" : ""
     options[:class] = @template.tw("#{options[:class]} #{error_class}")
     @template.render_label(name: "#{object_name}[#{method}]", label: label_for(@object, method), **options)
   end
