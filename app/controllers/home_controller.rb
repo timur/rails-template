@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  include ActionView::Helpers::AssetTagHelper
+
   def index
     json_data = Rails.application.importmap.to_json(resolver: ActionController::Base.helpers)
     data = JSON.parse(json_data)
@@ -11,9 +13,10 @@ class HomeController < ApplicationController
   end
 
   def map
+    link = stylesheet_link_tag "tailwind"
     render json: {
       imports: {
-        "@lodash/startCase" => "https://unpkg.com/lodash-es@4.17.21/startCase.js"
+        "@lodash/startCase" => ActionController::Base.helpers.asset_path("tailwind")
       }
     }
   end

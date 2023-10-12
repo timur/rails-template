@@ -1,4 +1,4 @@
-# @label Basic Button
+# @label Primary Button
 # @display Primary Color
 # @logical_path app/helpers/button_helper
 class ButtonPreview < Lookbook::Preview
@@ -12,9 +12,9 @@ class ButtonPreview < Lookbook::Preview
   # which can be edited live in the Lookbook UI
   #
   # @param text
-  # @param variant select [default, large, xlarge]
-  def default(text: "Speichern", variant: "default")
-    render_primary_button text, variant: variant
+  # @param variant select [sm, md, lg, xl, xxl]
+  def default(text: "Speichern", variant: "lg")
+    render_button text, variant: variant
   end
 
 end
