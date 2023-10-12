@@ -1,5 +1,5 @@
 module Components::ButtonHelper
-  def render_button(label = "", text: nil, variant: :default, as: :button, href: nil, data: {}, **options, &block)
+  def render_primary_button(label = "", text: nil, variant: :default, as: :button, href: nil, data: {}, **options, &block)
     button_classes = "rounded bg-primary-600 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
     variant_classes = case variant.to_sym
     when :default

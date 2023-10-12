@@ -20,7 +20,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    @template.render_button(value, **options)
+    @template.render_primary_button(value, **options)
   end
 
   # def password_field(method, options = {})

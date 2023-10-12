@@ -14,7 +14,7 @@ class ButtonPreview < Lookbook::Preview
   # @param text
   # @param variant select [default, large, xlarge]
   def default(text: "Speichern", variant: "default")
-    render_button text, variant: variant
+    render_primary_button text, variant: variant
   end
 
 end
