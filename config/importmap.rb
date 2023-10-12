@@ -24,3 +24,4 @@ pin "yet-another-react-lightbox/plugins/thumbnails", to: "https://ga.jspm.io/npm
 pin "yet-another-react-lightbox/plugins/zoom", to: "https://ga.jspm.io/npm:yet-another-react-lightbox@3.12.2/dist/plugins/zoom/index.js"
 pin_all_from "app/javascript/components", under: "components"
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.52.0/dist/index.js"
+pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src/index.js"

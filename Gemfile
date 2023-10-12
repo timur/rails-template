@@ -84,3 +84,5 @@ gem "inline_svg", "~> 1.9"
 gem "tailwind_merge", "~> 0.8.1"
 
 gem "rack-cors", "~> 2.0"
+
+gem "requestjs-rails", "~> 0.0.10"
