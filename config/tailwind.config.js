@@ -8,12 +8,13 @@ module.exports = {
     "./app/components/**/*.{rb,erb,haml,html,slim}",
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
+    "./test/components/previews/**/*.rb",
   ],
   theme: {
     extend: {
       colors: {
         primary: colors.indigo,
-        secondary: colors.yellow,
+        secondary: colors.green,
         neutral: colors.gray,
       },
       fontFamily: {
