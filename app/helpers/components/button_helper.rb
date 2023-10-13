@@ -4,11 +4,11 @@ module Components::ButtonHelper
     button_classes = "rounded bg-primary-600 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
     variant_classes = case variant.to_sym
     when :lg
-      "rounded-md px-2.5 py-1.5"
+      "px-2.5 py-1.5"
     when :sm
       "px-2 py-1 text-xs"
     when :md
-      "px-2 py-1"
+      "rounded-md px-2 py-1"
     when :xl
       "rounded-md px-3 py-2"
     when :xxl
@@ -25,11 +25,11 @@ module Components::ButtonHelper
     button_classes = "rounded bg-white px-2 py-1 text-xs font-semibold text-secondary-900 shadow-sm ring-1 ring-inset ring-secondary-300 hover:bg-secondary-50"
     variant_classes = case variant.to_sym
     when :lg
-      "rounded-md px-2.5 py-1.5"
+      "px-2.5 py-1.5"
     when :sm
       "px-2 py-1 text-xs"
     when :md
-      "px-2 py-1"
+      "rounded-md px-2 py-1"
     when :xl
       "rounded-md px-3 py-2"
     when :xxl
