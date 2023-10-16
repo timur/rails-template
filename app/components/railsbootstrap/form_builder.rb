@@ -6,10 +6,21 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(method, options = {})
-    error_class = @object.errors[method].any? ? "ring-red-300 placeholder:text-red-300 focus:ring-red-500" : ""
-    options[:class] = @template.tw("#{options[:class]} #{error_class}")
-    options[:has_error] = @object.errors[method].any?
-    options[:errors] = @object.errors[method]
+    set_error_attributes(options, method)
+    @template.render_input(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object.send(method),
+      type: "text", 
+      **options
+    )
+  end
+
+  def money_field(method, options = {})
+    set_error_attributes(options, method)
+    options[:money] = "$money($input, ',')"
+    options[:trailing_text] = options[:trailing_text] || "€"
+    options[:leading_text] = options[:leading_text]
     @template.render_input(
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
@@ -23,43 +34,25 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     @template.render_primary_button(value, **options)
   end
 
-  # def password_field(method, options = {})
-  #   error_class = @object.errors[method].any? ? "error" : ""
-  #   options[:class] = @template.tw("#{options[:class]} #{error_class}")
-  #   @template.render_input(
-  #     name: "#{object_name}[#{method}]",
-  #     id: "#{object_name}_#{method}",
-  #     value: @object.send(method),
-  #     type: "password", **options
-  #   )
-  # end
-
-  # def email_field(method, options = {})
-  #   error_class = @object.errors[method].any? ? "error" : ""
-  #   options[:class] = @template.tw("#{options[:class]} #{error_class}")
-  #   @template.render_input(
-  #     name: "#{object_name}[#{method}]",
-  #     id: "#{object_name}_#{method}",
-  #     value: @object.send(method),
-  #     type: "email", **options
-  #   )
-  # end
-  
-  # def text_area(method, options = {})
-  #   error_class = @object.errors[method].any? ? "error" : ""
-  #   options[:class] = @template.tw("#{options[:class]} #{error_class}")
-  #   @template.render_textarea(
-  #     name: "#{object_name}[#{method}]",
-  #     id: "#{object_name}_#{method}",
-  #     value: @object.send(method),
-  #     type: "text", **options
-  #   )
-  # end
-
   private
 
   def label_for(object, method)
     return method.capitalize if object.nil?
     object.class.human_attribute_name(method)
+  end
+
+  def error_class_for(method, custom_class = "")
+    error_class = has_error?(method) ? "ring-red-300 placeholder:text-red-300 focus:ring-red-500 text-red-500" : ""
+    @template.tw("#{custom_class} #{error_class}")
+  end
+
+  def has_error?(method)
+    @object.errors[method].any?
+  end
+
+  def set_error_attributes(options, method)
+    options[:class] = error_class_for(method, options[:class])
+    options[:has_error] = has_error?(method)
+    options[:errors] = @object.errors[method]
   end
 end
