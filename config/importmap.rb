@@ -10,6 +10,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "alpinejs", to: "https://ga.jspm.io/npm:alpinejs@3.13.1/dist/module.esm.js", preload: true
 pin "@alpinejs/ui", to: "https://ga.jspm.io/npm:@alpinejs/ui@3.13.1-beta.0/dist/module.esm.js"
 pin "@alpinejs/focus", to: "https://ga.jspm.io/npm:@alpinejs/focus@3.13.1/dist/module.esm.js"
+pin "@alpinejs/mask", to: "https://ga.jspm.io/npm:@alpinejs/mask@3.13.1/dist/module.esm.js"
 
 pin "htm", to: "https://ga.jspm.io/npm:htm@3.1.1/dist/htm.module.js"
 pin "react", to: "https://ga.jspm.io/npm:react@18.2.0/index.js"
