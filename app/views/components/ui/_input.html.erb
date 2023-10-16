@@ -1,4 +1,4 @@
-<div <%= tag.attributes(class: options[:has_error] ? 'mt-2 relative rounded-md shadow-sm' : 'mt-2') %>>
+<div <%= tag.attributes(class: container_classes) %>>
   <%= text_field_tag name, value, type: type, id: id,
     class: input_classes,
     placeholder: options[:placeholder],
@@ -8,6 +8,7 @@
     disabled: options[:disabled],
     required: options[:required],
     readonly: options[:readonly],
+    "x-mask:dynamic": options[:money],
     data: options[:data] %>
     <% if options[:has_error] %>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -16,6 +17,16 @@
         </svg>
       </div>
     <% end %>
+    <% unless options[:trailing_text].blank? %>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+        <span class="text-gray-500 sm:text-sm"><%= options[:trailing_text] %></span>
+      </div>
+    <% end %>
+    <% unless options[:leading_text].blank? %>
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pr-3">
+        <span class="text-gray-500 sm:text-sm"><%= options[:trailing_text] %></span>
+      </div>
+    <% end %>    
   <% if options[:hint].present? && !options[:has_error] %>
     <p class="mt-2 text-sm text-gray-500"><%= options[:hint] %></p>
   <% end %>
@@ -27,4 +38,3 @@
     <% end %>
   </p>
 <% end %>
-

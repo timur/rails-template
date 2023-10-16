@@ -30,6 +30,11 @@
     <%= f.label :lastname, class: "mt-6", label: "Nachname" %>
     <%= f.text_field :lastname %>
   </div>
+
+  <div>
+    <%= f.label :salary, class: "mt-6", label: "Gehalt" %>
+    <%= f.money_field :salary, width_class: "w-4/12" %>
+  </div>  
   
   <%= f.submit "Speichern", class: "mt-4" %>
 <% end %>
