@@ -1,4 +1,4 @@
-ActiveRecord::Type.register(:money, MoneyType)
+
 class UserForm < ApplicationForm
   attribute :firstname, :string
   attribute :lastname, :string
