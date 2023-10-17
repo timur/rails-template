@@ -16,7 +16,7 @@
           </svg>
         </div>
       <% end %>
-      <% unless options[:trailing_text].blank? && !options[:has_error] %>
+      <% unless options[:trailing_text].blank? || options[:has_error] %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
           <span class="text-gray-500 sm:text-sm"><%= options[:trailing_text] %></span>
         </div>
