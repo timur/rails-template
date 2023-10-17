@@ -1,5 +1,5 @@
 module Components::InputHelper
-  def render_input(name:, label: false, id: nil, type: :text, value: nil, width_class: nil, **options)
+  def render_input(name:, label: false, id: nil, type: :text, value: nil, width_class: nil, template: "components/ui/input", **options)
     base_classes = "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
     input_classes = tw(base_classes, options[:class])
     base_container_classes = "mt-2"
@@ -19,7 +19,7 @@ module Components::InputHelper
       hint: (options[:hint] || ""),
       width_class: (options[:width_class] || ""),
     )
-    render partial: "components/ui/input", locals: {
+    render partial: template, locals: {
       type:,
       label:,
       name:,

@@ -25,7 +25,8 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
       value: @object.send(method),
-      type: "text", 
+      type: "text",
+      template: "components/ui/input_money",
       **options
     )
   end

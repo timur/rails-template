@@ -8,7 +8,6 @@
     disabled: options[:disabled],
     required: options[:required],
     readonly: options[:readonly],
-    "x-mask:dynamic": options[:money],
     data: options[:data] %>
     <% if options[:has_error] %>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -24,7 +23,7 @@
     <% end %>
     <% unless options[:leading_text].blank? %>
       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pr-3">
-        <span class="text-gray-500 sm:text-sm"><%= options[:trailing_text] %></span>
+        <span class="text-gray-500 sm:text-sm"><%= options[:leading_text] %></span>
       </div>
     <% end %>    
   <% if options[:hint].present? && !options[:has_error] %>
