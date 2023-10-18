@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :dashboard, only: [:index]
   post '/dashboard', to: 'dashboard#create'
+  post '/dashboard/fields', to: 'dashboard#fields'
   get '/home', to: 'home#index'
   get '/map', to: 'home#map'
 

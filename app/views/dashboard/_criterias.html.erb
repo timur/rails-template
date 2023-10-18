@@ -1,0 +1,23 @@
+<div class="mt-8">
+  <%= render_form_with(url: dashboard_fields_path, class: "w-4/12 mt-8") do |f| %>
+    <ol>
+      <% criteria.each.with_index do |c, i| %>
+        <li>
+          <%= f.fields_for "criteria_attributes[]", c do |ff| %>
+            <%= ff.hidden_field :id, value: i %>
+            <%= ff.hidden_field :type_name, value: c.class.type_name %>
+            <%= ff.hidden_field :name, value: c.name %>
+            <%= ff.hidden_field :required, value: c.required %>
+            <%= render partial: c.class.type_name.to_s,
+              locals: { f: ff }
+            %>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+    <div class="mt-4">
+      <%= f.submit "Reset" %>
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>
