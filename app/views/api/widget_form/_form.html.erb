@@ -1,7 +1,7 @@
 <%= render_form_for(form, url: api_widget_form_index_url, data: { 
                   controller: "widget-form",
                   action: "submit->widget-form#submitForm:prevent",
-                  widget_form_target: "form" }, class: "w-4/12 mt-8") do |f| %>
+                  widget_form_target: "form" }, class: "w-full lg:w-4/12 mt-8") do |f| %>
   <% if form.errors.any? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">

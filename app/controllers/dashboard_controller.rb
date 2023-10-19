@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action :set_entries, only: [:index, :create]
+
   def index
     @form = UserForm.new
     @criteria = 
@@ -25,9 +27,6 @@ class DashboardController < ApplicationController
       criteria.valid?
     end
     
-    Rails.logger.debug "Criteria: #{@criteria[0].name} Value: #{@criteria[0].field_value}"
-    Rails.logger.debug "Criteria: #{@criteria[1].name} Value: #{@criteria[1].field_value}"
-
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -43,9 +42,7 @@ class DashboardController < ApplicationController
   def create
     @form = UserForm.new_with_permitted_params(params)
     logger.debug "Form Attributes #{@form.attributes}"
-    logger.debug "Salary #{@form.salary} #{@form.salary.class}"
     respond_to do |format|
-      #@form.salary = "100,99"
       if @form.save
         format.turbo_stream do
           render turbo_stream: [
@@ -66,5 +63,42 @@ class DashboardController < ApplicationController
         end
       end
     end
+  end
+
+  private
+
+  def set_entries
+    @entries = [
+      {
+        id: 1,
+        name: 'Laravel',
+        value: 'laravel',
+        disabled: false,
+      },
+      {
+        id: 2,
+        name: 'Ruby on Rails das ist ein sehr langer name noch länger und so',
+        value: 'ruby_on_rails',
+        disabled: false,
+      },
+      {
+        id: 3,
+        name: 'Phoenix',
+        value: 'phoenix',
+        disabled: false,
+      },
+      {
+        id: 4,
+        name: 'Rust',
+        value: 'rust',
+        disabled: false,
+      },
+      {
+        id: 5,
+        name: 'Django',
+        value: 'django',
+        disabled: false,
+      },
+    ]
   end
 end

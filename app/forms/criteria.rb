@@ -26,7 +26,6 @@ module Criteria
 
     validate :stuff
     def stuff
-      Rails.logger.debug "Call validation #{required} #{field_value.blank?}}"
       if required && field_value.blank?
         errors.add(:field_value, "Du bist eine Wurst")
       end

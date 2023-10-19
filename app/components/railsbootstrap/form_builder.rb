@@ -31,6 +31,17 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def custom_select(method, entries = [], options = {})
+    set_error_attributes(options, method)
+    @template.render_custom_select(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object.send(method),
+      entries: entries,
+      **options
+    )
+  end
+
   def submit(value = nil, options = {})
     @template.render_primary_button(value, **options)
   end

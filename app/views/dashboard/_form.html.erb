@@ -1,4 +1,4 @@
-<%= render_form_for(form, url: dashboard_index_path, class: "w-4/12 mt-8") do |f| %>
+<%= render_form_for(form, url: dashboard_index_path, class: "w-full lg:w-4/12 mt-8") do |f| %>
   <% if form.errors.any? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">
@@ -34,7 +34,12 @@
   <div>
     <%= f.label :salary, class: "mt-6", label: "Gehalt" %>
     <%= f.money_field :salary, width_class: "w-4/12" %>
-  </div>  
+  </div>
+
+  <div>
+    <%= f.label :framework, class: "mt-6", label: "Framework" %>
+    <%= f.custom_select :framework, @entries, prompt: "Wähle das Framework" %>
+  </div>    
   
   <%= f.submit "Speichern", class: "mt-4" %>
 <% end %>
