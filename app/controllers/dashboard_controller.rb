@@ -41,7 +41,6 @@ class DashboardController < ApplicationController
 
   def create
     @form = UserForm.new_with_permitted_params(params)
-    logger.debug "Form Attributes #{@form.attributes}"
     respond_to do |format|
       if @form.save
         format.turbo_stream do
@@ -66,6 +65,10 @@ class DashboardController < ApplicationController
   end
 
   private
+
+  def form_params
+    params.require(:user_form).permit(:firstname, :lastname, :salary, :framework, :check_box_test, :check_box_test2, :check_box_test3, tags:[])
+  end
 
   def set_entries
     @entries = [

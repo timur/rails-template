@@ -27,6 +27,8 @@ class ApplicationForm
       map { |name, type|
         if type == :array
           { name => [] }
+        elsif type.class.name == CustomArrayType.name
+          { name => [] }
         elsif type == :hash
           { name => {} }
         else

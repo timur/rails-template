@@ -39,7 +39,35 @@
   <div>
     <%= f.label :framework, class: "mt-6", label: "Framework" %>
     <%= f.custom_select :framework, @entries, prompt: "Wähle das Framework" %>
+  </div>
+
+  <fieldset class="mt-6">
+    <legend class="sr-only">Notifications</legend>
+    <div class="space-y-5">
+      <% UserForm::TAGS.each do |key| %>
+        <div class="relative flex items-start">
+          <div class="flex h-6 items-center">
+            <%= f.check_box :tags, { id: "user_form_#{key}", class: "h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600", multiple: true, checked: f.object.tags&.include?(key.to_s) }, key, nil %>
+          </div>
+          <div class="ml-3 text-sm leading-6">
+            <%= f.label key, for: "checkbox_#{key}" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <div class="mt-6">
+    <fieldset>
+      <legend class="sr-only">Notifications</legend>
+        <div class="space-y-5">
+          <%= f.custom_check_box :check_box_test, "Das ist mein Label", hint: "Das ist ein Hint Text" %>
+          <%= f.custom_check_box :check_box_test2, "Das ist mein Label", hint: "Das ist ein Hint 2 Text" %>
+          <%= f.custom_check_box :check_box_test3, "Das ist mein Label", hint: "Das ist ein Hint 3 Text" %>
+        </div>
+      </legend>
+    </fieldset>
   </div>    
   
-  <%= f.submit "Speichern", class: "mt-4" %>
+  <%= f.submit "Speichern", class: "mt-6" %>
 <% end %>

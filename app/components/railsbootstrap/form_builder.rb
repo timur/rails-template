@@ -42,6 +42,18 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def custom_check_box(method, label, options = {}, checkbox_value = "1")
+    set_error_attributes(options, method)
+    @template.render_check_box(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object.send(method),
+      label: "#{label}",
+      checkbox_value: checkbox_value,
+      **options
+    )
+  end
+
   def submit(value = nil, options = {})
     @template.render_primary_button(value, **options)
   end
