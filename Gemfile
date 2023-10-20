@@ -78,12 +78,8 @@ gem "litestack", "~> 0.3.0"
 gem "aws-sdk-s3", "~> 1.135"
 gem 'dotenv-rails', groups: [:development, :test]
 
-
 gem "inline_svg", "~> 1.9"
-
 gem "tailwind_merge", "~> 0.8.1"
-
 gem "rack-cors", "~> 2.0"
-
 gem "requestjs-rails", "~> 0.0.10"
 gem "imagekitio", "~> 2.3"
