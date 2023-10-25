@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/dashboard/fields', to: 'dashboard#fields'
   get '/home', to: 'home#index'
   get '/map', to: 'home#map'
+  get '/calendar', to: 'calendar#index'
 
   namespace :api do
     resources :widget_form, only: %i[ new create ]
