@@ -67,7 +67,15 @@
         </div>
       </legend>
     </fieldset>
-  </div>    
+  </div>
+
+  <div class="mt-6">
+    <%= f.custom_check_box :accept, "Akzeptieren Sie die Bedingungen", {}, true %>
+  </div>
+
+  <div class="mt-6">
+    <%= f.custom_check_box :accept2, "Akzeptieren Sie die Bedingungen hier bitte", {}, true %>
+  </div>  
   
   <%= f.submit "Speichern", class: "mt-6" %>
 <% end %>
