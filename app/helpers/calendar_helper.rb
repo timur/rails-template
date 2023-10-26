@@ -2,10 +2,11 @@ require "tailwind_merge"
 
 module CalendarHelper
 
-  def compact_month_calendar(date = Date.today, navigation = true)
+  def compact_month_calendar(date = Date.today, navigation = true, param = :date)
     render partial: "calendar/compact_month_calendar", locals: {
       date:,
-      navigation:
+      navigation:,
+      param:
     }
   end
 

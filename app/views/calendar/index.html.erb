@@ -3,5 +3,7 @@
     <%= compact_month_calendar(@date) %>
   <% end %>
 
-  <%= compact_month_calendar(Date.parse('2024-11-01')) %>
+  <%= turbo_frame_tag :calendar2 do %>
+    <%= compact_month_calendar(@date2, true, :date2) %>
+  <% end %>
 </div>
