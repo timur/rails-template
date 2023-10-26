@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
   get '/map', to: 'home#map'
   get '/calendar', to: 'calendar#index'
+  get '/calendar/year', to: 'calendar#year'
 
   namespace :api do
     resources :widget_form, only: %i[ new create ]
