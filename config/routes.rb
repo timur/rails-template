@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/map', to: 'home#map'
   get '/calendar', to: 'calendar#index'
   get '/calendar/year', to: 'calendar#year'
+  resource :flash_message, controller: 'flash_message', only: %i[create]
 
   namespace :api do
     resources :widget_form, only: %i[ new create ]
