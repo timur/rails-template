@@ -13,6 +13,7 @@ module RailsReactImportmap
 
     # Please, see https://guides.rubyonrails.org/autoloading_and_reloading_constants.html#config-autoload-lib-ignore.
     config.autoload_lib(ignore: %w(assets tasks))
+    config.i18n.default_locale = :de
 
     # Configuration for the application, engines, and railties goes here.
     #

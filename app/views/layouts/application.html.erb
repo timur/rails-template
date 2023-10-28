@@ -11,7 +11,7 @@
   </head>
   <body>
     <div x-data="{ open: false }" class="sticky top-0 z-10">
-      <!-- Main menu Desktop -->    
+      <!-- Main menu Desktop -->
       <nav id="main-nav" class="flex bg-gray-100 p-4 top-0 h-16 items-center justify-between">
         <div class="hidden md:block">Brand</div>
         <button type="button" x-on:click="open = true" class="-m-2.5 p-2.5 text-gray-700 md:hidden">
@@ -287,3 +287,9 @@
       </div>
   </body>
 </html>
+
+<script type="module">
+  import Cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+  const { timeZone } = new Intl.DateTimeFormat().resolvedOptions()
+  Cookies.set("time_zone", timeZone, { expires: 365 })
+</script>
