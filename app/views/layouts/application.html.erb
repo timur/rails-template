@@ -11,7 +11,7 @@
   </head>
   <body>
     <div x-data="{ open: false }" class="sticky top-0 z-10">
-      <!-- Main menu Desktop -->    
+      <!-- Main menu Desktop --> 
       <nav id="main-nav" class="flex bg-gray-100 p-4 top-0 h-16 items-center justify-between">
         <div class="hidden md:block">Brand</div>
         <button type="button" x-on:click="open = true" class="-m-2.5 p-2.5 text-gray-700 md:hidden">
@@ -19,7 +19,7 @@
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
-        </button>        
+        </button>
         <div class="hidden sm:block">
           <label for="icon" class="sr-only">Search</label>
           <div class="relative">
@@ -44,8 +44,7 @@
                 </svg>
               </span>
             </button>
-        
-                        <div
+            <div
                 x-menu:items
                 x-transition.origin.top.right
                 class="absolute right-0 w-48 mt-2 z-10 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-md py-1 outline-none"
@@ -92,7 +91,6 @@
         </div>
       </nav>
       <!-- Main menu Mobile -->
-
       <div x-dialog
             x-model="open"
             x-cloak
@@ -221,7 +219,7 @@
           </div>
         </div>
       </div>      
-    </div> 
+    </div>
     <div class="flex">
       <!-- Sidebar -->
       <aside class="p-4 hidden md:flex flex-col justify-between bg-white w-1/6 sticky top-16 h-[calc(100vh-64px)]">
@@ -246,7 +244,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                   </svg>
                   Projects
-                  <!-- Expanded: "rotate-90 text-gray-500", Collapsed: "text-gray-400" -->
+
                   <svg :class="{'rotate-90 text-gray-500': open }" class="text-gray-400 ml-auto h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                   </svg>
@@ -268,10 +266,11 @@
               </li>
                 <%= 
                   render "shared/nav_link",
-                    path: calendar_path,
-                    link_classes: default_nav_link_classes(calendar_path),
+                    controller: "calendar",
+                    link_classes: default_nav_link_classes(nil),
                     text: "Calendar",
-                    svg: "heroicons-calendar.svg"
+                    svg: "heroicons-calendar.svg",
+                    submenu: [SubmenuEntry.new("Monatsansicht", calendar_path), SubmenuEntry.new("Jahresansicht", calendar_year_path)]
                 %>
               <li>
                 <a href="#" class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
@@ -304,7 +303,9 @@
         </ul>
       </aside>
       <main class="bg-gray-50 w-5/6 p-4 flex-grow">
-        <%= yield %>
+        <turbo-frame id="main">
+          <%= yield %>
+        </turbo-frame>
       </main>
       <%= render 'layouts/flash_wrapper' %>
     </div>

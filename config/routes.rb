@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   resources :pictures
   resources :users
   resources :dashboard, only: [:index]
+
   post '/dashboard', to: 'dashboard#create'
   post '/dashboard/fields', to: 'dashboard#fields'
   get '/home', to: 'home#index'
   get '/map', to: 'home#map'
   get '/calendar', to: 'calendar#index'
   get '/calendar/year', to: 'calendar#year'
+
   resource :flash_message, controller: 'flash_message', only: %i[create]
 
   namespace :api do
