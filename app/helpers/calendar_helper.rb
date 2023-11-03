@@ -1,5 +1,3 @@
-require "tailwind_merge"
-
 module CalendarHelper
 
   def compact_month_calendar(options = {})

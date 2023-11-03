@@ -31,12 +31,6 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -80,7 +74,6 @@ gem "aws-sdk-s3", "~> 1.135"
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem "inline_svg", "~> 1.9"
-gem "tailwind_merge", "~> 0.8.1"
 gem "rack-cors", "~> 2.0"
 gem "requestjs-rails", "~> 0.0.10"
 gem "imagekitio", "~> 2.3"
