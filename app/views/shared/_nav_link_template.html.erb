@@ -1,0 +1,8 @@
+<li>
+  <%= link_to path, class: classes, data: options[:data] do %>
+    <% if options[:svg] %>
+      <%= inline_svg_tag options[:svg], class: svg_classes(path) %>
+    <% end %>
+    <%= text %>
+  <% end %>
+</li>

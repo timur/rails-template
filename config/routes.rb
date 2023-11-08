@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/map', to: 'home#map'
   get '/calendar', to: 'calendar#index'
   get '/calendar/year', to: 'calendar#year'
+  get '/calendar/datepicker', to: 'calendar#datepicker'
+  get '/calendar/datepicker_paginate', to: 'calendar#datepicker_paginate'
+
+  post '/datepicker', to: 'datepicker#create'
 
   resource :flash_message, controller: 'flash_message', only: %i[create]
 

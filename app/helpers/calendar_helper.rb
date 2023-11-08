@@ -14,6 +14,21 @@ module CalendarHelper
     }
   end
 
+  # Renders datepicker
+  def datepicker_month(options = {})
+    date = options[:date] || Date.today
+    navigation = options.key?(:navigation) ? options[:navigation] : true
+    param = options[:param] || :date
+    id = options.key?(:id) ? options[:id] : :calendar
+
+    render partial: "calendar/datepicker", locals: {
+      date:,
+      navigation:,
+      param:,
+      id:
+    }
+  end
+
   def year_view_classes(calendar_date, date)
     classes = %w(py-1.5 hover:bg-gray-100 focus:z-10)
     # is in month
