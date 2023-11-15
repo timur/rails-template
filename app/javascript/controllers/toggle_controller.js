@@ -13,10 +13,6 @@ export default class extends Controller {
   };
 
   connect() {
-    if (this.initialActiveValue === true) {
-      // use the initialActiveValue passed from data-toggle-initial-active-value to optionally toggle our class
-      this.toggle();
-    }
     this.activeValue = this.initialActiveValue;
   }
   toggle() {

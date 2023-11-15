@@ -13,14 +13,21 @@ module ApplicationHelper
     }
   end
 
-  def nav_link_with_submenu(path:, text:, **options)
+  def nav_link_with_submenu(name:, text:, **options)
+    current_path = false
     classes = DEFAULT_LINK_CLASSES
-    classes = current_page?(path) ? current_link(classes) : classes
+    submenu = options[:submenu]
+    entry = submenu.find { |s| current_page?(s.url) }
+    if entry
+      current_path = true
+    end 
+    # classes = current_page?(path) ? current_link(classes) : classes
     
     render partial: "shared/nav_link_submenu", locals: {
-      path:,
+      name:,
       text:,
       classes:,
+      current_path:,
       submenu: options[:submenu],
       options:
     }    
