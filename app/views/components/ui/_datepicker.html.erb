@@ -24,7 +24,10 @@
       </svg>
     </div> 
   <% end %>
-  <div class="absolute top-12 w-3/4 inset-y-0 left-0 hidden" id="<%= random_id %>" data-visibility-target="hideable" data-datepicker-target="datepicker">
+  <div class="absolute top-12 w-3/4 inset-y-0 left-0 hidden"
+       id="<%= random_id %>"
+       data-visibility-target="hideable"
+       data-datepicker-target="datepicker">
     <%= datepicker_month(date: value, id: random_id) %>
   </div>
 </div>
