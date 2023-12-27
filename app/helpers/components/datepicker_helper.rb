@@ -14,19 +14,13 @@ module Components::DatepickerHelper
       width_class: (options[:width_class] || "")
     )
     render partial: template, locals: {
-      type:,
       name:,
       value:,
       id:,
+      type:,
       input_classes:,
       container_classes:,
       options: options
     }
-  end
-
-  private
-
-  def has_icon? options
-    (options[:has_error] || options[:trailing_text] || options[:leading_text])
   end
 end
