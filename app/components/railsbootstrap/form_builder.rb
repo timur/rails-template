@@ -60,7 +60,6 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
       value: @object.send(method),
-      type: "text",
       template: "components/ui/datepicker",
       **options
     )
