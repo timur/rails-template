@@ -9,7 +9,7 @@ gem "rails", "~> 7.1.1"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem "sqlite3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -69,11 +69,11 @@ group :test do
 
 end
 
-gem "litestack", "~> 0.3.0"
+gem "litestack", "~> 0.4.x"
 gem "aws-sdk-s3", "~> 1.135"
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem "inline_svg", "~> 1.9"
 gem "rack-cors", "~> 2.0"
-gem "requestjs-rails", "~> 0.0.10"
+gem "requestjs-rails"
 gem "imagekitio", "~> 2.3"
