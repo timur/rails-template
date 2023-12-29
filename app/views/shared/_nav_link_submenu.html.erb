@@ -1,0 +1,25 @@
+<li data-controller="toggle" 
+    data-toggle-initial-active-value="<%= current_path %>"
+    data-toggle-class-value="hidden"
+    data-toggle-rotate-class="rotate-90 text-gray-500">
+  <div>
+    <button type="button" data-action="toggle#toggle" class="hover:bg-gray-50 flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-gray-700" aria-controls="sub-menu-1" aria-expanded="false">
+      <%= inline_svg_tag options[:svg], class: "h-6 w-6 text-gray-400 group-hover:text-primary-600" %>
+      <%= text %>
+      <!-- Expanded: "rotate-90 text-gray-500", Collapsed: "text-gray-400" -->
+      <svg class="text-gray-400 ml-auto h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-toggle-target="svg">
+        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <% if local_assigns.has_key? :submenu %>
+      <ul data-toggle-target="content" class="mt-1 px-2 <%= current_path ? '' : 'hidden' %>">
+        <% submenu.each do |entry| %>
+          <li>
+            <% classes = current_page?(entry.url) ? "text-primary-600 bg-gray-50" : "text-gray-700" %>
+            <%= link_to entry.text, entry.url, class: "hover:bg-gray-50 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 #{classes}" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</li>

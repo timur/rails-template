@@ -24,8 +24,8 @@ module Components::ButtonHelper
     base_classes_with_color = base_classes.sub("{{bg}}", "{{color}}")
     hover_classes = base_classes.sub("{{bg}}", "{{hover_color}}")
 
-    button_classes = tw(base_classes_with_color, variant_classes, options[:class], button_classes)
-    hover_classes = tw(hover_classes, variant_classes, options[:class], button_classes)
+    button_classes = "#{base_classes_with_color} #{variant_classes} #{options[:class]} #{button_classes}"
+    hover_classes = "#{hover_classes} #{variant_classes} #{options[:class]} #{button_classes}"
 
     text = label if label.present?
     text = capture(&block) if block

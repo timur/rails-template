@@ -1,12 +1,12 @@
-<section class="text-center">
+<section class="text-center bg-white">
   <div class="flex items-center text-gray-900">
     <% if navigation %>
       <% params_prev = {}; params_prev[param] = date.prev_month %>
       <% params_next = {}; params_next[param] = date.next_month %>
       <% params_prev[:id] = id %>
       <% params_next[:id] = id %>
-      <%= link_to calendar_path(params_prev), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
-        <span class="sr-only">Previous month</span>
+      <%= link_to calendar_datepicker_paginate_path(params_prev), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
+        <span class="sr-only">Next month</span>
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
         </svg>
@@ -14,7 +14,7 @@
     <% end %>
     <div class="flex-auto text-sm font-semibold"><%= I18n.l(date, format: "%B") %> <%= date.year %></div>
     <% if navigation %>
-      <%= link_to calendar_path(params_next), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
+      <%= link_to calendar_datepicker_paginate_path(params_next), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
         <span class="sr-only">Next month</span>
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
@@ -22,7 +22,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Standard view for days from Monday to Sunday -->
   <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
     <div><%= t('date.abbr_day_names')[1] %></div>
     <div><%= t('date.abbr_day_names')[2] %></div>
@@ -35,8 +34,8 @@
   <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
     <% date_range(date).each_slice(7).with_index do |week, i| %>
       <% week.each do |day| %>
-        <%= content_tag :button, class: year_view_classes(date, day) do %>
-          <%= content_tag :time, datetime: day.to_s, class: year_view_time_classes(date, day) do %>
+        <%= content_tag :button, class: year_view_classes(date, day), data: { action: "datepicker#click" } do %>
+          <%= content_tag :time, datetime: day.to_s, dateformatted: I18n.l(day), class: year_view_time_classes(date, day) do %>
             <%= day.day %>
           <% end %>
         <% end %>

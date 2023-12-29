@@ -1,7 +1,7 @@
 class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, options = {})
     error_class = @object.errors[method].any? ? "text-red-500" : ""
-    options[:class] = @template.tw("#{options[:class]} #{error_class}")
+    options[:class] = "#{options[:class]} #{error_class}"
     @template.render_label(name: "#{object_name}[#{method}]", label: label_for(@object, method), **options)
   end
 
@@ -54,6 +54,16 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def datepicker(method, options = {})
+    set_error_attributes(options, method)
+    @template.render_datepicker(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object.send(method),
+      **options
+    )
+  end
+
   def submit(value = nil, options = {})
     @template.render_primary_button(value, **options)
   end
@@ -67,7 +77,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
 
   def error_class_for(method, custom_class = "")
     error_class = has_error?(method) ? "ring-red-300 placeholder:text-red-300 focus:ring-red-500 text-red-500" : ""
-    @template.tw("#{custom_class} #{error_class}")
+    "#{custom_class} #{error_class}"
   end
 
   def has_error?(method)
