@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails Base Landing Page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div class="relative">
+      <header class="bg-base shadow-md">
+        <nav class="flex items-center justify-between px-8 py-4 mx-auto max-w-7xl" aria-label="Global">
+          <div class="flex flex-1">
+            <a class="flex items-center gap-2 shrink-0" title="Logo" href="/">
+              <img alt="Logo" fetchpriority="high" width="685" height="676" decoding="async" data-nimg="1" class="w-8" style="color: transparent;" srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e5d831c9.webp&amp;w=750&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e5d831c9.webp&amp;w=1920&amp;q=75 2x" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e5d831c9.webp&amp;w=1920&amp;q=75"><span class="font-semibold text-lg __className_bfa365">Clusterly.ai</span>
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="flex md:hidden">
+            <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
+              <span class="sr-only">Open main menu</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-base-content">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-1 justify-center space-x-12">
+            <a class="" title="Pricing" href="/#pricing">Pricing</a>
+            <a class="" title="FAQ" href="/#faq">FAQ</a>
+            <a class="" title="Blog" href="/blog">Blog</a>
+          </div>
+          <div class="flex justify-end flex-1">
+            <a class="btn btn-primary" href="/dashboard">Start Now</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="relative bg-gradient-to-b from-green-50 to-blue-100">
+          <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 lg:pt-4 pb-16">
+            <div class="max-w-3xl text-center mx-auto">
+              <div class="mt-5">
+                <h1 class="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center">
+                  <span class="relative">Transform keywords into</span>
+                  <span class=" relative">
+                    <span class="mr-4 md:mr-5">traffic-driving content</span>
+                    <span class=" relative whitespace-nowrap">
+                      <span class="absolute bg-accent lg:mt-3 -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1"></span>
+                      <span class="relative lg:mt-1">instantly</span>
+                    </span>
+                  </span>
+                </h1>
+              </div>
+              <div class="mt-12 max-w-3xl">
+                <p class="text-xl text-gray-500">With Clusterly.ai, tap into current trends and competitor analysis to quickly find and fill content gaps, create SEO-strong articles, and rank higher. Get the visibility your business deserves with content that stands out.</p>
+              </div>
+              <div class="flex items-center space-x-2 border-gray-300 rounded-2xl px-4 py-2 mt-6 mb-2">
+                <div class="space-y-8 max-w-md mx-auto w-full">
+                  <form class="flex flex-col sm:flex-row sm:items-center form-control w-full"><input required="" type="email" autocomplete="email" placeholder="Enter your email address" class="input input-bordered placeholder:opacity-60 w-full sm:mr-4 mb-2 md:mb-0" value=""><button class="btn bg-indigo-600 text-white btn-block sm:w-auto hover:bg-indigo-700" type="submit">Unlock Free Articles</button>
+                  </form>
+                </div>
+              </div>
+              <div class="flex items-center justify-center sm:gap-8 lg:gap-12 mb-6">
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">No credit card</p>
+                </div>
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">6 articles included</p>
+                </div>
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">Plagiarism free</p>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row justify-center align-center gap-3">
+                <div class="-space-x-5 avatar-group justify-center">
+                  <div class="avatar w-12 h-12"><img alt="Peter, Beta user testimonial" fetchpriority="high" width="50" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=%2Ftestimonials%2FpeterTestimonial.webp&amp;w=64&amp;q=75 1x, /_next/image?url=%2Ftestimonials%2FpeterTestimonial.webp&amp;w=128&amp;q=75 2x" src="/_next/image?url=%2Ftestimonials%2FpeterTestimonial.webp&amp;w=128&amp;q=75"></div>
+                  <div class="avatar w-12 h-12"><img alt="Harps, feedback from beta user" fetchpriority="high" width="50" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=%2Ftestimonials%2FharpsTestimonial.webp&amp;w=64&amp;q=75 1x, /_next/image?url=%2Ftestimonials%2FharpsTestimonial.webp&amp;w=128&amp;q=75 2x" src="/_next/image?url=%2Ftestimonials%2FharpsTestimonial.webp&amp;w=128&amp;q=75"></div>
+                  <div class="avatar w-12 h-12"><img alt="Vicky, user testimonial" fetchpriority="high" width="50" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=%2Ftestimonials%2FvickyTestimonial.webp&amp;w=64&amp;q=75 1x, /_next/image?url=%2Ftestimonials%2FvickyTestimonial.webp&amp;w=128&amp;q=75 2x" src="/_next/image?url=%2Ftestimonials%2FvickyTestimonial.webp&amp;w=128&amp;q=75"></div>
+                  <div class="avatar w-12 h-12"><img alt="Alice, user testimonial" fetchpriority="high" width="50" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=%2Ftestimonials%2FaliceTestimonial.webp&amp;w=64&amp;q=75 1x, /_next/image?url=%2Ftestimonials%2FaliceTestimonial.webp&amp;w=128&amp;q=75 2x" src="/_next/image?url=%2Ftestimonials%2FaliceTestimonial.webp&amp;w=128&amp;q=75"></div>
+                  <div class="avatar w-12 h-12"><img alt="Joseph, feedback from beta user" fetchpriority="high" width="50" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=%2Ftestimonials%2FjosephTestimonial.webp&amp;w=64&amp;q=75 1x, /_next/image?url=%2Ftestimonials%2FjosephTestimonial.webp&amp;w=128&amp;q=75 2x" src="/_next/image?url=%2Ftestimonials%2FjosephTestimonial.webp&amp;w=128&amp;q=75"></div>
+                </div>
+                <div class="flex flex-col justify-center items-center gap-1">
+                  <div class="rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <div class="text-base text-base-content/80">Join
+                    <span class="font-semibold text-base-content">+320</span>
+                    <!-- -->
+                    creators</div>
+                </div>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-10 mx-4">
+                <div class="flex-1 flex justify-center">
+                  <a class="" href="https://www.producthunt.com/posts/clusterly-ai?utm_source=badge-featured&amp;utm_medium=badge&amp;utm_souce=badge-clusterly-ai" target="_blank"><img alt="Clusterly.ai - The Ultimate Content Cluster Creation Platform | Product Hunt" loading="lazy" width="250" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=https%3A%2F%2Fapi.producthunt.com%2Fwidgets%2Fembed-image%2Fv1%2Ffeatured.svg%3Fpost_id%3D415803%26theme%3Dlight&amp;w=256&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fapi.producthunt.com%2Fwidgets%2Fembed-image%2Fv1%2Ffeatured.svg%3Fpost_id%3D415803%26theme%3Dlight&amp;w=640&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fapi.producthunt.com%2Fwidgets%2Fembed-image%2Fv1%2Ffeatured.svg%3Fpost_id%3D415803%26theme%3Dlight&amp;w=640&amp;q=75"></a>
+                </div>
+                <div class="flex-1 flex justify-center">
+                  <a href="https://nanai.tools/clusterly-ai?ref=clusterly-ai-homepage" target="_blank"><img alt="clusterly-ai" loading="lazy" width="250" height="50" decoding="async" data-nimg="1" style="color:transparent" srcset="/_next/image?url=https%3A%2F%2Fnanai.tools%2Fembed-badge.svg&amp;w=256&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fnanai.tools%2Fembed-badge.svg&amp;w=640&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fnanai.tools%2Fembed-badge.svg&amp;w=640&amp;q=75"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= yield %>
+      </main>
+      <footer class="bg-white border-t border-base-content/10"></footer>
+    </div>
+  </body>
+</html>
