@@ -19,7 +19,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-        //heading: ["Barcelony", 'sans-serif'],
       },
     },
   },
