@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div class="relative">
+    <div x-data="{ open: false }" class="relative">
       <header class="bg-base shadow-md">
         <nav class="flex items-center justify-between px-8 py-4 mx-auto max-w-7xl" aria-label="Global">
           <div class="flex flex-1">
@@ -21,7 +21,7 @@
           </div>
           <!-- Mobile menu button -->
           <div class="flex md:hidden">
-            <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
+            <button type="button" @click="open = true" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
               <span class="sr-only">Open main menu</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-base-content">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
@@ -37,6 +37,36 @@
             <a class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer flex-wrap items-center justify-center rounded-lg font-semibold text-sm text-center bg-black leading-4 text-white px-4" href="/dashboard">Start Now</a>
           </div>
         </nav>
+        <div :class="open || 'hidden'" class="relative z-50" x-cloak>
+          <div class="fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300">
+            <div class="flex items-center justify-between">
+              <a class="flex items-center gap-2 shrink-0 " title="Clusterly.ai hompage" href="/">
+                <%= image_tag "clusterly/logo_clusterly.webp", class: "w-8", alt: "Logo" %>
+              </a>
+              <button type="button" @click="open = false" class="-m-2.5 rounded-md p-2.5">
+                <span class="sr-only">Close menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="flow-root mt-6">
+              <div class="py-4">
+                <div class="flex flex-col gap-y-4 items-start">
+                  <a class="link link-hover" title="Pricing" href="/#pricing">Pricing</a>
+                  <a class="link link-hover" title="FAQ" href="/#faq">FAQ</a>
+                  <a class="link link-hover" title="Blog" href="/blog">Blog</a>
+                </div>
+              </div>
+              <div class="flex flex-row items-center self-stretch mt-4 mb-4 h-4 whitespace-nowrap">
+                <span class="h-0.5 w-full flex-grow bg-gray-200"></span>
+              </div>
+              <div class="flex flex-col">
+                <a class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer flex-wrap items-center justify-center rounded-lg font-semibold text-sm text-center bg-black leading-4 text-white px-4" href="/dashboard">Start Now</a>
+              </div>
+            </div>
+          </div>
+        </div>        
       </header>
       <main>
         <div class="relative bg-gradient-to-b from-green-50 to-blue-100">
