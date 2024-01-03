@@ -94,27 +94,26 @@
       </nav>
       <!-- Main menu Mobile -->
       <div x-dialog
-            x-model="open"
-            x-cloak
-            class="z-50 absolute" role="dialog" aria-modal="true">
+           x-model="open"
+           x-cloak
+           class="z-50 absolute" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-900/80"
-              x-transition:enter="transition-opacity ease-linear duration-300"
-              x-transition:enter-start="opacity-0"
-              x-transition:enter-end="opacity-100"
-              x-transition:leave="transition-opacity ease-linear duration-300"
-              x-transition:leave-start="opacity-100"
-              x-transition:leave-end="opacity-0"></div>
-
+             x-transition:enter="transition-opacity ease-linear duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition-opacity ease-linear duration-300"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+        </div>
         <div class="fixed inset-0 flex">
           <div class="relative mr-16 flex w-full max-w-xs flex-1" 
-              x-dialog:panel
-              x-transition:enter="transition ease-in-out duration-300 transform"
-              x-transition:enter-start="-translate-x-full"
-              x-transition:enter-end="translate-x-0"
-              x-transition:leave="transition ease-in-out duration-300 transform"
-              x-transition:leave-start="translate-x-0"
-              x-transition:leave-end="-translate-x-full"
-                >
+               x-dialog:panel
+               x-transition:enter="transition ease-in-out duration-300 transform"
+               x-transition:enter-start="-translate-x-full"
+               x-transition:enter-end="translate-x-0"
+               x-transition:leave="transition ease-in-out duration-300 transform"
+               x-transition:leave-start="translate-x-0"
+               x-transition:leave-end="-translate-x-full">
             <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
               <button type="button" class="-m-2.5 p-2.5" x-on:click="$dialog.close()">
                 <span class="sr-only">Close sidebar</span>
@@ -149,7 +148,8 @@
             </div>
           </div>
         </div>
-      </div>      
+      </div>
+      <!-- Main menu Mobile Ende -->
     </div>
     <div class="flex">
       <!-- Sidebar Menu -->
