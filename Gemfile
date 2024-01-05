@@ -77,3 +77,5 @@ gem "inline_svg", "~> 1.9"
 gem "rack-cors", "~> 2.0"
 gem "requestjs-rails"
 gem "imagekitio", "~> 2.3"
+
+gem "class_variants", "~> 0.0.7"
