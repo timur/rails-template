@@ -5,7 +5,7 @@ class CalendarHelperTest < ActionView::TestCase
 
   test '#compact_month_calendar tests if the correct partial is rendered' do
     date = Date.today
-    render partial: 'calendar/compact_month_calendar', locals: { date:, navigation: false}
+    render partial: 'calendar/compact_month_calendar', locals: { date:, navigation: false, events: []}
     assert_select 'div.font-semibold', text: "#{I18n.l(date, format: "%B")} #{date.year}"
   end
 

@@ -5,12 +5,14 @@ module CalendarHelper
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :date
     id = options.key?(:id) ? options[:id] : :calendar
+    events = options[:events] || []
 
     render partial: "calendar/compact_month_calendar", locals: {
       date:,
       navigation:,
       param:,
-      id:
+      id:,
+      events:
     }
   end
 
@@ -39,11 +41,35 @@ module CalendarHelper
     )
   end
 
-  def calendar_cell_inside_classes(date, day)
-    TailwindClasses.calendar_cell_inside.render(
-      today: is_today?(day)
-    )
-  end  
+  def is_today_classes(date, day)
+    if is_today?(day)
+      TailwindClasses.calendar_cell_inside.render(
+        today: true
+      )
+    end
+  end
+
+  def has_event?(day, events)
+    if events.length > 0
+      event = find_event(day, events)
+      unless event.nil?
+        TailwindClasses.calendar_cell_inside_events.render(
+          today: true
+        )
+      end
+    end
+  end
+
+  def find_event(day, events)
+    events.find { |e| e.date == day }
+  end
+
+  def calendar_cell_inside_classes(date, day, events = [])
+    classes = []
+    classes << is_today_classes(date, day)
+    classes << has_event?(day, events)
+    classes
+  end
 
   def is_today?(day)
     Date.today === day
