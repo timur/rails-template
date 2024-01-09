@@ -54,9 +54,10 @@ module CalendarHelper
     if events.length > 0
       event = find_event(day, events)
       unless event.nil?
-        TailwindClasses.calendar_cell_inside_events.render(
-          today: true
-        )
+        r = TailwindClasses.calendar_cell_inside_events.render(
+          event: true
+        ) + " #{event.color}"
+        r
       end
     end
   end
