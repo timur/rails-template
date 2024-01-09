@@ -36,7 +36,14 @@
   <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
     <% whole_month_range(date).each_slice(7) do |week| %>
       <% week.each do |day| %>
-        <%= content_tag :button, id: day.to_s, class: calendar_cell_classes(date, day), data: { controller: "tooltip", tooltip_target: "content", tooltip_data_value: find_event(day, events)&.title } do %>
+        <%= content_tag :button, id: day.to_s, class: calendar_cell_classes(date, day), 
+                                 data: { controller: "tooltip button", 
+                                         tooltip_target: "content",
+                                         tooltip_data_value: find_event(day, events)&.title,
+                                         button_target: "button",
+                                         button_url_value: find_event(day, events)&.url,
+                                         action: "button#call"
+                                        } do %>
           <%= content_tag :time, datetime: day.to_s, class: calendar_cell_inside_classes(date, day, events) do %>
             <%= day.day %>
           <% end %>
