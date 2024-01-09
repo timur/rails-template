@@ -32,7 +32,7 @@ module TailwindClasses
       ClassVariants.build(
         "mx-auto flex h-7 w-7 items-center justify-center rounded-full",
         variants: {
-          today: "bg-red-600 font-semibold text-white"
+          event: "font-semibold text-white"
         }
       )   
     end      
