@@ -1,16 +1,19 @@
 module CalendarHelper
 
   def compact_month_calendar(options = {})
+    puts "options: #{options}"
     date = options[:date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :date
     id = options.key?(:id) ? options[:id] : :calendar
+    events = options[:events] || []
 
     render partial: "calendar/compact_month_calendar", locals: {
       date:,
       navigation:,
       param:,
-      id:
+      id:,
+      events:
     }
   end
 
@@ -29,41 +32,74 @@ module CalendarHelper
     }
   end
 
-  def year_view_classes(calendar_date, date)
-    classes = %w(py-1.5 hover:bg-gray-100 focus:z-10)
-    # is in month
-    classes.push(%w(bg-white text-gray-900)) if month_range(calendar_date).cover?(date)
-    classes.push(%w(bg-gray-50 text-gray-400)) unless month_range(calendar_date).cover?(date)
-    classes.push(%w(rounded-tl-lg)) if whole_range(calendar_date).to_a.first === date
-    classes.push(%w(rounded-br-lg)) if whole_range(calendar_date).to_a.last === date
-    classes.push(%w(rounded-tr-lg)) if last_day_week?(calendar_date.beginning_of_month) === date
-    classes.push(%w(rounded-bl-lg)) if first_day_week?(calendar_date.end_of_month) === date
+  def calendar_cell_classes(date, day)
+    TailwindClasses.calendar_cell.render(
+      in_current_month: is_in_month?(date, day),
+      is_first_in_month_range: first_day_of_month_range(whole_month_range(date), day),
+      is_last_in_month_range: last_day_of_month_range(whole_month_range(date), day),
+      is_last_day_of_first_week: last_day_of_first_week(date, day),
+      is_first_day_of_last_week: first_day_of_last_week(date, day)
+    )
+  end
+
+  def is_today_classes(date, day)
+    if is_today?(day)
+      TailwindClasses.calendar_cell_inside.render(
+        today: true
+      )
+    end
+  end
+
+  def has_event?(day, events)
+    if events.length > 0
+      event = find_event(day, events)
+      unless event.nil?
+        r = TailwindClasses.calendar_cell_inside_events.render(
+          event: true
+        ) + " #{event.color}"
+        r
+      end
+    end
+  end
+
+  def find_event(day, events)
+    events.find { |e| e.date == day }
+  end
+
+  def calendar_cell_inside_classes(date, day, events = [])
+    classes = []
+    classes << is_today_classes(date, day)
+    classes << has_event?(day, events)
     classes
   end
 
-  def year_view_time_classes(calendar_date, date)
-    classes = %w(mx-auto flex h-7 w-7 items-center justify-center rounded-full)
-    classes.push(%w(bg-indigo-600 font-semibold text-white)) if date === Date.today
-    classes
-  end
-  
-  def month_range date
-    date.beginning_of_month..date.end_of_month
+  def is_today?(day)
+    Date.today === day
   end
 
-  def whole_range date
+  def is_in_month?(date, day)
+    date.all_month.cover? day
+  end
+
+  # Returns a range of dates for the beginning of the week of a month and end of a week for the month
+  # for example 25.10.2023 - 05.11.2023 this is for November of 2023
+  def whole_month_range(date)
     date.beginning_of_month.beginning_of_week(:monday)..date.end_of_month.end_of_week(:monday)
+  end  
+
+  def first_day_of_month_range(range, day)
+    range.first === day
   end
 
-  def last_day_week? date
-    date.end_of_week(:monday)
+  def last_day_of_first_week(date, day)
+    date.beginning_of_month.end_of_week(:monday) === day
   end
 
-  def first_day_week? date
-    date.beginning_of_week(:monday)
+  def first_day_of_last_week(date, day)
+    date.end_of_month.beginning_of_week(:monday) === day
   end
 
-  def date_range(date)
-    (date.beginning_of_month.beginning_of_week(:monday)..date.end_of_month.end_of_week(:monday)).to_a
+  def last_day_of_month_range(range, day)
+    range.last === day
   end
 end

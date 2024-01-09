@@ -32,11 +32,19 @@
     <div><%= t('date.abbr_day_names')[6] %></div>
     <div><%= t('date.abbr_day_names')[0] %></div>
   </div>
+  <!-- Rendering of the cells -->
   <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
-    <% date_range(date).each_slice(7).with_index do |week, i| %>
+    <% whole_month_range(date).each_slice(7) do |week| %>
       <% week.each do |day| %>
-        <%= content_tag :button, class: year_view_classes(date, day) do %>
-          <%= content_tag :time, datetime: day.to_s, class: year_view_time_classes(date, day) do %>
+        <%= content_tag :button, id: day.to_s, class: calendar_cell_classes(date, day), 
+                                 data: { controller: "tooltip button", 
+                                         tooltip_target: "content",
+                                         tooltip_data_value: find_event(day, events)&.title,
+                                         button_target: "button",
+                                         button_url_value: find_event(day, events)&.url,
+                                         action: "button#call"
+                                        } do %>
+          <%= content_tag :time, datetime: day.to_s, class: calendar_cell_inside_classes(date, day, events) do %>
             <%= day.day %>
           <% end %>
         <% end %>
@@ -44,4 +52,3 @@
     <% end %>
   </div>
 </section>
-
