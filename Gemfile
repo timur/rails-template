@@ -79,4 +79,3 @@ gem "requestjs-rails"
 gem "imagekitio", "~> 2.3"
 
 gem "class_variants", "~> 0.0.7"
-gem 'simplecov', require: false, group: :test
