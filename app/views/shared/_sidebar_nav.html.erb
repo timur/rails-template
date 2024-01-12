@@ -1,7 +1,9 @@
 <%= nav_link(path: dashboard_path, text: "Dashboard", svg: "heroicons-home.svg") %>
 <%= nav_link(path: pictures_path, text: "Bilder", svg: "heroicons-photo.svg", data: { turbo: "false"}) %>
 <%= nav_link_with_submenu(name: "calendar", text: "Kalender", svg: "heroicons-photo.svg", submenu: [
-    SubmenuEntry.new("Monatsansicht", calendar_path),
+    SubmenuEntry.new("Monatsansicht kompakt", calendar_path),
+    SubmenuEntry.new("Monatsansicht gross", calendar_month_path),
+    SubmenuEntry.new("Wochenansicht", calendar_week_path),
     SubmenuEntry.new("Jahresansicht", calendar_year_path),
     SubmenuEntry.new("Datepicker", calendar_datepicker_path)
   ])

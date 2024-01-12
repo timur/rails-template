@@ -3,6 +3,15 @@ require 'test_helper'
 class CalendarHelperTest < ActionView::TestCase
   include CalendarHelper
 
+  setup do
+    @events = []
+    @events << OpenStruct.new(title: "Der Name meines Events", date_time: DateTime.parse("10.01.2024 17:22") , color: "bg-green-500")
+    @events << OpenStruct.new(title: "Noch ein tolles Event", date_time: DateTime.parse("17.01.2024 08:30"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Ein anderes Event in der Vergangenheit", date_time: DateTime.parse("30.01.2024 15:00"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Der 24 Event", date_time: DateTime.parse("24.01.2024 12:00"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Der 24 Event", date_time: DateTime.parse("24.01.2024 15:00"), color: "bg-blue-500")
+  end
+
   test '#compact_month_calendar tests if the correct partial is rendered' do
     date = Date.today
     render partial: 'calendar/compact_month_calendar', locals: { date:, navigation: false, events: []}
@@ -69,6 +78,23 @@ class CalendarHelperTest < ActionView::TestCase
     day = Date.new(month_date.year, 2, 4)
     range = whole_month_range(month_date)
     assert last_day_of_month_range(range, day)
-  end  
-  
+  end
+
+  test '#events_for_day tests if multipe events are returned' do
+    day = Date.new(2024, 1, 24)
+    result = events_for_day(day, @events)
+    assert_equal 2, result.count
+  end
+
+  test '#events_for_day tests if one event is returned' do
+    day = Date.new(2024, 1, 10)
+    result = events_for_day(day, @events)
+    assert_equal 1, result.count
+  end
+
+  test '#find_event tests if one event is returned' do
+    day = Date.parse "10.01.2024"
+    result = find_event(day, @events)
+    assert_equal "Der Name meines Events", result.title
+  end    
 end

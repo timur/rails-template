@@ -1,7 +1,6 @@
 module CalendarHelper
 
   def compact_month_calendar(options = {})
-    puts "options: #{options}"
     date = options[:date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :date
@@ -16,6 +15,26 @@ module CalendarHelper
       events:
     }
   end
+
+  # Month calendar big view
+  def month_calendar(options = {})
+    date = options[:date] || Date.today
+    events = options[:events] || []
+    render partial: "calendar/month_calendar", locals: {
+      date:,
+      events:
+    }    
+  end
+
+  # Week calendar
+  def week_calendar(options = {})
+    date = options[:date] || Date.today
+    events = options[:events] || []
+    render partial: "calendar/week_calendar", locals: {
+      date:,
+      events:
+    }    
+  end  
 
   # Renders datepicker
   def datepicker_month(options = {})
@@ -42,6 +61,18 @@ module CalendarHelper
     )
   end
 
+  def calendar_cell_month_classes(date, day)
+    TailwindClasses.calendar_cell_month.render(
+      in_current_month: is_in_month?(date, day)
+    )
+  end  
+
+  def calendar_time_month_classes(date, day)
+    TailwindClasses.calendar_time_month.render(
+      today: is_today?(day)
+    )
+  end    
+
   def is_today_classes(date, day)
     if is_today?(day)
       TailwindClasses.calendar_cell_inside.render(
@@ -63,7 +94,11 @@ module CalendarHelper
   end
 
   def find_event(day, events)
-    events.find { |e| e.date == day }
+    events.find { |e| e.date_time.to_date == day }
+  end
+
+  def events_for_day(day, events)
+    events.select { |e| e.date_time.to_date == day }
   end
 
   def calendar_cell_inside_classes(date, day, events = [])
@@ -73,12 +108,38 @@ module CalendarHelper
     classes
   end
 
+  def calendar_week_header_classes(date, day)
+    TailwindClasses.calendar_week_header.render(
+      today: is_today?(day)
+    )
+  end
+  
+  def calendar_week_header_span_classes(date, day)
+    TailwindClasses.calendar_week_header_span.render(
+      today: is_today?(day)
+    )
+  end
+
   def is_today?(day)
     Date.today === day
   end
 
   def is_in_month?(date, day)
     date.all_month.cover? day
+  end
+
+  def grid_rows(date)
+    count = whole_month_range(date).count / 7
+    case count
+    when 5
+      "grid-rows-5"
+    when 6
+      "grid-rows-6"
+    when 7
+      "grid-rows-7"
+    else 
+      "grid-rows-6"
+    end
   end
 
   # Returns a range of dates for the beginning of the week of a month and end of a week for the month
@@ -101,5 +162,9 @@ module CalendarHelper
 
   def last_day_of_month_range(range, day)
     range.last === day
+  end
+
+  def week_for_day(day)
+    day.beginning_of_week(:monday)..day.end_of_week(:monday)
   end
 end

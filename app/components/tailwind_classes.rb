@@ -35,6 +35,50 @@ module TailwindClasses
           event: "font-semibold text-white"
         }
       )   
-    end      
+    end
+
+    # renders a calendar cell classes for a big month calendar
+    def calendar_cell_month
+      ClassVariants.build(
+        "relative py-2 px-3",
+        variants: {
+          in_current_month: "bg-white",
+          "!in_current_month": "bg-gray-50 text-gray-500",
+          today: "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+        },
+        defaults: {
+          in_current_month: true
+        }
+      )   
+    end  
+    
+    # renders a calendar time classes for a big month calendar
+    def calendar_time_month
+      ClassVariants.build(
+        "",
+        variants: {
+          today: "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+        }
+      )   
+    end
+    
+    # renders the header of a calendar week
+    def calendar_week_header
+      ClassVariants.build(
+        "items-center justify-center font-semibold text-gray-900",
+        variants: {
+          today: "ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+        }
+      )   
+    end
+    
+    def calendar_week_header_span
+      ClassVariants.build(
+        "",
+        variants: {
+          today: "flex items-baseline"
+        }
+      )   
+    end    
   end
 end
