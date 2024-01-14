@@ -29,3 +29,4 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 pin "local-time", to: "https://ga.jspm.io/npm:local-time@2.1.0/app/assets/javascripts/local-time.js"
 pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
 pin "tippy.js" # @6.3.7
+pin "@popperjs/core", to: "@popperjs--core--esm.js" # @2.11.8
