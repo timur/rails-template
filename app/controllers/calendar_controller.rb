@@ -1,4 +1,5 @@
 class CalendarController < ApplicationController
+  include CalendarHelper
 
   def index
     id = params[:id] ? params[:id] : "calendar"
@@ -46,8 +47,21 @@ class CalendarController < ApplicationController
   def week
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @events = []
-    @events << OpenStruct.new(title: "Der Name meines Events", date_time: DateTime.parse("20.01.2024 17:33"), url: dashboard_path, color: "bg-green-500/70")
-    @events << OpenStruct.new(title: "Noch ein tolles Event", date_time: DateTime.parse("05.01.2024 12:33"), url: dashboard_path, color: "bg-red-500/70")
+    e = OpenStruct.new(
+      title: "Der Name meines Events", 
+      start_time: DateTime.parse("20.01.2024 17:00"),
+      end_time: DateTime.parse("20.01.2024 20:00"),
+      url: dashboard_path, color: "bg-green-500/70"
+    )
+    e2 = OpenStruct.new(
+      title: "Noch ein tolles Event", 
+      start_time: DateTime.parse("05.01.2024 10:00"),
+      end_time: DateTime.parse("05.01.2024 12:00"),
+      url: dashboard_path, color: "bg-red-500/70"
+    )
+
+    @events << e if is_in_week?(e.start_time, @date)
+    @events << e2 if is_in_week?(e2.start_time, @date)
   end  
 
   def datepicker

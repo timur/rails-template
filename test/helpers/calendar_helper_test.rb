@@ -96,5 +96,55 @@ class CalendarHelperTest < ActionView::TestCase
     day = Date.parse "10.01.2024"
     result = find_event(day, @events)
     assert_equal "Der Name meines Events", result.title
-  end    
+  end
+
+  test '#wday_for_date Wednesday' do
+    day = Date.parse "10.01.2024"
+    assert_equal 3, wday_for_date(day)
+  end
+
+  test '#wday_for_date Sunday' do
+    day = Date.parse "14.01.2024"
+    assert_equal 7, wday_for_date(day)
+  end
+
+  test '#duration for event' do
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 18:00")
+    assert_equal 1, duration(start_time, end_time)
+
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 17:30")
+    assert_equal 0.5, duration(start_time, end_time)    
+
+    start_time = DateTime.parse("10.01.2024 00:00")
+    end_time = DateTime.parse("10.01.2024 00:30")
+    assert_equal 0.5, duration(start_time, end_time)
+
+    start_time = DateTime.parse("10.01.2024 03:00")
+    end_time = DateTime.parse("10.01.2024 15:30")
+    assert_equal 12.5, duration(start_time, end_time)
+  end
+
+  test '#week_event_classes' do
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 18:00")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-3", "grid-row: 206 / span 12"], result
+
+    start_time = DateTime.parse("14.01.2024 00:00")
+    end_time = DateTime.parse("14.01.2024 00:30")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-7", "grid-row: 2 / span 6"], result    
+
+    start_time = DateTime.parse("14.01.2024 12:00")
+    end_time = DateTime.parse("14.01.2024 15:30")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-7", "grid-row: 146 / span 42"], result        
+  end
+
+  test '#beginning_week_number' do
+    result = beginning_week_number(DateTime.parse("10.01.2024 17:00"))
+    assert_equal 206, result
+  end
 end

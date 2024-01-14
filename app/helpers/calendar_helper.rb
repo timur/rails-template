@@ -128,6 +128,10 @@ module CalendarHelper
     date.all_month.cover? day
   end
 
+  def is_in_week?(date, day)
+    (date.beginning_of_week(:monday)..date.end_of_week(:monday)).cover? day
+  end  
+
   def grid_rows(date)
     count = whole_month_range(date).count / 7
     case count
@@ -139,6 +143,31 @@ module CalendarHelper
       "grid-rows-7"
     else 
       "grid-rows-6"
+    end
+  end
+
+  def week_event_classes(start_date, end_date)
+    wday = wday_for_date(start_date)
+    duration = duration(start_date, end_date)
+    start_number = beginning_week_number(start_date)
+
+    style = "grid-row: #{start_number.to_i} / span #{(duration * 12).to_i}"
+
+    case wday
+    when 1
+      ["relative mt-px flex sm:col-start-1", style]
+    when 2
+      ["relative mt-px flex sm:col-start-2", style]
+    when 3
+      ["relative mt-px flex sm:col-start-3", style]
+    when 4
+      ["relative mt-px flex sm:col-start-4", style]
+    when 5
+      ["relative mt-px flex sm:col-start-5", style]
+    when 6
+      ["relative mt-px flex sm:col-start-6", style]
+    when 7
+      ["relative mt-px flex sm:col-start-7", style]
     end
   end
 
@@ -166,5 +195,20 @@ module CalendarHelper
 
   def week_for_day(day)
     day.beginning_of_week(:monday)..day.end_of_week(:monday)
+  end
+
+  def wday_for_date(date)
+    return 7 if date.wday == 0
+    date.wday
+  end
+
+  def duration(start_date, end_date)
+    (end_date.to_time - start_date.to_time) / 1.hour
+  end
+
+  def beginning_week_number(start_date)
+    padding = 2
+    duration = duration(start_date.beginning_of_day, start_date)
+    (duration * 12) + padding
   end
 end
