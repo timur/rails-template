@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails Base Landing Page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div x-data="{ open: false }" class="relative">
+      <header class="bg-base shadow-md">
+        <nav class="flex items-center justify-between px-8 py-4 mx-auto max-w-7xl" aria-label="Global">
+          <div class="flex flex-1">
+            <a class="flex items-center gap-2 shrink-0" title="Logo" href="/">
+              <%= image_tag "clusterly/logo_clusterly.webp", class: "w-8", alt: "Logo" %>
+              <span class="font-semibold text-lg">Clusterly.ai</span>
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="flex md:hidden">
+            <button type="button" @click="open = true" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
+              <span class="sr-only">Open main menu</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-base-content">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
+            <a class="" title="Pricing" href="/#pricing">Pricing</a>
+            <a class="" title="FAQ" href="/#faq">FAQ</a>
+            <a class="" title="Blog" href="/blog">Blog</a>
+          </div>
+          <div class="hidden lg:flex lg:justify-end lg:flex-1">
+            <a class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer flex-wrap items-center justify-center rounded-lg font-semibold text-sm text-center bg-black leading-4 text-white px-4" href="/dashboard">Start Now</a>
+          </div>
+        </nav>
+        <div :class="open || 'hidden'" class="relative z-50" x-cloak>
+          <div class="fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300">
+            <div class="flex items-center justify-between">
+              <a class="flex items-center gap-2 shrink-0 " title="Clusterly.ai hompage" href="/">
+                <%= image_tag "clusterly/logo_clusterly.webp", class: "w-8", alt: "Logo" %>
+              </a>
+              <button type="button" @click="open = false" class="-m-2.5 rounded-md p-2.5">
+                <span class="sr-only">Close menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="flow-root mt-6">
+              <div class="py-4">
+                <div class="flex flex-col gap-y-4 items-start">
+                  <a class="link link-hover" title="Pricing" href="/#pricing">Pricing</a>
+                  <a class="link link-hover" title="FAQ" href="/#faq">FAQ</a>
+                  <a class="link link-hover" title="Blog" href="/blog">Blog</a>
+                </div>
+              </div>
+              <div class="flex flex-row items-center self-stretch mt-4 mb-4 h-4 whitespace-nowrap">
+                <span class="h-0.5 w-full flex-grow bg-gray-200"></span>
+              </div>
+              <div class="flex flex-col">
+                <a class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer flex-wrap items-center justify-center rounded-lg font-semibold text-sm text-center bg-black leading-4 text-white px-4" href="/dashboard">Start Now</a>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </header>
+      <main>
+        <div class="relative bg-gradient-to-b from-green-50 to-blue-100">
+          <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 lg:pt-4 pb-16">
+            <div class="max-w-3xl text-center mx-auto">
+              <div class="mt-5">
+                <h1 class="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4 flex flex-col gap-3 items-center">
+                  <span class="relative">Transform keywords into</span>
+                  <span class=" relative">
+                    <span class="mr-4 md:mr-5">traffic-driving content</span>
+                    <span class=" relative whitespace-nowrap">
+                      <span class="absolute bg-yellow-400/70 lg:mt-3 -left-2 -top-1 -bottom-1 -right-2 md:-left-3 md:-top-0 md:-bottom-0 md:-right-3 -rotate-1"></span>
+                      <span class="relative lg:mt-1">instantly</span>
+                    </span>
+                  </span>
+                </h1>
+              </div>
+              <div class="mt-12 max-w-3xl">
+                <p class="text-xl text-gray-500">With Clusterly.ai, tap into current trends and competitor analysis to quickly find and fill content gaps, create SEO-strong articles, and rank higher. Get the visibility your business deserves with content that stands out.</p>
+              </div>
+              <div class="flex items-center space-x-2 border-gray-300 rounded-2xl px-4 py-2 mt-6 mb-2">
+                <div class="space-y-8 max-w-md mx-auto w-full">
+                  <form class="flex flex-col sm:flex-row sm:items-center form-control w-full">
+                    <input required="" type="email" autocomplete="email" placeholder="Enter your email address" 
+                           class="shrink h-12 px-4 text-size text-base leading-6 rounded-lg focus:outline-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:border-gray-400 focus:ring-0 focus:ring-offset-0 border-gray-400 placeholder:opacity-60 w-full sm:mr-4 mb-2 md:mb-0" value="">
+                    <button class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer items-center justify-center rounded-lg flex-wrap px-4 text-sm bg-indigo-600 text-white font-semibold sm:w-auto hover:bg-indigo-700" type="submit">Unlock Free Articles</button>
+                  </form>
+                </div>
+              </div>
+              <div class="flex items-center justify-center sm:gap-8 lg:gap-12 mb-6">
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">No credit card</p>
+                </div>
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">6 articles included</p>
+                </div>
+                <div class="flex items-center">
+                  <svg class="text-green-600 mr-1 inline-block sm:mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  <p class="text-md">Plagiarism free</p>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row justify-center align-center gap-3">
+                <div class="-space-x-5 flex overflow-hidden justify-center">
+                  <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
+                    <%= image_tag "clusterly/people/peter.webp", class: "h-full w-full object-cover", alt: "Peter" %>
+                  </div>
+                  <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
+                    <%= image_tag "clusterly/people/harps.webp", class: "h-full w-full object-cover", alt: "Harps" %>
+                  </div>
+                  <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
+                    <%= image_tag "clusterly/people/vicky.webp", class: "h-full w-full object-cover", alt: "Vicky" %>
+                  </div>
+                  <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
+                    <%= image_tag "clusterly/people/alice.webp", class: "h-full w-full object-cover", alt: "Alice" %>
+                  </div> 
+                  <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
+                    <%= image_tag "clusterly/people/joseph.webp", class: "h-full w-full object-cover", alt: "Joseph" %>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-center items-center gap-1">
+                  <div class="relative inline-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-500">
+                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <div class="text-base text-base-content/80">Join
+                    <span class="font-semibold text-base-content">+320</span>
+                    <!-- -->
+                    creators</div>
+                </div>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-10 mx-4">
+                <div class="flex-1 flex justify-center">
+                  <%= link_to "https://www.producthunt.com/posts/clusterly-ai?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-clusterly-ai", target: "_blank" do %>
+                    <%= image_tag "clusterly/featured.svg", class: "", alt: "" %>
+                  <% end %>
+                </div>
+                <div class="flex-1 flex justify-center">
+                  <%= link_to "https://nanai.tools/clusterly-ai?ref=clusterly-ai-homepage", target: "_blank" do %>
+                    <%= image_tag "clusterly/embed-badge.svg", class: "", alt: "" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="bg-green-50/60" id="features">
+          <div class="py-16 px-8 max-w-5xl mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+              <p class="font-medium text-primary mb-8">Features</p>
+              <h2 class="font-bold text-3xl lg:text-5xl tracking-tight">Why Clusterly?</h2>
+            </div>
+            <div class="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 md:grid-cols-3 lg:gap-y-16">
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-blue-100" width="72" height="75" viewbox="0 0 72 75" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M63.6911 28.8569C68.0911 48.8121 74.6037 61.2674 53.2349 65.9792C31.8661 70.6909 11.6224 61.2632 7.22232 41.308C2.82229 21.3528 3.6607 12.3967 25.0295 7.68503C46.3982 2.97331 59.2911 8.90171 63.6911 28.8569Z"></path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute text-blue-600 w-9 h-9">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">SEO Mastery with Internal Linking</h3>
+                <p class="mt-4 text-base text-gray-600">Optimize visibility with strategic SEO and automated internal linking for higher search rankings.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-green-100" width="62" height="64" viewbox="0 0 62 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M62 13.001C62 33.4355 53.9345 64.001 33.5 64.001C13.0655 64.001 0 50.435 0 30.0005C0 9.56596 2.56546 4.00021 23 4.00021C43.4345 4.00021 62 -7.43358 62 13.001Z"></path>
+                  </svg>
+                  <svg class="absolute text-green-600 w-9 h-9" stroke="currentColor" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 19.5H9.5M14.5 19.5C14.5 18.7865 14.5 18.4297 14.5381 18.193C14.6609 17.4296 14.6824 17.3815 15.1692 16.7807C15.3201 16.5945 15.8805 16.0927 17.0012 15.0892C18.5349 13.7159 19.5 11.7206 19.5 9.5C19.5 5.35786 16.1421 2 12 2C7.85786 2 4.5 5.35786 4.5 9.5C4.5 11.7206 5.4651 13.7159 6.99876 15.0892C8.11945 16.0927 8.67987 16.5945 8.83082 16.7807C9.31762 17.3815 9.3391 17.4296 9.46192 18.193C9.5 18.4297 9.5 18.7865 9.5 19.5M14.5 19.5C14.5 20.4346 14.5 20.9019 14.299 21.25C14.1674 21.478 13.978 21.6674 13.75 21.799C13.4019 22 12.9346 22 12 22C11.0654 22 10.5981 22 10.25 21.799C10.022 21.6674 9.83261 21.478 9.70096 21.25C9.5 20.9019 9.5 20.4346 9.5 19.5" stroke-width="1.5"></path>
+                    <path d="M12.7857 8.5L10.6429 11.5H13.6429L11.5 14.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Keyword Insights &amp; Trend Analysis</h3>
+                <p class="mt-4 text-base text-gray-600">Dive into keyword insights and real-time trends. Adapt content to what's trending and diversify for a comprehensive user experience.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-orange-100" width="72" height="75" viewbox="0 0 72 75" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M63.6911 28.8569C68.0911 48.8121 74.6037 61.2674 53.2349 65.9792C31.8661 70.6909 11.6224 61.2632 7.22232 41.308C2.82229 21.3528 3.6607 12.3967 25.0295 7.68503C46.3982 2.97331 59.2911 8.90171 63.6911 28.8569Z"></path>
+                  </svg>
+                  <svg class="absolute text-orange-600 w-9 h-9" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512">
+                    <g>
+                      <path display="inline" d="M256,0.5C115.117,0.5,0.5,115.109,0.5,255.992C0.5,396.874,115.117,511.5,256,511.5 c140.879,0,255.5-114.626,255.5-255.508C511.5,115.109,396.879,0.5,256,0.5z M26.287,255.992c0-33.306,7.145-64.923,19.89-93.488 l109.582,300.225C79.117,425.502,26.287,346.914,26.287,255.992z M256,485.722c-22.547,0-44.309-3.307-64.898-9.361l68.932-200.274 l70.604,193.446c0.466,1.135,1.035,2.179,1.646,3.165C308.406,481.102,282.748,485.722,256,485.722z M287.659,148.286 c13.827-0.724,26.29-2.179,26.29-2.179c12.376-1.464,10.916-19.658-1.468-18.93c0,0-37.207,2.919-61.23,2.919 c-22.568,0-60.494-2.919-60.494-2.919c-12.388-0.728-13.839,18.198-1.456,18.93c0,0,11.715,1.455,24.095,2.179l35.784,98.063 l-50.277,150.767l-83.649-248.83c13.84-0.724,26.286-2.179,26.286-2.179c12.372-1.464,10.912-19.658-1.468-18.93 c0,0-37.198,2.919-61.222,2.919c-4.309,0-9.386-0.108-14.784-0.283C105.141,67.457,175.745,26.274,256,26.274 c59.8,0,114.251,22.868,155.121,60.315c-0.989-0.058-1.958-0.183-2.978-0.183c-22.563,0-38.574,19.653-38.574,40.771 c0,18.93,10.92,34.948,22.564,53.874c8.737,15.299,18.938,34.953,18.938,63.355c0,19.657-7.56,42.475-17.479,74.259l-22.917,76.554 L287.659,148.286z M371.486,454.545l70.163-202.861c13.104-32.77,17.47-58.977,17.47-82.272c0-8.458-0.558-16.31-1.547-23.625 c17.932,32.715,28.137,70.262,28.137,110.205C485.709,340.738,439.782,414.727,371.486,454.545z"></path>
+                    </g>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Hassle-Free CMS Integration</h3>
+                <p class="mt-4 text-base text-gray-600">Publish directly to WordPress and anticipate more CMS integrations soon, ensuring a smooth content journey from creation to publication.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-yellow-100" width="66" height="68" viewbox="0 0 66 68" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z"></path>
+                  </svg>
+                  <svg class="absolute text-yellow-600 w-9 h-9" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                    <path d="M3.6 9h16.8"></path>
+                    <path d="M3.6 15h16.8"></path>
+                    <path d="M11.5 3a17 17 0 0 0 0 18"></path>
+                    <path d="M12.5 3a17 17 0 0 1 0 18"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Real-Time Data and Updated Content</h3>
+                <p class="mt-4 text-base text-gray-600">Access the latest trends instantly for always-updated, relevant content creation.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-indigo-100" width="65" height="70" viewbox="0 0 65 70" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64.5 26C64.5 46.4345 56.4345 70 36 70C15.5655 70 0 53.9345 0 33.5C0 13.0655 13.0655 0 33.5 0C53.9345 0 64.5 5.56546 64.5 26Z"></path>
+                  </svg>
+                  <svg class="absolute text-indigo-600 w-9 h-9 fill-none" stroke="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32">
+                    <path id="tone--analyzer_1_" d="M14.5,15.5c0,0.276-0.224,0.5-0.5,0.5s-0.5-0.224-0.5-0.5S13.724,15,14,15S14.5,15.224,14.5,15.5z M7,15c-0.276,0-0.5,0.224-0.5,0.5S6.724,16,7,16s0.5-0.224,0.5-0.5S7.276,15,7,15z M26,4.5c-0.276,0-0.5,0.224-0.5,0.5 s0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5S26.276,4.5,26,4.5z M20,4.5c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5 S20.276,4.5,20,4.5z M10.701,31.199L6.807,25.36H3c-1.301,0-2.36-1.059-2.36-2.36V13c0-1.301,1.059-2.36,2.36-2.36h11.64V3 c0-1.301,1.059-2.36,2.36-2.36h12c1.302,0,2.36,1.059,2.36,2.36v8c0,1.301-1.059,2.36-2.36,2.36h-2.777l-1.9,3.801l-0.645-0.322l2-4 C25.74,12.717,25.864,12.64,26,12.64h3c0.904,0,1.64-0.736,1.64-1.64V3c0-0.904-0.735-1.64-1.64-1.64H17 c-0.904,0-1.64,0.736-1.64,1.64v7.64H18c1.179,0,2.159,0.869,2.333,2H23v0.72h-2.64V23c0,1.302-1.059,2.36-2.36,2.36h-7v-0.72h7 c0.904,0,1.64-0.735,1.64-1.64V13c0-0.904-0.735-1.64-1.64-1.64H3c-0.904,0-1.64,0.736-1.64,1.64v10c0,0.904,0.736,1.64,1.64,1.64h4 c0.121,0,0.233,0.061,0.299,0.161l4,6L10.701,31.199z M10.5,21.36c-2.128,0-3.86-1.732-3.86-3.86h0.72c0,1.731,1.409,3.14,3.14,3.14 s3.14-1.408,3.14-3.14h0.72C14.36,19.628,12.628,21.36,10.5,21.36z M26.36,10h-0.72c0-1.456-1.184-2.64-2.64-2.64 S20.36,8.544,20.36,10h-0.72c0-1.853,1.508-3.36,3.36-3.36S26.36,8.147,26.36,10z"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Adaptable Tone Control</h3>
+                <p class="mt-4 text-base text-gray-600">Adjust the tone of your content to match your brand's voice and the preferences of your audience.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-red-100" width="78" height="78" viewbox="0 0 78 78" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.49996 28.0002C4.09993 47.9554 14.1313 66.7885 35.5 71.5002C56.8688 76.2119 68.0999 58.4553 72.5 38.5001C76.9 18.5449 68.3688 12.711 47 7.99931C25.6312 3.28759 12.9 8.04499 8.49996 28.0002Z"></path>
+                  </svg>
+                  <svg class="absolute w-9 h-9 fill-red-500" viewbox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(42.666667, 85.333333)">
+                      <path d="M426.666667,85.3333333 L426.666667,341.333333 L362.626302,341.333333 L362.666667,405.333333 L256,341.333333 L170.666667,341.333333 L170.666667,85.3333333 L426.666667,85.3333333 Z M256,1.42108547e-14 L256,64 L213.333,64 L213.333333,42.6666667 L42.6666667,42.6666667 L42.6666667,213.333333 L149.333,213.333 L149.333,268.8 L64,320 L64.0403648,256 L6.39488462e-14,256 L6.39488462e-14,1.42108547e-14 L256,1.42108547e-14 Z M384,128 L213.333333,128 L213.333333,298.666667 L384,298.666667 L384,128 Z M311.198683,149.333333 L359.616467,277.333333 L335.768901,277.333333 L322.580475,240.658669 L274.524018,240.658669 L261.425923,277.333333 L238.933333,277.333333 L286.267137,149.333333 L311.198683,149.333333 Z M298.552247,170.741943 C296.817878,176.812232 294.528512,183.826018 291.684148,191.7833 L291.325712,192.782875 L280.576241,223.134321 L316.43792,223.134321 L305.68845,192.782875 L304.747024,190.067278 C302.566831,183.717713 300.501905,177.275935 298.552247,170.741943 Z M138.364283,55.8724491 L138.363691,66.5384491 L149.332691,66.5384491 L149.334032,145.217282 C147.846623,148.082062 146.253419,150.895209 144.554383,153.656286 C146.072758,154.996689 147.66531,156.330498 149.332056,157.657476 L149.332744,183.9067 C142.782625,179.623374 136.879514,175.218148 131.623873,170.685181 C117.063661,186.063317 97.230366,196.963418 72.3795207,203.419113 L66.0115407,204.951778 L61.383691,184.126454 C85.6428706,178.735525 103.970928,169.143885 116.711981,155.39526 C105.111587,141.185042 96.9168733,125.119906 92.1670974,107.291622 L90.6021236,100.779065 L111.459775,96.2991661 C114.703867,111.403107 120.706878,124.963276 129.507523,137.067333 C137.440289,122.406679 142.049701,106.041819 143.329049,87.8734181 L63.6976158,87.8724491 L63.6976158,66.5391157 L117.030691,66.5384491 L117.030949,55.8724491 L138.364283,55.8724491 Z"></path>
+                    </g>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Multilingual Content Support</h3>
+                <p class="mt-4 text-base text-gray-600">Reach a global audience with support for multiple languages, ensuring your message is understood everywhere.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-teal-100" width="62" height="64" viewbox="0 0 62 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M62 13.001C62 33.4355 53.9345 64.001 33.5 64.001C13.0655 64.001 0 50.435 0 30.0005C0 9.56596 2.56546 4.00021 23 4.00021C43.4345 4.00021 62 -7.43358 62 13.001Z"></path>
+                  </svg>
+                  <svg class="absolute text-teal-600 w-9 h-9" stroke="currentColor" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 14L14 2L12.9545 10H20L10 22L11.0455 14H4Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Speedy Bulk Generation</h3>
+                <p class="mt-4 text-base text-gray-600">Get your content fast, whether it's a single article or in bulk, without compromising on quality.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-purple-100" width="66" height="68" viewbox="0 0 66 68" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M65.5 30C65.5 50.4345 46.4345 68 26 68C5.56546 68 0 50.4345 0 30C0 9.56546 12.5655 0 33 0C53.4345 0 65.5 9.56546 65.5 30Z"></path>
+                  </svg>
+                  <svg class="absolute text-purple-600 w-9 h-9" stroke="currentColor" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 2.5C10.2614 2.5 12.5 4.73858 12.5 7.5V13.5C12.5 14.0523 12.0523 14.5 11.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5V7.5C2.5 4.73858 4.73858 2.5 7.5 2.5ZM7.5 2.5V0M4 11.5H11M0.5 8V12M14.5 8V12M5.5 9.5C4.94772 9.5 4.5 9.05228 4.5 8.5C4.5 7.94772 4.94772 7.5 5.5 7.5C6.05228 7.5 6.5 7.94772 6.5 8.5C6.5 9.05228 6.05228 9.5 5.5 9.5ZM9.5 9.5C8.94772 9.5 8.5 9.05228 8.5 8.5C8.5 7.94772 8.94772 7.5 9.5 7.5C10.0523 7.5 10.5 7.94772 10.5 8.5C10.5 9.05228 10.0523 9.5 9.5 9.5Z"></path>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">AI with Human Touch</h3>
+                <p class="mt-4 text-base text-gray-600">Leverage AI to craft high-quality articles, enhanced with a human touch, ensuring authenticity and engagement.</p>
+              </div>
+              <div>
+                <div class="relative flex items-center justify-center mx-auto">
+                  <svg class="text-pink-100" width="62" height="65" viewbox="0 0 62 65" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 13.0264C0 33.4609 8.06546 64.0264 28.5 64.0264C48.9345 64.0264 62 50.4604 62 30.0259C62 9.59135 59.4345 4.0256 39 4.0256C18.5655 4.0256 0 -7.40819 0 13.0264Z"></path>
+                  </svg>
+                  <svg class="absolute text-pink-600 w-9 h-9" stroke="currentColor" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.5" d="M4.72848 16.1369C3.18295 14.5914 2.41018 13.8186 2.12264 12.816C1.83509 11.8134 2.08083 10.7485 2.57231 8.61875L2.85574 7.39057C3.26922 5.59881 3.47597 4.70292 4.08944 4.08944C4.70292 3.47597 5.5988 3.26922 7.39057 2.85574L8.61875 2.57231C10.7485 2.08083 11.8134 1.83509 12.816 2.12264C13.8186 2.41018 14.5914 3.18295 16.1369 4.72848L17.9665 6.55812C20.6555 9.24711 22 10.5916 22 12.2623C22 13.933 20.6555 15.2775 17.9665 17.9665C15.2775 20.6555 13.933 22 12.2623 22C10.5916 22 9.24711 20.6555 6.55812 17.9665L4.72848 16.1369Z" stroke-width="1.5"></path>
+                    <path d="M15.3893 15.3891C15.9751 14.8033 16.0542 13.9327 15.5661 13.4445C15.0779 12.9564 14.2073 13.0355 13.6215 13.6213C13.0358 14.2071 12.1652 14.2863 11.677 13.7981C11.1888 13.3099 11.268 12.4393 11.8538 11.8536M15.3893 15.3891L15.7429 15.7426M15.3893 15.3891C14.9883 15.7901 14.4539 15.9537 14 15.8604M11.5002 11.5L11.8538 11.8536M11.8538 11.8536C12.185 11.5223 12.6073 11.3531 13 11.3568" stroke-width="1.5" stroke-linecap="round"></path>
+                    <circle cx="8.60699" cy="8.87891" r="2" transform="rotate(-45 8.60699 8.87891)" stroke-width="1.5"></circle>
+                  </svg>
+                </div>
+                <h3 class="mt-8 text-lg font-semibold text-black">Transparent All-Inclusive Pricing</h3>
+                <p class="mt-4 text-base text-gray-600">Experience an all-inclusive pricing model with no hidden costs. We've got the content creation expenses covered for you.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-blue-50/80 overflow-hidden" id="pricing">
+          <div class="py-16 px-8 max-w-7xl mx-auto">
+            <div class="flex flex-col text-center w-full mb-2">
+              <p class="font-medium text-primary mb-8">Pricing</p>
+              <h2 class="font-bold text-3xl lg:text-5xl tracking-tight">Select your Plan</h2>
+              <p class="text-base-content/80 mt-8">Transparent pricing. Full access. Zero hassles.</p>
+            </div>
+            <div class="flex justify-center my-8">
+              <div class="form-control">
+                <label class="label cursor-pointer">
+                  <span class="label-text mr-2">Monthly</span><input type="checkbox" class="toggle toggle-primary checked:bg-indigo-600" checked=""><div class="flex flex-col items-center ml-2">
+                    <span class="label-text mt-3">Yearly</span>
+                    <span class="label-text font-bold text-indigo-600 text-xs">(2 months off)</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
+              <div class="relative w-full max-w-lg shadow-lg rounded-lg hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative flex flex-col h-full gap-5 lg:gap-8 z-10 p-8 rounded-lg bg-white">
+                  <div class="flex justify-between items-center gap-4">
+                    <div>
+                      <div class="flex items-center">
+                        <p class="text-lg lg:text-xl font-bold text-indigo-600">FREE</p>
+                      </div>
+                      <p class="text-base-content/80 mt-2">Explore Clusterly with basic content and image capabilities.</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <p class="text-5xl tracking-tight font-extrabold">$0</p>
+                    <div class="flex flex-col justify-end mb-[4px]">
+                      <span class="text-2xl text-gray-500">/mo</span>
+                    </div>
+                  </div>
+                  <ul class="space-y-2.5 leading-relaxed text-base flex-1">
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>6 articles
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>6 AI images
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Up to 3 articles per cluster
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Export HTML
+                      </span>&nbsp;</li>
+                  </ul>
+                  <div class="space-y-2">
+                    <button class="inline-flex h-12 min-h-12 cursor-pointer px-4 gap-2 border duration-200 text-white w-full items-center justify-center group rounded-md text-base font-semibold bg-indigo-600 hover:bg-indigo-700">Sign up for Free</button>
+                    <p class="text-sm text-center text-base-content/90 font-medium">A taste of Clusterly's potential.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="relative w-full max-w-lg shadow-lg rounded-lg hover:shadow-2xl transition-shadow duration-300">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                  <span class="bg-blue-950 text-white text-xs text-primary-content font-semibold border-0 bg-primary rounded-full px-3 py-1 leading-3">POPULAR</span>
+                </div>
+                <div class="absolute -inset-[1px] rounded-[9px] bg-primary z-10"></div>
+                <div class="relative flex flex-col h-full gap-5 lg:gap-8 z-10 p-8 rounded-lg bg-white">
+                  <div class="flex justify-between items-center gap-4">
+                    <div>
+                      <div class="flex items-center">
+                        <p class="text-lg lg:text-xl font-bold text-indigo-600">BASIC</p>
+                      </div>
+                      <p class="text-base-content/80 mt-2">Expand reach with enhanced content capabilities for small businesses.</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <p class="text-5xl tracking-tight font-extrabold">$10</p>
+                    <div class="flex flex-col justify-end mb-[4px]">
+                      <span class="text-2xl text-gray-500">/mo</span>
+                    </div>
+                  </div>
+                  <ul class="space-y-2.5 leading-relaxed text-base flex-1">
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>110 articles per month
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>150 AI images per month
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Up to 10 articles per cluster
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Export HTML
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>WordPress Integration
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Custom Keywords
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Adapt Tone and Style
+                        <span class="text-xs text-indigo-600 bg-indigo-50 duration-200 h-5 w-fit px-2 border border-current inline-flex rounded-t-3xl rounded-b-3xl">soon</span>
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Smart Keyword Filter
+                        <span class="text-xs text-indigo-600 bg-indigo-50 duration-200 h-5 w-fit px-2 border border-current inline-flex rounded-t-3xl rounded-b-3xl">soon</span>
+                      </span>&nbsp;</li>
+                  </ul>
+                  <div class="space-y-2">
+                    <button class="inline-flex h-12 min-h-12 cursor-pointer px-4 gap-2 border duration-200 text-white w-full items-center justify-center group rounded-md text-base font-semibold bg-indigo-600 hover:bg-indigo-700">Get Started</button>
+                    <p class="text-sm text-center text-base-content/90 font-medium">Great for small businesses.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="relative w-full max-w-lg shadow-lg rounded-lg hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative flex flex-col h-full gap-5 lg:gap-8 z-10 p-8 rounded-lg bg-white">
+                  <div class="flex justify-between items-center gap-4">
+                    <div>
+                      <div class="flex items-center">
+                        <p class="text-lg lg:text-xl font-bold text-indigo-600">PRO</p>
+                      </div>
+                      <p class="text-base-content/80 mt-2">Advanced content and SEO solutions for market-leading strategy.</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <p class="text-5xl tracking-tight font-extrabold">$20</p>
+                    <div class="flex flex-col justify-end mb-[4px]">
+                      <span class="text-2xl text-gray-500">/mo</span>
+                    </div>
+                  </div>
+                  <ul class="space-y-2.5 leading-relaxed text-base flex-1">
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>250 articles per month
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>300 AI images per month
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Up to 20 articles per cluster
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Export HTML
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>WordPress Integration
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Priority Support
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Custom Keywords
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Adapt Tone and Style
+                        <span class="text-xs text-indigo-600 bg-indigo-50 duration-200 h-5 w-fit px-2 border border-current inline-flex rounded-t-3xl rounded-b-3xl">soon</span>
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Smart Keyword Filter
+                        <span class="text-xs text-indigo-600 bg-indigo-50 duration-200 h-5 w-fit px-2 border border-current inline-flex rounded-t-3xl rounded-b-3xl">soon</span>
+                      </span>&nbsp;</li>
+                    <li class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" class="w-[18px] h-[18px] opacity-80 shrink-0">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Google Search Console Insights
+                        <span class="text-xs text-indigo-600 bg-indigo-50 duration-200 h-5 w-fit px-2 border border-current inline-flex rounded-t-3xl rounded-b-3xl">soon</span>
+                      </span>&nbsp;</li>
+                  </ul>
+                  <div class="space-y-2">
+<button class="inline-flex h-12 min-h-12 cursor-pointer px-4 gap-2 border duration-200 text-white w-full items-center justify-center group rounded-md text-base font-semibold bg-indigo-600 hover:bg-indigo-700">Get Started</button>
+                    <p class="text-sm text-center text-base-content/90 font-medium">Best for content marketers.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center mt-6">
+              <p class="text-sm text-center text-base-content/75">Taxes not included</p>
+            </div>
+            <div class="flex flex-col items-center justify-center mt-10">
+              <p class="text-base-content/80 text-center">Need a custom plan?
+                <a href="mailto:hello@mg.clusterly.ai?subject=Custom Plan&amp;body=Please provide details about your custom plan." class="text-primary hover:underline">Contact us</a>
+              </p>
+            </div>
+          </div>
+        </section>        
+      </main>
+      <footer class="bg-white border-t border-base-content/10">
+        <div class="max-w-7xl mx-auto px-8 py-24">
+          <div class=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div class="w-80 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+              <a aria-current="page" class="flex gap-2 justify-center md:justify-start items-center" href="/#">
+                <%= image_tag "clusterly/logo_clusterly.webp", class: "w-6 h-6", alt: "Logo" %>
+                <span class="font-semibold text-lg">Clusterly.ai</span>
+              </a>
+              <p class="mt-3 text-sm text-gray-700">Automated Keyword Clustering for Top-Tier Content</p>
+              <p class="mt-3 text-sm text-gray-700/75">Copyright © 2024 - All rights reserved</p>
+            </div>
+            <div class="flex-grow flex flex-wrap justify-center -mb-10 md:mt-0 mt-10 text-center">
+              <div class="lg:w-1/3 md:w-1/2 w-full px-4">
+                <div class="footer-title tracking-widest text-sm md:text-left mb-3">LINKS</div>
+                <div class="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
+                  <a class="link link-hover" href="/#features">Features</a>
+                  <a class="link link-hover" href="/#roadmap">Roadmap</a>
+                  <a class="link link-hover" href="/#pricing">Pricing</a>
+                  <a class="link link-hover" href="/#faq">FAQ</a>
+                  <a class="link link-hover" href="/blog">Blog</a>
+                  <a href="mailto:hello@mg.clusterly.ai" target="_blank" class="link link-hover" aria-label="Contact Support">Support</a>
+                </div>
+              </div>
+              <div class="lg:w-1/3 md:w-1/2 w-full px-4">
+                <div class="footer-title text-base-content tracking-widest text-sm md:text-left mb-3">LEGAL</div>
+                <div class="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
+                  <a class="link link-hover" href="/tos">Terms of Services</a>
+                  <a class="link link-hover" href="/privacy-policy">Privacy policy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
