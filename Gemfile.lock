@@ -112,6 +112,9 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    cuprite (0.15)
+      capybara (~> 3.0)
+      ferrum (~> 0.14.0)
     date (3.3.4)
     debug (1.9.1)
       irb (~> 1.10)
@@ -127,6 +130,11 @@ GEM
       ruby2_keywords
     error_highlight (0.6.0)
     erubi (1.12.0)
+    ferrum (0.14)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (>= 0.6, < 0.8)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hanami-router (2.0.2)
@@ -343,6 +351,7 @@ DEPENDENCIES
   bootsnap
   capybara
   class_variants (~> 0.0.7)
+  cuprite
   debug
   dockerfile-rails (>= 1.5)
   dotenv-rails
