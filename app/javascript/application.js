@@ -6,7 +6,7 @@ import Alpine from "alpinejs";
 import ui from "@alpinejs/ui";
 import focus from "@alpinejs/focus";
 import mask from "@alpinejs/mask";
-import LocalTime from "local-time";
+import LocalTime from "local-time-cdn";
 import "components";
 import "controllers";
 
