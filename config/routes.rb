@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   resources :team, only: [:index]
   get "up" => "rails/health#show", as: :rails_health_check
 
+  get 'landing', to: 'public/landing_page#index'
+
   root 'dashboard#index'
 end

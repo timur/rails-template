@@ -5,7 +5,7 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
-pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.2
+pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
 pin "alpine-turbo-drive-adapter", to: "https://ga.jspm.io/npm:alpine-turbo-drive-adapter@2.1.0/dist/alpine-turbo-drive-adapter.esm.js"
 pin "alpinejs" # @3.13.3
 pin "@alpinejs/ui", to: "@alpinejs--ui.js" # @3.13.3
@@ -26,7 +26,7 @@ pin "yet-another-react-lightbox/plugins/zoom", to: "https://ga.jspm.io/npm:yet-a
 pin_all_from "app/javascript/components", under: "components"
 pin "stimulus-use" # @0.52.2
 pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src/index.js"
-pin "local-time", to: "https://ga.jspm.io/npm:local-time@2.1.0/app/assets/javascripts/local-time.js"
-pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
-pin "tippy.js" # @6.3.7
-pin "@popperjs/core", to: "@popperjs--core--esm.js" # @2.11.8
+pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js", preload: true # @2.11.8
+pin "tippy.js", to: "https://ga.jspm.io/npm:tippy.js@6.3.7/dist/tippy.esm.js", preload: true # @6.3.7
+
+pin "local-time" # @3.0.2
