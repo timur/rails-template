@@ -53,14 +53,22 @@ class CalendarController < ApplicationController
       end_time: DateTime.parse("20.01.2024 20:00"),
       url: dashboard_path, color: "bg-green-500/70"
     )
-    e2 = OpenStruct.new(
+    e1 = OpenStruct.new(
       title: "Noch ein tolles Event", 
       start_time: DateTime.parse("05.01.2024 10:00"),
       end_time: DateTime.parse("05.01.2024 12:00"),
       url: dashboard_path, color: "bg-red-500/70"
     )
 
+    e2 = OpenStruct.new(
+      title: "Event am Sonntag", 
+      start_time: DateTime.parse("14.01.2024 08:00"),
+      end_time: DateTime.parse("14.01.2024 10:00"),
+      url: dashboard_path, color: "bg-red-500/70"
+    )    
+
     @events << e if is_in_week?(e.start_time, @date)
+    @events << e1 if is_in_week?(e1.start_time, @date)
     @events << e2 if is_in_week?(e2.start_time, @date)
   end  
 
