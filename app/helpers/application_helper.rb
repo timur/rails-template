@@ -21,7 +21,6 @@ module ApplicationHelper
     if entry
       current_path = true
     end 
-    # classes = current_page?(path) ? current_link(classes) : classes
     
     render partial: "shared/nav_link_submenu", locals: {
       name:,
@@ -31,6 +30,17 @@ module ApplicationHelper
       submenu: options[:submenu],
       options:
     }    
+  end
+
+  def is_submenu_link?(submenu)
+    return false if submenu.nil?
+    submenu.any? { |s| current_page?(s.url) }
+  end
+
+  def submenu_link_classes(expanded)
+    TailwindClasses.submenu_arrow_classes.render(
+      expanded: expanded
+    )
   end
 
   def svg_classes(path)

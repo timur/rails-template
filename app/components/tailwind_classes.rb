@@ -35,6 +35,15 @@ module TailwindClasses
           event: "font-semibold text-white"
         }
       )   
-    end      
+    end
+    
+    def submenu_arrow_classes
+      ClassVariants.build(
+        "text-gray-400 ml-auto h-5 w-5 shrink-0",
+        variants: {
+          expanded: "rotate-90 text-gray-500"
+        }
+      )  
+    end
   end
 end
