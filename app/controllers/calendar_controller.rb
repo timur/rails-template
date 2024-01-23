@@ -8,30 +8,9 @@ class CalendarController < ApplicationController
     events << OpenStruct.new(title: "Noch ein tolles Event", date: Date.today + 10.days, color: "bg-blue-500", url: dashboard_path)
 
     @code = 
-    <<-CODE
+<<-CODE
 <%= compact_month_calendar %>
-<%# index.erb %>
-    <h1>Listing Books</h1>
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Summary</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    
-      <% @books.each do |book| %>
-        <tr>
-          <td><%= book.title %></td>
-          <td><%= book.content %></td>
-          <td><%= link_to "Show", book %></td>
-          <td><%= link_to "Edit", edit_book_path(book) %></td>
-          <td><%= link_to "Remove", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
-        </tr>
-      <% end %>
-    </table>
-    CODE
+CODE
 
     respond_to do |format|
       format.html {
