@@ -1,7 +1,6 @@
 module CalendarHelper
 
   def compact_month_calendar(options = {})
-    puts "options: #{options}"
     date = options[:date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :date
