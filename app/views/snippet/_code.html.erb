@@ -1,4 +1,4 @@
-<pre id="<%= formatter_id %>" class="rouge border border-gray-700 max-w-4xl rounded overflow-scroll px-4 py-2"><%== formatter.format(lexer.lex(code)) %></pre>
+<pre id="<%= formatter_id %>" class="rouge border border-gray-700 max-w-4xl rounded overflow-scroll p-2"><%== formatter.format(lexer.lex(code)) %></pre>
 
 <style type="text/css">
   <%= Rouge::Themes::ThankfulEyes.render(scope: "pre##{formatter_id}.rouge") %>
