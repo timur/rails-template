@@ -7,11 +7,6 @@ class CalendarController < ApplicationController
     events << OpenStruct.new(title: "Der Name meines Events", date: Date.today + 3.days, color: "bg-green-500/70", url: dashboard_path)
     events << OpenStruct.new(title: "Noch ein tolles Event", date: Date.today + 10.days, color: "bg-blue-500", url: dashboard_path)
 
-    @code = 
-<<-CODE
-<%= compact_month_calendar %>
-CODE
-
     respond_to do |format|
       format.html {
         render locals: { date:, id:, events: }

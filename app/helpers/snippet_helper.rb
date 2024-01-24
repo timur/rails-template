@@ -18,5 +18,11 @@ module SnippetHelper
 
   def formatter_id
     @formatter_id ||= "code-block-#{rand(10_000)}"
-  end  
+  end
+
+  def compact_month_calendar_simple_snippet
+    <<-CODE
+    <%= compact_month_calendar %>
+    CODE
+  end
 end
