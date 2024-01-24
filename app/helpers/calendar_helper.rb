@@ -1,5 +1,13 @@
 module CalendarHelper
 
+  # Renders a compact month calendar.
+  #
+  # @param [Hash] options The options for setting the date.
+  # @option options [Date] :date The date to be set (default: Date.today).
+  # @option options [Boolean] :navigation Whether to show navigation (default: true).
+  # @option options [Symbol] :param The param to be set (default: :date).
+  # @option options [Symbol] :id The id of the calendar (default: :calendar).
+  # @option options [Array] :events The events to be shown (default: []).
   def compact_month_calendar(options = {})
     date = options[:date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
