@@ -36,13 +36,14 @@
       <% whole_month_range(date).each_slice(7) do |week| %>
         <% week.each do |day| %>
           <%= content_tag :button, id: day.to_s, class: calendar_cell_classes(date, day), 
-                                  data: { controller: "tooltip button", 
-                                          tooltip_target: "content",
-                                          tooltip_data_value: find_event(day, events)&.title,
-                                          button_target: "button",
-                                          button_url_value: find_event(day, events)&.url,
-                                          action: "button#call"
-                                          } do %>
+              data: {
+                  controller: "tooltip button", 
+                  tooltip_target: "content",
+                  tooltip_data_value: find_event(day, events)&.title,
+                  button_target: "button",
+                  button_url_value: find_event(day, events)&.url,
+                  action: "button#call"
+                } do %>
             <%= content_tag :time, datetime: day.to_s, class: calendar_cell_inside_classes(date, day, events) do %>
               <%= day.day %>
             <% end %>
