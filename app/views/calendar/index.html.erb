@@ -1,10 +1,11 @@
-<h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight mb-8">Compact Month Calendar</h1>
-<%= render_snippet(@code) %>
-<div class="mx-auto grid max-w-3xl grid-cols-1 gap-x-8 gap-y-16 px-4 py-16 sm:grid-cols-2 sm:px-6 xl:max-w-none xl:grid-cols-3 xl:px-8 2xl:grid-cols-4">
-  <div id="calendar">
-    <%= compact_month_calendar(events:) %>
-  </div>
-  <div id="calendar2">
-    <%= compact_month_calendar(id: :calendar2) %>
-  </div>
-</div>
+<h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight mb-4">Monatsansicht</h1>
+<p class="my-2 text-sm">
+  Render a compact month calendar. The default id for the turbo frame is "calendar". The default date is the current date. The default events are empty.
+</p>
+<%= render "snippet/code_example", title: "Simple", code: compact_month_calendar_simple_snippet do %>
+  <%= compact_month_calendar %>
+<% end %>
+
+<%= render "snippet/code_example", title: "Simple with different start date", code: compact_month_calendar_date_snippet do %>
+  <%= compact_month_calendar(date: Date.today + 2.month) %>
+<% end %>

@@ -21,8 +21,16 @@ module SnippetHelper
   end
 
   def compact_month_calendar_simple_snippet
-    <<-CODE
+    c = <<-CODE
     <%= compact_month_calendar %>
     CODE
+    c.strip
+  end
+
+  def compact_month_calendar_date_snippet
+    c = <<-CODE
+    <%= compact_month_calendar(date: Date.today + 2.month) %>
+    CODE
+    c.strip
   end
 end
