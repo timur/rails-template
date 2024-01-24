@@ -12,7 +12,7 @@ module CalendarHelper
     date = options[:date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :date
-    id = options.key?(:id) ? options[:id] : :calendar
+    id = options.key?(:id) ? options[:id] : SecureRandom.random_number(10000000)
     events = options[:events] || []
 
     render partial: "calendar/compact_month_calendar", locals: {
