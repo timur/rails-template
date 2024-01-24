@@ -9,3 +9,7 @@
 <%= render "snippet/code_example", title: "Simple with different start date", code: compact_month_calendar_date_snippet do %>
   <%= compact_month_calendar(date: Date.today + 2.month) %>
 <% end %>
+
+<%= render "snippet/code_example", title: "Simple with no navigation", code: compact_month_calendar_no_navigation_snippet do %>
+  <%= compact_month_calendar(navigation: false) %>
+<% end %>

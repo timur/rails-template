@@ -33,4 +33,11 @@ module SnippetHelper
     CODE
     c.strip
   end
+
+  def compact_month_calendar_no_navigation_snippet
+    c = <<-CODE
+    <%= compact_month_calendar(navigation: false) %>
+    CODE
+    c.strip
+  end  
 end
