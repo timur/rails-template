@@ -31,7 +31,6 @@ module Components::InputHelper
     }
   end
 
-
   private
 
   def has_icon? options
