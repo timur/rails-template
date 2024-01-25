@@ -2,16 +2,16 @@
   <section class="text-center">
     <div class="flex items-center text-gray-900">
       <% if navigation %>
-        <% params_prev = { param => date.prev_month, id: id } %>
-        <% params_next = { param => date.next_month, id: id } %>
-        <%= link_to calendar_path(params_prev), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
+        <% params_prev = { param => date.prev_month, id: id, route: route } %>
+        <% params_next = { param => date.next_month, id: id, route: route } %>
+        <%= link_to send(route, params_prev), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
           <span class="sr-only">Previous month</span>
           <%= inline_svg_tag "heroicons-chevron-left", class: "h-5 w-5" %>
         <% end %>
       <% end %>
       <div class="flex-auto text-sm font-semibold"><%= I18n.l(date, format: "%B") %> <%= date.year %></div>
       <% if navigation %>
-        <%= link_to calendar_path(params_next), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
+        <%= link_to send(route, params_next), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
           <span class="sr-only">Next month</span>
           <%= inline_svg_tag "heroicons-chevron-right", class: "h-5 w-5" %>
         <% end %>
