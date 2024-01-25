@@ -39,5 +39,12 @@ module SnippetHelper
     <%= compact_month_calendar(navigation: false) %>
     CODE
     c.strip
-  end  
+  end
+
+  def compact_month_calendar_route_snippet
+    c = <<-CODE
+    <%= compact_month_calendar(route: "calendar_custom_path") %>
+    CODE
+    c.strip
+  end
 end

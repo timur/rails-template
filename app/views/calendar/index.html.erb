@@ -21,4 +21,10 @@
       <%= compact_month_calendar(navigation: false) %>
     <% end %>
   </div>
+
+  <div>
+    <%= render "snippet/code_example", title: "With navigation route", code: compact_month_calendar_route_snippet do %>
+      <%= compact_month_calendar(route: 'calendar_custom_path') %>
+    <% end %>
+  </div>  
 </div>
