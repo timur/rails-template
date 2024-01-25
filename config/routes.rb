@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
   get '/map', to: 'home#map'
   get '/calendar', to: 'calendar#index'
+  get '/calendar/month_picker', to: 'calendar#month_picker'
+  get '/calendar/custom', to: 'calendar#custom'
   get '/calendar/year', to: 'calendar#year'
   get '/calendar/datepicker', to: 'calendar#datepicker'
   get '/calendar/datepicker_paginate', to: 'calendar#datepicker_paginate'
