@@ -2,14 +2,14 @@
   <section class="text-center">
     <div class="flex items-center text-gray-900">
       <% if navigation %>
-        <% params_prev = { param => date.prev_month, id: id, route: route } %>
-        <% params_next = { param => date.next_month, id: id, route: route } %>
+        <% params_prev = { param => month_date.prev_month, id: id, route: route } %>
+        <% params_next = { param => month_date.next_month, id: id, route: route } %>
         <%= link_to send(route, params_prev), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
           <span class="sr-only">Previous month</span>
           <%= inline_svg_tag "heroicons-chevron-left.svg", class: "h-5 w-5" %>
         <% end %>
       <% end %>
-      <div class="flex-auto text-sm font-semibold"><%= I18n.l(date, format: "%B") %> <%= date.year %></div>
+      <div class="flex-auto text-sm font-semibold"><%= I18n.l(month_date, format: "%B") %> <%= month_date.year %></div>
       <% if navigation %>
         <%= link_to send(route, params_next), method: :get, data: { turbo_stream: "" }, class: "-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500" do %>
           <span class="sr-only">Next month</span>
@@ -20,19 +20,19 @@
     <%= render "shared/calendar/weekend_names" %>
     <!-- Rendering of the cells -->
     <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
-      <% whole_month_range(date).each_slice(7) do |week| %>
-        <% week.each do |day| %>
-          <%= content_tag :button, id: day.to_s, class: calendar_cell_classes(date, day), 
+      <% whole_month_range(month_date).each_slice(7) do |week| %>
+        <% week.each do |date| %>
+          <%= content_tag :button, id: date.to_s, class: calendar_cell_classes(month_date, date), 
               data: {
                   controller: "tooltip button", 
                   tooltip_target: "content",
-                  tooltip_data_value: find_event(day, events)&.title,
+                  tooltip_data_value: find_event(date, events)&.title,
                   button_target: "button",
-                  button_url_value: find_event(day, events)&.url,
+                  button_url_value: find_event(date, events)&.url,
                   action: "button#call"
                 } do %>
-            <%= content_tag :time, datetime: day.to_s, class: calendar_cell_inside_classes(date, day, events) do %>
-              <%= day.day %>
+            <%= content_tag :time, datetime: date.to_s, class: calendar_cell_inside_classes(month_date, date, events) do %>
+              <%= date.day %>
             <% end %>
           <% end %>
         <% end %>
