@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get 'landing', to: 'public/landing_page#index'
+  get 'animation', to: 'animation#index'
 
   root 'dashboard#index'
 end

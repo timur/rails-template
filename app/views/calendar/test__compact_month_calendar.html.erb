@@ -1,0 +1,49 @@
+# FILEPATH: /Users/timur/projekte/rails-react-importmap/test/views/calendar/_compact_month_calendar.html.erb_test.rb
+
+require 'test_helper'
+
+class CalendarCompactMonthCalendarTest < ActionView::TestCase
+  test "renders calendar with navigation" do
+    render partial: 'calendar/compact_month_calendar', locals: { navigation: true, date: Date.today, id: 1 }
+
+    assert_select 'section.text-center' do
+      assert_select 'div.flex.items-center.text-gray-900' do
+        assert_select 'a[href=?][data-turbo-stream=""]', calendar_path(param: Date.today.prev_month, id: 1), count: 1 do
+          assert_select 'span.sr-only', text: 'Previous month'
+          assert_select 'svg.h-5.w-5[viewBox="0 0 20 20"][fill="currentColor"][aria-hidden="true"]' do
+            assert_select 'path[fill-rule="evenodd"][d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"][clip-rule="evenodd"]'
+          end
+        end
+
+        assert_select 'div.flex-auto.text-sm.font-semibold', text: Date.today.strftime('%B %Y')
+
+        assert_select 'a[href=?][data-turbo-stream=""]', calendar_path(param: Date.today.next_month, id: 1), count: 1 do
+          assert_select 'span.sr-only', text: 'Next month'
+          assert_select 'svg.h-5.w-5[viewBox="0 0 20 20"][fill="currentColor"][aria-hidden="true"]' do
+            assert_select 'path[fill-rule="evenodd"][d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"][clip-rule="evenodd"]'
+          end
+        end
+      end
+
+      assert_select 'div.mt-6.grid.grid-cols-7.text-xs.leading-6.text-gray-500' do
+        assert_select 'div', text: Date::ABBR_DAYNAMES[1]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[2]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[3]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[4]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[5]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[6]
+        assert_select 'div', text: Date::ABBR_DAYNAMES[0]
+      end
+
+      assert_select 'div.isolate.mt-2.grid.grid-cols-7.gap-px.rounded-lg.bg-gray-200.text-sm.shadow.ring-1.ring-gray-200' do
+        assert_select 'button', count: 35 do
+          assert_select 'time', count: 35 do
+            assert_select 'time[datetime=?]', Date.today.to_s, count: 1 do
+              assert_select 'span', text: Date.today.day.to_s
+            end
+          end
+        end
+      end
+    end
+  end
+end
