@@ -82,3 +82,5 @@ gem "imagekitio", "~> 2.3"
 gem "class_variants", "~> 0.0.7"
 
 gem "rouge", "~> 4.2"
+
+gem "rack", "~> 2.2"
