@@ -10,14 +10,15 @@ module CalendarHelper
   # @option options [Array] :events The events to be shown (default: []).
   # @option options [String] :route The route to be used (default: "calendar_month_picker_path").
   def compact_month_calendar(options = {})
+    partial = options.key?(:datepicker) ? "calendar/datepicker" : "calendar/compact_month_calendar"
     month_date = options[:month_date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :month_date
-    id = SecureRandom.random_number(10000000)
+    id = options[:id] || SecureRandom.random_number(10000000)
     events = options[:events] || []
     route = options[:route] || "calendar_month_picker_path"
 
-    render partial: "calendar/compact_month_calendar", locals: {
+    render partial: partial, locals: {
       month_date:,
       navigation:,
       param:,
@@ -27,60 +28,26 @@ module CalendarHelper
     }
   end
 
-  # Renders datepicker
-  def datepicker_month(options = {})
-    date = options[:date] || Date.today
-    navigation = options.key?(:navigation) ? options[:navigation] : true
-    param = options[:param] || :date
-    id = options.key?(:id) ? options[:id] : :calendar
+  # Renders a year view calendar
+  #
+  # @param [Hash] options The options for setting the date.
+  # @option options [Date] :year_date The date to be set (default: Date.today).
+  # @option options [Array] :events The events to be shown (default: []).
+  # @option options [String] :route The route to be used (default: "calendar_month_picker_path").
+  def year_calendar(options = {})
+    year_date = options[:year_date] || Date.today
+    events = options[:events] || []
 
-    render partial: "calendar/datepicker", locals: {
-      date:,
-      navigation:,
-      param:,
-      id:
+    render partial: "calendar/year_calendar", locals: {
+      year_date:,
+      events:
     }
   end
 
-  def calendar_cell_classes(date, day)
-    TailwindClasses.calendar_cell.render(
-      in_current_month: is_in_month?(date, day),
-      is_first_in_month_range: first_day_of_month_range(whole_month_range(date), day),
-      is_last_in_month_range: last_day_of_month_range(whole_month_range(date), day),
-      is_last_day_of_first_week: last_day_of_first_week(date, day),
-      is_first_day_of_last_week: first_day_of_last_week(date, day)
-    )
-  end
-
-  def is_today_classes(date, day)
-    if is_today?(day)
-      TailwindClasses.calendar_cell_inside.render(
-        today: true
-      )
-    end
-  end
-
-  def has_event?(day, events)
-    if events.length > 0
-      event = find_event(day, events)
-      unless event.nil?
-        r = TailwindClasses.calendar_cell_inside_events.render(
-          event: true
-        ) + " #{event.color}"
-        r
-      end
-    end
-  end
-
+  ###### Helper methods for Calendar
+  
   def find_event(day, events)
     events.find { |e| e.date == day }
-  end
-
-  def calendar_cell_inside_classes(date, day, events = [])
-    classes = []
-    classes << is_today_classes(date, day)
-    classes << has_event?(day, events)
-    classes
   end
 
   def is_today?(day)
@@ -111,5 +78,44 @@ module CalendarHelper
 
   def last_day_of_month_range(range, day)
     range.last === day
+  end
+
+  ########### Tailwind Classes ###########
+
+  def calendar_cell_inside_classes(date, day, events = [])
+    classes = []
+    classes << is_today_classes(date, day)
+    classes << has_event?(day, events)
+    classes
+  end
+
+  def is_today_classes(date, day)
+    if is_today?(day)
+      TailwindClasses.calendar_cell_inside.render(
+        today: true
+      )
+    end
+  end
+
+  def has_event?(day, events)
+    if events.length > 0
+      event = find_event(day, events)
+      unless event.nil?
+        r = TailwindClasses.calendar_cell_inside_events.render(
+          event: true
+        ) + " #{event.color}"
+        r
+      end
+    end
+  end
+
+  def calendar_cell_classes(date, day)
+    TailwindClasses.calendar_cell.render(
+      in_current_month: is_in_month?(date, day),
+      is_first_in_month_range: first_day_of_month_range(whole_month_range(date), day),
+      is_last_in_month_range: last_day_of_month_range(whole_month_range(date), day),
+      is_last_day_of_first_week: last_day_of_first_week(date, day),
+      is_first_day_of_last_week: first_day_of_last_week(date, day)
+    )
   end
 end

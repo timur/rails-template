@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
+
+  # all from here only for examle stuff
   resources :pictures
   resources :users
   resources :dashboard, only: [:index]
+  get 'landing', to: 'public/landing_page#index'
+  get 'animation', to: 'animation#index'
+
+  namespace :examples do
+    get '/calendar/month', to: 'calendar#month'
+    get '/calendar/year', to: 'calendar#year'
+    get '/calendar/datepicker', to: 'calendar#datepicker'
+    post '/create_datepicker', to: 'datepicker#create'
+  end
 
   post '/dashboard', to: 'dashboard#create'
   post '/dashboard/fields', to: 'dashboard#fields'
   get '/home', to: 'home#index'
+
+  # get importmap stuff
   get '/map', to: 'home#map'
-  get '/calendar', to: 'calendar#index'
+
+  # This are the standard routes for the calendar pagination
   get '/calendar/month_picker', to: 'calendar#month_picker'
-  get '/calendar/custom', to: 'calendar#custom'
   get '/calendar/year', to: 'calendar#year'
   get '/calendar/datepicker', to: 'calendar#datepicker'
-  get '/calendar/datepicker_paginate', to: 'calendar#datepicker_paginate'
-
-  post '/datepicker', to: 'datepicker#create'
+  get '/calendar/custom', to: 'calendar#custom'
 
   resource :flash_message, controller: 'flash_message', only: %i[create]
 
@@ -24,9 +35,6 @@ Rails.application.routes.draw do
 
   resources :team, only: [:index]
   get "up" => "rails/health#show", as: :rails_health_check
-
-  get 'landing', to: 'public/landing_page#index'
-  get 'animation', to: 'animation#index'
 
   root 'dashboard#index'
 end

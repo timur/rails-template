@@ -3,12 +3,6 @@ require 'test_helper'
 class CalendarHelperTest < ActionView::TestCase
   include CalendarHelper
 
-  test '#compact_month_calendar tests if the correct partial is rendered' do
-    date = Date.today
-    render partial: 'calendar/compact_month_calendar', locals: { date:, navigation: false, events: []}
-    assert_select 'div.font-semibold', text: "#{I18n.l(date, format: "%B")} #{date.year}"
-  end
-
   test '#first_day_of_month_range tests if the 15. of a month is the first date of a month range' do
     month_date = Date.today
     day = Date.new(month_date.year, month_date.month, 15)
@@ -69,6 +63,16 @@ class CalendarHelperTest < ActionView::TestCase
     day = Date.new(month_date.year, 2, 4)
     range = whole_month_range(month_date)
     assert last_day_of_month_range(range, day)
+  end
+
+  test '#compact_month_calendar tests if the correct partial is rendered with custom options' do
+    month_date = Date.new(2022, 6, 1)
+    render partial: 'calendar/compact_month_calendar', locals: { month_date:, navigation: false, events: [], id: 10, param: :date, route: :root_path}
+    assert_select 'div.font-semibold', text: "#{I18n.l(date, format: "%B")} #{date.year}"
+    assert_select 'div.navigation', count: 1
+  end
+
+  test '#compact_month_calendar_default_options' do
+    rendered = compact_month_calendar
   end  
-  
 end

@@ -1,5 +1,4 @@
 <div data-controller="datepicker visibility" <%= tag.attributes(class: container_classes) %> data-action="keydown.esc->datepicker#close">
-  <% random_id = SecureRandom.hex(10) %>
   <%= hidden_field_tag name, value, data: { "datepicker-target": "viewValue" } %>
   <%= text_field_tag nil, "#{value.blank? ? "" : I18n.l(value)}",
     type: type,
@@ -25,10 +24,9 @@
     </div> 
   <% end %>
   <div class="absolute top-12 w-3/4 inset-y-0 left-0 hidden"
-       id="<%= random_id %>"
        data-visibility-target="hideable"
        data-datepicker-target="datepicker">
-    <%= datepicker_month(date: value, id: random_id) %>
+    <%= compact_month_calendar(month_date: value, datepicker: true, route: "calendar_datepicker_path") %>
   </div>
 </div>
 <!-- Hint -->
