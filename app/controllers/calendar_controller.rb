@@ -11,7 +11,7 @@ class CalendarController < ApplicationController
     respond_to do |format|      
       format.turbo_stream {
         render turbo_stream: 
-          turbo_stream.update(id, partial: "shared/month_calendar", locals: { options: })}
+          turbo_stream.update(id, partial: "shared/calendar/month_calendar", locals: { options: })}
     end
   end
 
