@@ -31,16 +31,18 @@ module.exports = {
         },
         zoomin: {
           from: {
+            opacity: "0",
             transform: "scale(.3)",
           },
           to: {
+            opacity: "1",
             transform: "scale(1)",
           },
         },        
       },
       animation: {
         slidein: "slidein 1s ease var(--slidein-delay, 0) forwards",
-        zoomin: "zoomin 1s ease-in forwards",
+        zoomin: "zoomin .3s ease-in forwards",
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
