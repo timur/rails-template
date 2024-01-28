@@ -38,11 +38,22 @@ module.exports = {
             opacity: "1",
             transform: "scale(1)",
           },
-        },        
+        },
+        scaleincenter: {
+          '0%': { 
+            transform: 'scale(0)',
+            opacity: '1'
+          },
+          '100%': {
+            transform: 'scale(1)',
+            opacity: '1'
+          }
+        },
       },
       animation: {
         slidein: "slidein 1s ease var(--slidein-delay, 0) forwards",
         zoomin: "zoomin .3s ease-in forwards",
+        scaleincenter: "scaleincenter .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards"
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
