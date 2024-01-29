@@ -29,7 +29,7 @@
                   tooltip_data_value: find_event(date, events)&.title,
                   action: "datepicker#click"
                 } do %>
-            <%= content_tag :time, datetime: date.to_s, class: calendar_cell_inside_classes(month_date, date, events) do %>
+            <%= content_tag :time, datetime: date.to_s, dateformatted: I18n.l(date), class: calendar_cell_inside_classes(month_date, date, events) do %>
               <%= date.day %>
             <% end %>
           <% end %>
