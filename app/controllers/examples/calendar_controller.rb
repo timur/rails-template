@@ -8,6 +8,30 @@ class Examples::CalendarController < ApplicationController
   end
 
   def datepicker_create
+    Rails.logger.info "Examples::CalendarController#datepicker_create"
+    @form = DatepickerForm.new_with_permitted_params(params)
+    respond_to do |format|
+      if @form.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update(
+              'new_form',
+              partial: "examples/calendar/datepicker_form",
+              locals: { form: DatepickerForm.new }),
+            ]
+        end
+      else
+        Rails.logger.info "Examples::CalendarController#datepicker_create not valid"
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update(
+              'new_form',
+              partial: "examples/calendar/datepicker_form",
+              locals: { form: @form })
+            ]
+        end
+      end
+    end    
   end
 
   def year

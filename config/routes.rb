@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get '/calendar/month', to: 'calendar#month'
     get '/calendar/year', to: 'calendar#year'
     get '/calendar/datepicker', to: 'calendar#datepicker'
-    post '/create_datepicker', to: 'datepicker#create'
+    post '/create_datepicker', to: 'calendar#datepicker_create'
   end
 
   post '/dashboard', to: 'dashboard#create'
