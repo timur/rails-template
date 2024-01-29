@@ -33,6 +33,14 @@ export default class extends Controller {
     event.stopPropagation();
   }
 
+  change(event) {
+    let value = event.target.value;
+    if (value === "") {
+      this.viewValueTarget.value = "";
+      return;
+    }
+  }
+
   clickOutside(event) {
     if (event.target.type === "submit") return;
     this.close();
