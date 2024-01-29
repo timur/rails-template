@@ -25,6 +25,11 @@
     <%= f.label :birthdate, label: "Geburtstag" %>
     <%= f.datepicker :birthdate, placeholder: "Geburstag", hint: "Das ist ein Hint Text" %>
   </div>
+
+  <div class="mt-4">
+    <%= f.label :birthdate, label: "Vorausgefüllt" %>
+    <%= f.datepicker :prefilled_date, placeholder: "Der Wert ist vorausgefüllt und so sollte es der Picker auch sein" %>
+  </div>  
   
   <%= f.submit "Speichern", class: "mt-6" %>
 <% end %>

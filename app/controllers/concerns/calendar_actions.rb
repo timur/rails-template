@@ -21,7 +21,7 @@ module CalendarActions
     respond_to do |format|
       format.turbo_stream { 
         render turbo_stream: 
-          turbo_stream.update(id, partial: "shared/calendar/month_calendar", locals: { options: datepicker_options })}
+          turbo_stream.update(id, partial: "shared/calendar/datepicker", locals: { options: datepicker_options })}
     end
   end
 
@@ -48,6 +48,6 @@ module CalendarActions
   end  
 
   def datepicker_options
-    month_calendar_options.merge({ datepicker: true })
+    month_calendar_options.merge({ current_date: params[:current_date] })
   end
 end

@@ -18,6 +18,20 @@ module TailwindClasses
       )   
     end
 
+    # renders a calendar cell classes for a compact month calendar without borders
+    def calendar_cell_borderless
+      ClassVariants.build(
+        "py-1.5 hover:bg-gray-100 focus:z-10",
+        variants: {
+          in_current_month: "bg-white text-gray-900",
+          "!in_current_month": "bg-gray-50 text-gray-400",
+        },
+        defaults: {
+          in_current_month: true
+        }
+      )   
+    end    
+
     # renders a circle in a calendar cell for a compact month calendar
     def calendar_cell_inside
       ClassVariants.build(

@@ -1,4 +1,6 @@
-<div data-controller="datepicker visibility" <%= tag.attributes(class: container_classes) %> data-action="keydown.esc->datepicker#close">
+<div data-controller="datepicker" <%= tag.attributes(class: container_classes) %>
+     data-action="keydown.esc->datepicker#close"
+     data-datepicker-url-value="<%= calendar_datepicker_path %>">
   <%= hidden_field_tag name, value, data: { "datepicker-target": "viewValue" } %>
   <%= text_field_tag nil, "#{value.blank? ? "" : I18n.l(value)}",
     type: type,
@@ -8,7 +10,10 @@
     disabled: options[:disabled],
     required: options[:required],
     readonly: options[:readonly],
-    data: { "datepicker-target": "viewInput", "action": "input->datepicker#change focus->visibility#toggleTargets" }
+    data: { 
+      "datepicker-target": "viewInput", 
+      "action": "input->datepicker#change focus->datepicker#focus"
+    }
   %>
   <% if options[:has_error] %>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -19,11 +24,16 @@
       <%= inline_svg_tag "heroicons-calendar.svg", class: "h-5 w-5" %>
     </div> 
   <% end %>
-  <div class="absolute top-12 w-3/4 inset-y-0 left-0 hidden"
-       data-visibility-target="hideable"
+  <div class="absolute top-10 w-3/4 inset-y-0 left-0 hidden"
        data-datepicker-target="datepicker">
     <!-- Render the datepicker -->
-    <%= compact_month_calendar(month_date: value, datepicker: true, route: "calendar_datepicker_path") %>
+    <%= datepicker_month_calendar(
+        current_date: value,
+        month_date: value,
+        route: "calendar_datepicker_path",
+        events:
+      )
+    %>
   </div>
 </div>
 <!-- Hint -->

@@ -8,9 +8,9 @@ module CalendarHelper
   # @option options [Symbol] :param The param to be set (default: :date).
   # @option options [Symbol] :id The id of the calendar (default: :calendar).
   # @option options [Array] :events The events to be shown (default: []).
+  # @option options [Date] :marked_date The date to be marked (default: nil).
   # @option options [String] :route The route to be used (default: "calendar_month_picker_path").
   def compact_month_calendar(options = {})
-    partial = options.key?(:datepicker) ? "calendar/datepicker" : "calendar/compact_month_calendar"
     month_date = options[:month_date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :month_date
@@ -18,7 +18,7 @@ module CalendarHelper
     events = options[:events] || []
     route = options[:route] || "calendar_month_picker_path"
 
-    render partial: partial, locals: {
+    render partial: "calendar/compact_month_calendar", locals: {
       month_date:,
       navigation:,
       param:,
@@ -27,6 +27,30 @@ module CalendarHelper
       route:
     }
   end
+
+  # Renders a compact month for a datepicker calendar.
+  #
+  def datepicker_month_calendar(options = {})
+    month_date = options[:month_date] || Date.today
+    current_date = options[:current_date] || nil
+    param = options[:param] || :month_date
+    id = options[:id] || SecureRandom.random_number(10000000)
+    events = options[:events] || []
+    route = options[:route] || "calendar_month_picker_path"
+
+    if current_date.present?
+      events << OpenStruct.new(title: "", date: current_date, color: "bg-green-500")
+    end
+
+    render partial: "calendar/datepicker_month", locals: {
+      month_date:,
+      current_date:,
+      param:,
+      id:,
+      events:,
+      route:
+    }
+  end  
 
   # Renders a year view calendar
   #
@@ -47,7 +71,10 @@ module CalendarHelper
   ###### Helper methods for Calendar
   
   def find_event(day, events)
-    events.find { |e| e.date == day }
+    e = events.find do |e|
+      e.date == day.to_s
+    end
+    e
   end
 
   def is_today?(day)
@@ -109,7 +136,7 @@ module CalendarHelper
     end
   end
 
-  def calendar_cell_classes(date, day)
+  def calendar_cell_classes(date, day, borderless = false)
     TailwindClasses.calendar_cell.render(
       in_current_month: is_in_month?(date, day),
       is_first_in_month_range: first_day_of_month_range(whole_month_range(date), day),
@@ -118,4 +145,10 @@ module CalendarHelper
       is_first_day_of_last_week: first_day_of_last_week(date, day)
     )
   end
+
+  def calendar_cell_classes_borderless(date, day)
+    TailwindClasses.calendar_cell_borderless.render(
+      in_current_month: is_in_month?(date, day)
+    )
+  end  
 end
