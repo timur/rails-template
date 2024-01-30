@@ -10,6 +10,7 @@ export default class extends Controller {
 
   connect() {
     useClickOutside(this);
+    this.loadPicker = debounce(this.loadPicker.bind(this), 100);
   }
 
   click(event) {
@@ -45,13 +46,7 @@ export default class extends Controller {
   }
 
   focus(event) {
-    this.datepickerTarget.classList.remove("hidden");
-    const turboFrame = this.datepickerTarget.querySelector('turbo-frame');
-    const turboFrameId = turboFrame ? turboFrame.id : '';
-    if (turboFrameId !== '' && this.viewValueTarget.value !== '') {
-      const newUrl = `${this.urlValue}?id=${turboFrameId}&month_date=${this.viewValueTarget.value}&current_date=${this.viewValueTarget.value}&route=calendar_datepicker_path`;
-      Turbo.visit(newUrl, { turbo: true, acceptsStreamResponse: true });      
-    }
+    this.loadPicker();
   }
 
   clickOutside(event) {
@@ -63,4 +58,27 @@ export default class extends Controller {
     this.datepickerTarget.classList.add("hidden");
     this.viewInputTarget.blur();
   }
+
+  loadPicker() {
+    this.datepickerTarget.classList.remove("hidden");
+    const turboFrame = this.datepickerTarget.querySelector('turbo-frame');
+    const turboFrameId = turboFrame ? turboFrame.id : '';
+    if (turboFrameId !== '' && this.viewValueTarget.value !== '') {
+      const newUrl = `${this.urlValue}?id=${turboFrameId}&month_date=${this.viewValueTarget.value}&current_date=${this.viewValueTarget.value}&route=calendar_datepicker_path`;
+      Turbo.visit(newUrl, { turbo: true, acceptsStreamResponse: true });      
+    }
+  }
+}
+
+function debounce(callback, delay) {
+  let timeoutId;
+  return (...args) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      callback(...args);
+      timeoutId = null;
+    }, delay);
+  };
 }
