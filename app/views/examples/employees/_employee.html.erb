@@ -1,0 +1,16 @@
+<div id="<%= dom_id employee %>" class="table-row">
+  <div class="table-cell border-t-2 border-gray-200 whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= employee.name %></div>
+  <div class="table-cell border-t-2 border-gray-200 whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= employee.position %></div>
+  <div class="table-cell border-t-2 border-gray-200 whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= employee.office %></div>
+  <div class="table-cell border-t-2 border-gray-200 whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= employee.age %></div>
+  <div class="table-cell border-t-2 border-gray-200 whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= employee.start_date %></div>
+  <div class="table-cell border-t-2 border-gray-200 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+    <%= link_to examples_employee_path(employee),
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: { message: "Wollen Sie den Mitarbeiter löschen?", title: "Löschen" }
+          }, class: "text-red-600 hover:text-red-700" do %>
+      Löschen<span class="sr-only"><%= employee.name %></span>
+    <% end %>
+  </div>
+</div>

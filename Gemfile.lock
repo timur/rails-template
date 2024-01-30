@@ -130,6 +130,8 @@ GEM
       ruby2_keywords
     error_highlight (0.6.0)
     erubi (1.12.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
@@ -222,6 +224,7 @@ GEM
       racc (~> 1.4)
     oj (3.16.3)
       bigdecimal (>= 3.0)
+    pagy (6.4.3)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -358,12 +361,14 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   dotenv-rails
   error_highlight (>= 0.4.0)
+  faker
   imagekitio (~> 2.3)
   importmap-rails
   inline_svg (~> 1.9)
   jbuilder
   litestack (~> 0.4.x)
   local_time
+  pagy
   puma (>= 5.0)
   rack (~> 2.2)
   rack-cors (~> 2.0)
