@@ -1,4 +1,4 @@
-<div data-controller="datepicker" <%= tag.attributes(class: container_classes) %>
+<div x-data data-controller="datepicker" <%= tag.attributes(class: container_classes) %>
      data-action="keydown.esc->datepicker#close"
      data-datepicker-url-value="<%= calendar_datepicker_path %>">
   <%= hidden_field_tag name, value, data: { "datepicker-target": "viewValue" } %>
@@ -10,6 +10,7 @@
     disabled: options[:disabled],
     required: options[:required],
     readonly: options[:readonly],
+    "x-mask:": "99.99.9999",
     data: { 
       "datepicker-target": "viewInput", 
       "action": "input->datepicker#change focus->datepicker#focus"
