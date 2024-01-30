@@ -7,10 +7,10 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
 pin "alpine-turbo-drive-adapter", to: "https://ga.jspm.io/npm:alpine-turbo-drive-adapter@2.1.0/dist/alpine-turbo-drive-adapter.esm.js"
-pin "alpinejs" # @3.13.3
-pin "@alpinejs/ui", to: "@alpinejs--ui.js" # @3.13.3
-pin "@alpinejs/focus", to: "@alpinejs--focus.js" # @3.13.3
-pin "@alpinejs/mask", to: "@alpinejs--mask.js" # @3.13.3
+pin "alpinejs" # @3.13.5
+pin "@alpinejs/ui", to: "@alpinejs--ui.js" # @3.13.5
+pin "@alpinejs/focus", to: "@alpinejs--focus.js" # @3.13.5
+pin "@alpinejs/mask", to: "@alpinejs--mask.js" # @3.13.5
 
 pin "htm", to: "https://ga.jspm.io/npm:htm@3.1.1/dist/htm.module.js"
 pin "react" # @18.2.0
