@@ -1,6 +1,9 @@
 class Employee < ApplicationRecord
-  include PgSearch::Model
-  pg_search_scope :search, against: [:name, :position, :office, :age, :start_date], using: { tsearch: { prefix: true } }
+  include Litesearch::Model
+
+  litesearch do |schema|
+    schema.fields [:name, :position, :office, :age, :start_date] # these fields has a weight of 1
+  end
 
   validates :name, presence: true
 end

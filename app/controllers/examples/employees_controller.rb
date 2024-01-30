@@ -6,7 +6,8 @@ class Examples::EmployeesController < ApplicationController
   # GET /employees
   def index
     @employees = Employee.all
-    @employees = @employees.search(params[:query]) if params[:query].present?
+    @employees = Employee.search(params[:query]) if params[:query].present?
+
     @pagy, @employees = pagy @employees.reorder(sort_column => sort_direction), items: validate_count(params.fetch(:count, DEFAULT_COUNT))
   end
 
