@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/calendar/year', to: 'calendar#year'
     get '/calendar/datepicker', to: 'calendar#datepicker'
     post '/create_datepicker', to: 'calendar#datepicker_create'
+    resources :employees
   end
 
   post '/dashboard', to: 'dashboard#create'
