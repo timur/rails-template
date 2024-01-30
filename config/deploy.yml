@@ -1,14 +1,16 @@
-# Name of your application. Used to uniquely configure containers.
 service: react-importmap
 
-# Name of the container image.
 image: tiyalcin/react-importmap
 
-# Deploy to these servers.
+volumes:
+  - "storage:/rails/storage"
+
 servers:
   web:
     hosts:
-      - 164.92.252.9 # digitalocean-
+      - 104.248.37.37
+    options:
+      "add-host": host.docker.internal:host-gateway
     labels:
       traefik.http.middlewares.websecure-compress.compress: true
       traefik.http.routers.web.rule: Host(`saastemplate.de`)
@@ -18,22 +20,16 @@ servers:
       traefik.http.routers.websecure.tls.certresolver: letsencrypt      
       traefik.http.routers.websecure.middlewares: websecure-compress@docker
 
-# Credentials for your image host.
 registry:
-  # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
   username: tiyalcin
-
-  # Always use an access token rather than real password when possible.
   password:
     - KAMAL_REGISTRY_PASSWORD
 
 env:
+  clear:
   secret:
     - RAILS_MASTER_KEY
-
-volumes:
-  - "data:/data"
+    - LITESTACK_DATA_PATH
 
 traefik:
   options:
