@@ -19,3 +19,16 @@ window.Alpine = Alpine;
 Alpine.start();
 
 LocalTime.start();
+
+Turbo.setConfirmMethod((message, element) => {
+  const data = JSON.parse(`${message}`);
+  Alpine.store('confirmModal').toggle();
+  Alpine.store('confirmModal').title = data.title;
+  Alpine.store('confirmModal').message = data.message;
+
+  return new Promise((resolve, reject) => {
+    window.addEventListener("confirm", () => {
+      resolve(true);
+    }, { once: true })
+  })
+})
