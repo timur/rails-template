@@ -1,6 +1,6 @@
 <%= nav_link(path: dashboard_path, text: "Dashboard", svg: "heroicons-home.svg") %>
 <%= nav_link(path: pictures_path, text: "Bilder", svg: "heroicons-photo.svg", data: { turbo: "false"}) %>
-<%= nav_link_with_submenu(name: "calendar", text: "Kalender", svg: "heroicons-photo.svg", submenu: [
+<%= nav_link_with_submenu(name: "calendar", text: "Kalender", svg: "heroicons-calendar-days.svg", submenu: [
     SubmenuEntry.new("Monatsansicht", examples_calendar_month_path),
     SubmenuEntry.new("Jahresansicht", examples_calendar_year_path),
     SubmenuEntry.new("Datepicker", examples_calendar_datepicker_path)
@@ -10,5 +10,6 @@
     SubmenuEntry.new("Tables", examples_employees_path),
   ])
 %>
-<%= nav_link(path: landing_path, text: "Landing", svg: "heroicons-home.svg", data: { turbo: "false"}) %>
-<%= nav_link(path: animation_path, text: "Animation", svg: "heroicons-home.svg", data: { turbo: "false"}) %>
+<%= nav_link(path: examples_snippets_path, text: "CSS Snippets", svg: "heroicons-code-bracket.svg", data: { turbo: "false"}) %>
+<%= nav_link(path: landing_path, text: "Landing", svg: "heroicons-document.svg", data: { turbo: "false"}) %>
+<%= nav_link(path: animation_path, text: "Animation", svg: "heroicons-fire.svg", data: { turbo: "false"}) %>
