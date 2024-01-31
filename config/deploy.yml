@@ -1,36 +1,32 @@
+# Name of your application. Used to uniquely configure containers.
 service: react-importmap
 
+# Name of the container image.
 image: tiyalcin/react-importmap
-
 volumes:
-  - "storage:/rails/storage"
-
+  - "data:/data"
 servers:
   web:
     hosts:
-      - 104.248.37.37
+      - 104.248.37.37 # digitalocean
     options:
       "add-host": host.docker.internal:host-gateway
     labels:
+      # gzip
       traefik.http.middlewares.websecure-compress.compress: true
-      traefik.http.routers.web.rule: Host(`saastemplate.de`)
-      traefik.http.routers.websecure.entrypoints: websecure
-      traefik.http.routers.websecure.rule: Host(`saastemplate.de`)
-      traefik.http.routers.websecure.tls: true
-      traefik.http.routers.websecure.tls.certresolver: letsencrypt      
       traefik.http.routers.websecure.middlewares: websecure-compress@docker
+      traefik.http.routers.websecure.rule: Host(`saas.ruby-rails.net`)
+      traefik.http.routers.websecure.entrypoints: websecure
+      traefik.http.routers.websecure.tls.certresolver: letsencrypt      
 
 registry:
   username: tiyalcin
   password:
     - KAMAL_REGISTRY_PASSWORD
-
 env:
   clear:
   secret:
     - RAILS_MASTER_KEY
-    - LITESTACK_DATA_PATH
-
 traefik:
   options:
     publish:
