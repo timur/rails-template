@@ -18,7 +18,7 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", "2.0.0.pre.beta.4"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -81,9 +81,6 @@ gem "inline_svg", "~> 1.9"
 gem "rack-cors", "~> 2.0"
 gem "requestjs-rails"
 gem "imagekitio", "~> 2.3"
-
 gem "class_variants", "~> 0.0.7"
-
 gem "rouge", "~> 4.2"
-
 gem "rack", "~> 2.2"

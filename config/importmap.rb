@@ -1,7 +1,7 @@
 # Pin npm packages by running ./bin/importmap
 
 pin "application", preload: true
-pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
+pin "@hotwired/turbo-rails", to: "@hotwired--turbo-rails.js" # @8.0.0
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
@@ -30,3 +30,5 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/inde
 pin "tippy.js", to: "https://ga.jspm.io/npm:tippy.js@6.3.7/dist/tippy.esm.js", preload: true # @6.3.7
 
 pin "local-time" # @3.0.2
+pin "@hotwired/turbo", to: "@hotwired--turbo.js" # @8.0.0
+pin "@rails/actioncable/src", to: "@rails--actioncable--src.js" # @7.1.3
