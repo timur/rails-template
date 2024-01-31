@@ -6,7 +6,7 @@ class Examples::EmployeesController < ApplicationController
   # GET /employees
   def index
     @employees = Employee.all
-    @employees = Employee.search(params[:query]) if params[:query].present?
+    @employees = Employee.by_name(params[:query]) if params[:query].present?
 
     @pagy, @employees = pagy @employees.reorder(sort_column => sort_direction), items: validate_count(params.fetch(:count, DEFAULT_COUNT))
   end
@@ -75,6 +75,7 @@ class Examples::EmployeesController < ApplicationController
       params[:count] = count
       count
     end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
