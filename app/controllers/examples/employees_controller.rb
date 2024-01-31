@@ -56,7 +56,9 @@ class Examples::EmployeesController < ApplicationController
         flash[:notice] = "Employee #{@employee.name} was successfully deleted."
         redirect_to employees_url, status: :see_other
       end
-      format.turbo_stream { flash.now[:success] = "Employee #{@employee.name} was successfully deleted." }
+      format.turbo_stream {
+        flash.now[:notice] = "Employee #{@employee.name} was successfully deleted."
+      }
     end
   end
 
