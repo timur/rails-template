@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     resources :employees
     get '/snippets', to: 'snippets#index'
     get '/snippets/buttons', to: 'snippets#buttons'
+    get '/snippets/forms', to: 'snippets#forms'
+    post '/snippets/forms', to: 'snippets#create'
+    post '/snippets/fields', to: 'snippets#fields'
+    
   end
 
-  post '/dashboard', to: 'dashboard#create'
-  post '/dashboard/fields', to: 'dashboard#fields'
   get '/home', to: 'home#index'
 
   # get importmap stuff

@@ -1,5 +1,5 @@
 <div class="mt-8">
-  <%= render_form_with(url: dashboard_fields_path, class: "w-full lg:w-4/12 mt-8") do |f| %>
+  <%= render_form_with(url: examples_snippets_fields_path, class: "w-full lg:w-4/12 mt-8") do |f| %>
     <ol>
       <% criteria.each.with_index do |c, i| %>
         <li>
@@ -16,8 +16,8 @@
       <% end %>
     </ol>
     <div class="mt-4">
-      <%= f.submit "Reset" %>
-      <%= f.submit "Update" %>
+      <%= f.submit "Reset", class: button_classes.render(color: :secondary, size: :lg) %>
+      <%= f.submit "Update", class: button_classes.render(size: :lg) %>
     </div>
   <% end %>
 </div>

@@ -64,10 +64,6 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
-  def submit(value = nil, options = {})
-    @template.render_primary_button(value, **options)
-  end
-
   private
 
   def label_for(object, method)
