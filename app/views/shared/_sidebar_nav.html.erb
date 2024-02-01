@@ -10,6 +10,10 @@
     SubmenuEntry.new("Tables", examples_employees_path),
   ])
 %>
-<%= nav_link(path: examples_snippets_path, text: "CSS Snippets", svg: "heroicons-code-bracket.svg", data: { turbo: "false"}) %>
+<%= nav_link_with_submenu(name: "snippets", text: "CSS Snippets", svg: "heroicons-code-bracket.svg", submenu: [
+    SubmenuEntry.new("CSS", examples_snippets_path),
+    SubmenuEntry.new("Buttons", examples_snippets_buttons_path),
+  ])
+%>
 <%= nav_link(path: landing_path, text: "Landing", svg: "heroicons-document.svg", data: { turbo: "false"}) %>
 <%= nav_link(path: animation_path, text: "Animation", svg: "heroicons-fire.svg", data: { turbo: "false"}) %>

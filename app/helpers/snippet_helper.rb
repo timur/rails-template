@@ -47,4 +47,46 @@ module SnippetHelper
     CODE
     c.strip
   end
+
+  def button_primary_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(size: :sm) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :md) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :lg) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xl) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xxl) %>
+    CODE
+    c.strip
+  end
+  
+  def button_primary_snippet_with_trailing_icon
+    c = <<-CODE
+    <%= button_tag nil, class: button_classes.render(size: :lg, trailing_icon: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-4 w-4 text-white" %>
+  Button Text LG
+<% end %>
+
+<%= button_tag nil, class: button_classes.render(size: :xl, trailing_icon: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-5 w-5 text-white" %>
+  Button Text XL
+<% end %>
+
+<%= button_tag nil, class: button_classes.render(size: :xxl, trailing_icon: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-5 w-5 text-white" %>
+  Button Text XXL
+<% end %>
+    CODE
+    c.strip
+  end  
+
+  def button_secondary_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(size: :sm, color: :secondary) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :md, color: :secondary) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :secondary) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xl, color: :secondary) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :secondary) %>
+    CODE
+    c.strip
+  end    
 end

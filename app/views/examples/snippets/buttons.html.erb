@@ -1,0 +1,45 @@
+<h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight mb-4">Buttons</h1>
+<div class="grid max-w-3xl grid-cols-1 gap-x-8 gap-y-8 px-4 py-4 sm:grid-cols-1 lg:grid-cols-1 sm:px-6 xl:max-w-none">
+  <div>
+    <%= render "snippet/code_example", title: "Primary submit button", code: button_primary_snippet do %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :sm) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :md) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :lg) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xl) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xxl) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= render "snippet/code_example", title: "Secondary submit button", code: button_secondary_snippet do %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :sm, color: :secondary) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :md, color: :secondary) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :secondary) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xl, color: :secondary) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :secondary) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= render "snippet/code_example", title: "Primary submit button with trailing icon", code: button_primary_snippet_with_trailing_icon do %>
+      <div class="bg-white px-4 py-8">
+        <div class="mx-auto flex max-w-3xl flex-col items-center justify-start space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0">
+          <%= button_tag nil, class: button_classes.render(size: :lg, trailing_icon: true) do %>
+            <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-4 w-4 text-white" %>
+            Button Text LG
+          <% end %>
+
+          <%= button_tag nil, class: button_classes.render(size: :xl, trailing_icon: true) do %>
+            <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-5 w-5 text-white" %>
+            Button Text XL
+          <% end %>
+
+          <%= button_tag nil, class: button_classes.render(size: :xxl, trailing_icon: true) do %>
+            <%= inline_svg_tag "heroicons-plus.svg", class: "-ml-0.5 h-5 w-5 text-white" %>
+            Button Text XXL
+          <% end %>    
+        </div>
+      </div>
+    <% end %>
+  </div>    
+</div>
