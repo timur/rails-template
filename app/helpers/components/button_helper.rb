@@ -14,10 +14,11 @@ module Components::ButtonHelper
           "lg-rounded": "p-2",
         },
         color: {
-          primary: "bg-primary-600 hover:bg-primary-500 text-white",
-          secondary: "bg-white font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
+          primary: "bg-primary-600 hover:bg-primary-500 text-white focus-visible:outline-primary-600",
+          secondary: "bg-white font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-gray-600",
         },
         trailing_icon: "inline-flex items-center",
+        rounded: "rounded-full",
       },
       defaults: {
         size: :md,

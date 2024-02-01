@@ -88,5 +88,42 @@ module SnippetHelper
 <%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :secondary) %>
     CODE
     c.strip
-  end    
+  end
+
+  def button_primary_rounded_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(size: :sm, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :md, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :lg, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xl, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xxl, rounded: true) %>
+    CODE
+    c.strip
+  end 
+  
+  def button_secondary_rounded_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(secondary: true, size: :sm, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(secondary: true, size: :md, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(secondary: true, size: :lg, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(secondary: true, size: :xl, rounded: true) %>
+<%= button_tag "Button Text", class: button_classes.render(secondary: true, size: :xxl, rounded: true) %>
+    CODE
+    c.strip
+  end
+
+  def button_circular_snippet
+    c = <<-CODE
+    <%= button_tag nil, class: button_classes.render(size: :"sm-rounded", rounded: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-white" %>
+<% end %>
+<%= button_tag nil, class: button_classes.render(size: :"md-rounded", rounded: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-white" %>
+<% end %>
+<%= button_tag nil, class: button_classes.render(size: :"lg-rounded", rounded: true) do %>
+  <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-white" %>
+<% end %>
+    CODE
+    c.strip
+  end
 end
