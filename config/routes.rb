@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     get '/snippets/forms', to: 'snippets#forms'
     post '/snippets/forms', to: 'snippets#create'
     post '/snippets/fields', to: 'snippets#fields'
-    
   end
 
+  # importmap stuff
   get '/home', to: 'home#index'
 
   # get importmap stuff
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/calendar/month_picker', to: 'calendar#month_picker'
   get '/calendar/year', to: 'calendar#year'
   get '/calendar/datepicker', to: 'calendar#datepicker'
+  # This is an example for a custom controller
   get '/calendar/custom', to: 'calendar#custom'
 
   resource :flash_message, controller: 'flash_message', only: %i[create]
@@ -38,7 +39,6 @@ Rails.application.routes.draw do
     resources :widget_form, only: %i[ new create ]
   end
 
-  resources :team, only: [:index]
   get "up" => "rails/health#show", as: :rails_health_check
 
   root 'dashboard#index'
