@@ -58,6 +58,17 @@ module SnippetHelper
     CODE
     c.strip
   end
+
+  def button_danger_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(size: :sm, color: :danger) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :md, color: :danger) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :danger) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xl, color: :danger) %>
+<%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :danger) %>
+    CODE
+    c.strip
+  end  
   
   def button_primary_snippet_with_trailing_icon
     c = <<-CODE
@@ -126,4 +137,14 @@ module SnippetHelper
     CODE
     c.strip
   end
+
+  def button_outline_snippet
+    c = <<-CODE
+    <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :"outline-red") %>
+<%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :"outline-dark-grey") %>   
+    CODE
+    c.strip
+  end  
 end
+
+

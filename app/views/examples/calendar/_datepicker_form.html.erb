@@ -31,5 +31,5 @@
     <%= f.datepicker :prefilled_date, placeholder: "Der Wert ist vorausgefüllt und so sollte es der Picker auch sein" %>
   </div>  
   
-  <%= f.submit "Speichern", class: "mt-6" %>
+  <%= f.submit "Speichern", class: button_classes("mt-6").render(size: :lg) %>
 <% end %>

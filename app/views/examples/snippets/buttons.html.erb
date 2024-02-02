@@ -1,7 +1,7 @@
 <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight mb-4">Buttons</h1>
 <div class="grid max-w-5xl grid-cols-1 gap-x-8 gap-y-8 px-4 py-4 sm:grid-cols-1 lg:grid-cols-1 sm:px-6 xl:max-w-none">
   <div>
-    <%= render "snippet/code_example", title: "Primary submit button", code: button_primary_snippet do %>
+    <%= render "snippet/code_example", title: "Primary Button", code: button_primary_snippet do %>
       <%= button_tag "Button Text", class: button_classes.render(size: :sm) %>
       <%= button_tag "Button Text", class: button_classes.render(size: :md) %>
       <%= button_tag "Button Text", class: button_classes.render(size: :lg) %>
@@ -11,7 +11,7 @@
   </div>
 
   <div>
-    <%= render "snippet/code_example", title: "Secondary submit button", code: button_secondary_snippet do %>
+    <%= render "snippet/code_example", title: "Secondary Button", code: button_secondary_snippet do %>
       <%= button_tag "Button Text", class: button_classes.render(size: :sm, color: :secondary) %>
       <%= button_tag "Button Text", class: button_classes.render(size: :md, color: :secondary) %>
       <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :secondary) %>
@@ -19,6 +19,25 @@
       <%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :secondary) %>
     <% end %>
   </div>
+
+  <div>
+    <%= render "snippet/code_example", title: "Danger Button", code: button_danger_snippet do %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :sm, color: :danger) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :md, color: :danger) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :danger) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xl, color: :danger) %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :xxl, color: :danger) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= render "snippet/code_example", title: "Outline Buttons", code: button_outline_snippet do %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :"outline-red") %>
+      <%= button_tag "Button Text", disabled: true, class: button_classes.render(size: :lg, color: :"outline-red") %>
+      <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :"outline-dark-gray") %>
+      <%= button_tag "Button Text", disabled: true, class: button_classes.render(size: :lg, color: :"outline-dark-gray") %> 
+    <% end %>
+  </div>    
 
   <div>
     <%= render "snippet/code_example", title: "Primary submit button with trailing icon", code: button_primary_snippet_with_trailing_icon do %>
