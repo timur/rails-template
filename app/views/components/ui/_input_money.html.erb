@@ -1,8 +1,8 @@
 <div x-data='{ moneyValue: "<%= number_to_currency(value, separator: ',', delimiter: '.') %>" }'>
-  <%= hidden_field_tag name, value, id: "#{id}_money", "x-model": "moneyValue" %>
-  <div <%= tag.attributes(class: container_classes) %>>
-    <%= text_field_tag nil, "#{number_to_currency(value, separator: ',')}", type: type, id: id,
-      class: input_classes,
+  <%= hidden_field_tag name, value, id: "#{options[:id]}_money", "x-model": "moneyValue" %>
+  <%= tag.div class: "#{has_icon?(options) ? InputClasses.icon.render : ''}" do %>
+    <%= text_field_tag nil, "#{number_to_currency(value, separator: ',')}", id: options[:id],
+      class: options[:class],
       placeholder: options[:placeholder],
       disabled: options[:disabled],
       required: options[:required],
@@ -11,9 +11,7 @@
       data: options[:data] %>
       <% if options[:has_error] %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-          <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-          </svg>
+          <%= inline_svg_tag "heroicons-exclamation-circle.svg", class: "h-5 w-5 text-red-500" %>
         </div>
       <% end %>
       <% unless options[:trailing_text].blank? || options[:has_error] %>
@@ -29,7 +27,7 @@
     <% if options[:hint].present? && !options[:has_error] %>
       <p class="mt-2 text-sm text-gray-500"><%= options[:hint] %></p>
     <% end %>
-  </div>
+  <% end %>
   <% if options[:has_error] %>
     <p class="mt-2 text-sm text-red-600">
       <% options[:errors].each do |error| %>

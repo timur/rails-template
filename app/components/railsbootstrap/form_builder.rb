@@ -6,6 +6,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(method, options = {})
+    Rails.logger.debug "text_field #{method} #{options}"
     set_error_attributes(options, method)
     @template.render_input(
       name: "#{object_name}[#{method}]",
@@ -71,6 +72,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     object.class.human_attribute_name(method)
   end
 
+  # Refactor
   def error_class_for(method, custom_class = "")
     error_class = has_error?(method) ? "ring-red-300 placeholder:text-red-300 focus:ring-red-500 text-red-500" : ""
     "#{custom_class} #{error_class}"
@@ -80,6 +82,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     @object.errors[method].any?
   end
 
+  # Refactor
   def set_error_attributes(options, method)
     options[:class] = error_class_for(method, options[:class])
     options[:has_error] = has_error?(method)
