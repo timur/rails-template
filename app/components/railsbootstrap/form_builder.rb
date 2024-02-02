@@ -21,7 +21,6 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     set_error_attributes(options, method)
     options[:money] = "$money($input, ',')"
     options[:trailing_text] = options[:trailing_text] || "€"
-    options[:leading_text] = options[:leading_text]
     @template.render_input(
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
