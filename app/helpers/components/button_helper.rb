@@ -1,7 +1,7 @@
 module Components::ButtonHelper
 
   def button_classes(classes = "", **options)
-    class_variants("rounded font-semibold shadow-sm focus-visible:outline cursor-hand focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none #{classes}",
+    class_variants("rounded font-semibold shadow-sm focus-visible:outline cursor-hand focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 #{classes}",
       variants: {
         size: {
           sm: "px-2 py-1 text-xs gap-x-1",
