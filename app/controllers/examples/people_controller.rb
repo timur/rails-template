@@ -20,7 +20,6 @@ class Examples::PeopleController < ApplicationController
   def edit
   end
 
-  # POST /people
   def create
     @person = Person.new(employee_params)
 
