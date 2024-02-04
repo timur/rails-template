@@ -1,0 +1,56 @@
+<div class="table-row">
+  <div class="table-cell whitespace-nowrap ">
+    <div class="px-6 py-3">
+      <label for="hs-at-with-checkboxes-1" class="flex">
+        <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-1">
+        <span class="sr-only">Checkbox</span>
+      </label>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-3">
+      <div class="flex items-center gap-x-3">
+        <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full" src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
+        <div class="grow">
+          <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= person.name %></span>
+          <span class="block text-sm text-gray-500"><%= person.email %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-3">
+      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= person.position %></span>
+      <span class="block text-sm text-gray-500"><%= person.department %></span>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-3">
+      <%= person_status person.status %>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-3">
+      <div class="flex items-center gap-x-3">
+        <span class="text-xs text-gray-500">1/5</span>
+        <div class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
+          <div class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-3">
+      <span class="text-sm text-gray-500"><%= I18n.localize person.created_at, format: :short %></span>
+    </div>
+  </div>
+  <div class="table-cell whitespace-nowrap align-top h-20">
+    <div class="px-6 py-1.5">
+      <%= link_to "Edit", edit_examples_person_path(id: 1),
+        class: "inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600",
+        data: {
+          turbo_frame: "slide-over"
+        } %>
+    </div>
+  </div>
+</div>

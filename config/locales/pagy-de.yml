@@ -20,3 +20,6 @@ de:
       employee:
         one: Mitarbeiter
         other: Mitarbeiter
+      person:
+        one: Person
+        other: Personen

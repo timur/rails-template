@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_31_134224) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_03_022431) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,29 +50,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_134224) do
     t.index ["name"], name: "index_employees_on_name"
   end
 
-# Could not dump table "employees_search_idx" because of following StandardError
-#   Unknown type '' for column 'name'
-
-# Could not dump table "employees_search_idx_config" because of following StandardError
-#   Unknown type '' for column 'k'
-
-  create_table "employees_search_idx_data", force: :cascade do |t|
-    t.binary "block"
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+    t.string "position"
+    t.string "status"
+    t.integer "portfolio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "department"
+    t.index ["name"], name: "index_people_on_name"
   end
-
-  create_table "employees_search_idx_docsize", force: :cascade do |t|
-    t.binary "sz"
-    t.integer "origin"
-  end
-
-# Could not dump table "employees_search_idx_idx" because of following StandardError
-#   Unknown type '' for column 'segid'
-
-# Could not dump table "employees_search_idx_instance" because of following StandardError
-#   Unknown type '' for column 'term'
-
-# Could not dump table "employees_search_idx_row" because of following StandardError
-#   Unknown type '' for column 'term'
 
   create_table "pictures", force: :cascade do |t|
     t.string "name"

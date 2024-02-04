@@ -83,5 +83,15 @@ module ApplicationHelper
     link_to request.params.merge(sort: column, direction: direction), **options do
       "#{name} #{arrow}".html_safe
     end
+  end
+
+  def pagy_info_custom(pagy, pagy_id: nil, item_name: nil, i18n_key: nil)
+    p_id    = %( id="#{pagy_id}") if pagy_id
+    p_count = pagy.count
+    key     = if    p_count.zero?   then 'pagy.info.no_items'
+              elsif pagy.pages == 1 then 'pagy.info.single_page'
+              else                       'pagy.info.multiple_pages' # rubocop:disable Lint/ElseLayout
+              end
+    "Zeige #{pagy.from}-#{pagy.to} von #{p_count}"
   end  
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/calendar/datepicker', to: 'calendar#datepicker'
     post '/create_datepicker', to: 'calendar#datepicker_create'
     resources :employees
+    resources :people
     get '/snippets', to: 'snippets#index'
     get '/snippets/buttons', to: 'snippets#buttons'
     get '/snippets/forms', to: 'snippets#forms'
