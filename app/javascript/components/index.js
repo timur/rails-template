@@ -13,18 +13,22 @@ export default function Wrapper() {
   };
 
   return h`
-  <div class="space-x-2 mb-2">
-  <button class="btn btn-blue" onClick="${() =>
-    handleClick("masonry")}">Masonry</button>
+    <div class="space-x-2 mb-2">
+      <button class="btn btn-blue" onClick="${() =>
+        handleClick("masonry")}">Masonry
+      </button>
 
-  <button class="btn btn-blue" onClick="${() =>
-    handleClick("rows")}">Rows</button>
+      <button class="btn btn-blue" onClick="${() =>
+        handleClick("rows")}">Rows
+      </button>
 
-  <button class="btn btn-blue" onClick="${() =>
-    handleClick("columns")}">Columns</button>
+      <button class="btn btn-blue" onClick="${() =>
+        handleClick("columns")}">Columns
+      </button>
     </div>
-  
-  <${Gallery} photos=${photos} layout="${layout}"/><div>1</div>`;
+    
+    <${Gallery} photos=${photos} layout="${layout}"/><div>1</div>
+  `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
