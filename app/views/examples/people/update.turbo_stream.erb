@@ -1,0 +1,5 @@
+<!-- Updates table entry -->
+<%= turbo_stream.replace dom_id(@person), partial: 'person', locals: { person: @person } %>
+<!-- Closes the slide-over -->
+<%= turbo_stream.remove 'person_form' %>
+<%= turbo_stream.replace 'flash', partial: 'layouts/flash_message' %>

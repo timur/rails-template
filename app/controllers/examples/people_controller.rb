@@ -18,6 +18,7 @@ class Examples::PeopleController < ApplicationController
   end
 
   def edit
+    @form = PersonForm.new @person.as_json.except("id", "created_at", "updated_at")
   end
 
   def create
@@ -32,24 +33,26 @@ class Examples::PeopleController < ApplicationController
     end
   end
 
-  # PATCH/PUT /people/1
   def update
+    form = PersonForm.new_with_permitted_params(params)
     respond_to do |format|
-      if @person.update(employee_params)
-        format.html { redirect_to @person, notice: "Person #{@person.name} was successfully updated." }
+      if form.save
+        @person.update(people_params)
+        format.turbo_stream {
+          flash.now[:notice] = "Person #{@person.name} was successfully updated."
+        }        
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render partial: 'examples/people/form', locals: { form: } }
       end
     end
   end
 
-  # DELETE /people/1
   def destroy
     @person.destroy
     respond_to do |format|
       format.html do
         flash[:notice] = "Person #{@person.name} was successfully deleted."
-        redirect_to people_url, status: :see_other
+        redirect_to examples_people_url, status: :see_other
       end
       format.turbo_stream {
         flash.now[:notice] = "Person #{@person.name} was successfully deleted."
@@ -78,8 +81,7 @@ class Examples::PeopleController < ApplicationController
       @person = Person.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def employee_params
-      params.require(:person).permit(:name, :position, :status, :portfolio, :email, :department)
+    def people_params
+      params.require(:person_form).permit(:name, :position, :status, :portfolio, :email, :department)
     end
 end

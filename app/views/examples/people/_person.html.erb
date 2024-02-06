@@ -1,4 +1,4 @@
-<div class="table-row">
+<div class="table-row" id="<%= dom_id(person) %>">
   <div class="table-cell whitespace-nowrap ">
     <div class="px-6 py-3">
       <label for="hs-at-with-checkboxes-1" class="flex">
@@ -46,7 +46,7 @@
   </div>
   <div class="table-cell whitespace-nowrap align-top h-20">
     <div class="px-6 py-1.5">
-      <%= link_to "Edit", edit_examples_person_path(id: 1),
+      <%= link_to "Edit", edit_examples_person_path(person),
         class: "inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600",
         data: {
           turbo_frame: "slide-over"
