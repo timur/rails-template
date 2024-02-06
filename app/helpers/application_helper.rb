@@ -58,6 +58,33 @@ module ApplicationHelper
     classes.compact.join(" ")
   end
 
+  def sort_link_to_preline(name, column, **options)
+    arrow = ''
+  
+    if params[:sort] == column.to_s
+      direction = params[:direction] == "asc" ? "desc" : "asc"
+  
+      if direction === "asc"
+        arrow = content_tag(:span, class: 'text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200') do
+          inline_svg_tag('down-arrow-preline.svg', class: 'flex-shrink-0 h-3.5 w-3.5')
+        end
+      end
+  
+      if direction === "desc"
+        arrow = content_tag(:span, class: 'text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200') do
+          inline_svg_tag('up-arrow-preline.svg', class: 'flex-shrink-0 h-3.5 w-3.5')
+        end
+
+      end
+    else
+      direction = "asc"
+    end
+  
+    link_to request.params.merge(sort: column, direction: direction), class: "group inline-flex justify-center gap-x-2", **options do
+      "#{name} #{arrow}".html_safe
+    end
+  end
+
   def sort_link_to(name, column, **options)
     arrow = ''
   
