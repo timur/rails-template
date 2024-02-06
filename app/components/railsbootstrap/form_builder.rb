@@ -6,7 +6,6 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(method, options = {})
-    Rails.logger.debug "text_field #{method} #{options}"
     set_error_attributes(options, method)
     @template.render_input(
       name: "#{object_name}[#{method}]",
