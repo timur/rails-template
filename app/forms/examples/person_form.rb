@@ -1,4 +1,4 @@
-class PersonForm < ApplicationForm
+class Examples::PersonForm < ApplicationForm
   attribute :name, :string
   attribute :position, :string
   attribute :status, :string

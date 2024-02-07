@@ -1,5 +1,5 @@
 
-class DatepickerForm < ApplicationForm
+class Examples::DatepickerForm < ApplicationForm
   attribute :birthdate, :date
   attribute :prefilled_date, :date, default: Date.today + 25.days
 

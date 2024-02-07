@@ -4,11 +4,11 @@ class Examples::CalendarController < ApplicationController
   end
 
   def datepicker
-    @form = DatepickerForm.new    
+    @form = Examples::DatepickerForm.new    
   end
 
   def datepicker_create
-    @form = DatepickerForm.new_with_permitted_params(params)
+    @form = Examples::DatepickerForm.new_with_permitted_params(params)
     respond_to do |format|
       if @form.save
         format.turbo_stream do
@@ -16,7 +16,7 @@ class Examples::CalendarController < ApplicationController
             turbo_stream.update(
               'new_form',
               partial: "examples/calendar/datepicker_form",
-              locals: { form: DatepickerForm.new }),
+              locals: { form: Examples::DatepickerForm.new }),
             ]
         end
       else

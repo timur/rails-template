@@ -44,7 +44,7 @@
   <fieldset class="mt-6">
     <legend class="sr-only">Notifications</legend>
     <div class="space-y-5">
-      <% UserForm::TAGS.each do |key| %>
+      <% Examples::UserForm::TAGS.each do |key| %>
         <div class="relative flex items-start">
           <div class="flex h-6 items-center">
             <%= f.check_box :tags, { id: "user_form_#{key}", class: "h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600", multiple: true, checked: f.object.tags&.include?(key.to_s) }, key, nil %>

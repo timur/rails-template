@@ -1,5 +1,5 @@
 
-class FieldsForm < ApplicationForm
+class Examples::FieldsForm < ApplicationForm
 
   def save
     return unless valid?

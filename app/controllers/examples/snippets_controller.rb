@@ -8,7 +8,7 @@ class Examples::SnippetsController < ApplicationController
   end
 
   def forms
-    @form = UserForm.new
+    @form = Examples::UserForm.new
     @criteria = 
       [
         Criteria::Text.new(id: 0, name: "Wurst 1"),
@@ -17,7 +17,7 @@ class Examples::SnippetsController < ApplicationController
   end
 
   def create
-    @form = UserForm.new_with_permitted_params(params)
+    @form = Examples::UserForm.new_with_permitted_params(params)
     respond_to do |format|
       if @form.save
         format.turbo_stream do
@@ -25,7 +25,7 @@ class Examples::SnippetsController < ApplicationController
             turbo_stream.update(
               'new_form',
               partial: "examples/snippets/form",
-              locals: { form: UserForm.new }),
+              locals: { form: Examples::UserForm.new }),
             ]
         end
       else

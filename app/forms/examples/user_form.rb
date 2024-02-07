@@ -1,5 +1,5 @@
 
-class UserForm < ApplicationForm
+class Examples::UserForm < ApplicationForm
   attribute :firstname, :string
   attribute :lastname, :string
   attribute :salary, MoneyType.new

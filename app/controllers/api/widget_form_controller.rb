@@ -2,14 +2,14 @@ class Api::WidgetFormController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[ create ]
 
   def new
-    @form = UserForm.new
+    @form = Examples::UserForm.new
     respond_to do |format|
       format.turbo_stream
     end
   end
 
   def create
-    @form = UserForm.new_with_permitted_params(params)
+    @form = Examples::UserForm.new_with_permitted_params(params)
   
     respond_to do |format|
       if @form.save

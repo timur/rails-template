@@ -18,7 +18,7 @@ class Examples::PeopleController < ApplicationController
   end
 
   def edit
-    @form = PersonForm.new @person.as_json.except("id", "created_at", "updated_at")
+    @form = Examples::PersonForm.new @person.as_json.except("id", "created_at", "updated_at")
   end
 
   def create
@@ -34,7 +34,7 @@ class Examples::PeopleController < ApplicationController
   end
 
   def update
-    form = PersonForm.new_with_permitted_params(params)
+    form = Examples::PersonForm.new_with_permitted_params(params)
     respond_to do |format|
       if form.save
         @person.update(people_params)
@@ -82,6 +82,6 @@ class Examples::PeopleController < ApplicationController
     end
 
     def people_params
-      params.require(:person_form).permit(:name, :position, :status, :portfolio, :email, :department)
+      params.require(:examples_person_form).permit(:name, :position, :status, :portfolio, :email, :department)
     end
 end
