@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :baits
 
   # all from here only for examle stuff
   resources :pictures
