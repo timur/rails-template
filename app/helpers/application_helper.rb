@@ -80,7 +80,7 @@ module ApplicationHelper
       direction = "asc"
     end
   
-    link_to request.params.merge(sort: column, direction: direction), class: "group inline-flex justify-center gap-x-2", **options do
+    link_to request.params.merge(sort: column, direction: direction), class: "group inline-flex justify-center gap-x-2", **options.merge({'data-turbo-prefetch': 'false'}) do
       "#{name} #{arrow}".html_safe
     end
   end
@@ -107,7 +107,7 @@ module ApplicationHelper
       direction = "asc"
     end
   
-    link_to request.params.merge(sort: column, direction: direction), **options do
+    link_to request.params.merge(sort: column, direction: direction), **options.merge({'data-turbo-prefetch': 'false'}) do
       "#{name} #{arrow}".html_safe
     end
   end
