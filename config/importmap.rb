@@ -12,4 +12,5 @@ pin "@alpinejs/focus", to: "@alpinejs--focus.js" # @3.13.5
 pin "@alpinejs/mask", to: "@alpinejs--mask.js" # @3.13.5
 pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
 pin "local-time" # @3.0.2
-pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.9
+pin "@rails/request.js", to: "@rails--request.js" # @0.0.9
+
