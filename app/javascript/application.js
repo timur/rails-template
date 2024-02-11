@@ -5,7 +5,7 @@ import ui from "@alpinejs/ui";
 import focus from "@alpinejs/focus";
 import mask from "@alpinejs/mask";
 import LocalTime from "local-time";
-import "./controllers"
+import "controllers"
 
 Alpine.plugin(ui);
 Alpine.plugin(focus);
