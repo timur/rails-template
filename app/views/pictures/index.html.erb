@@ -1,21 +1,51 @@
-<%= content_tag :div,
-  id: "photos",
-  data: @photos do %>
-<% end %>
+<div class="p-3 md:p-5">
+  <div data-controller="lightbox" class="columns-1 gap-3 lg:gap-5 sm:columns-2 lg:columns-3 xl:columns-4 [&>a:not(:first-child)]:mt-3 lg:[&>a:not(:first-child)]:mt-5">
+    <%= link_to asset_path("examples/photo-1.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-1.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-2.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-2.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-3.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-3.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-4.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-4.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-5.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-5.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-6.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-6.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-7.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-7.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-8.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-8.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-9.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-9.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-10.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-10.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-11.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-11.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-12.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-12.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-13.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-13.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-14.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-14.jpeg" %>
+    <% end %>
+    <%= link_to asset_path("examples/photo-15.jpeg"), class: "block" do %>
+      <%= image_tag "examples/photo-15.jpeg" %>
+    <% end %>
 
-<div id="root"></div>
-
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Pictures</h1>
-    <%= link_to 'New picture', new_picture_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="pictures" class="min-w-full">
-    <%= render @pictures %>
   </div>
 </div>
+  
