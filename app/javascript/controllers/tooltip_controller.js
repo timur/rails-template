@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import tippy from "tippy.js";
+//import tippy from "tippy.js";
 
 // Connects to data-controller="tooltip"
 export default class extends Controller {
@@ -11,7 +11,7 @@ export default class extends Controller {
 
   initialize() {
     if (this.dataValue) {
-      tippy(this.contentTarget, { content: this.dataValue })
+      //tippy(this.contentTarget, { content: this.dataValue })
     }
   }
 }
