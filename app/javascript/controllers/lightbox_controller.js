@@ -1,5 +1,5 @@
 import Lightbox from 'stimulus-lightbox'
-//import lgThumbnail from 'lg-thumbnail'
+import lgThumbnail from "https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.8.0-beta.1/plugins/thumbnail/lg-thumbnail.es5.min.js";
 
 export default class extends Lightbox {
   connect() {
@@ -10,13 +10,13 @@ export default class extends Lightbox {
 
     // Default options for every lightboxes.
     this.defaultOptions
-    debugger;
   }
 
   // You can set default options in this getter.
   get defaultOptions() {
     return {
-      //plugins: [lgThumbnail],
+      plugins: [lgThumbnail],
+      selector: '.item'
     }
   }
 }
