@@ -39,7 +39,7 @@ gem "bootsnap", require: false
 gem "pagy"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -84,3 +84,5 @@ gem "imagekitio", "~> 3.0"
 gem "class_variants", "~> 0.0.7"
 gem "rouge", "~> 4.2"
 gem "rack", "~> 2.2"
+
+gem "ruby-vips", "~> 2.2"
