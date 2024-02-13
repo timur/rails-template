@@ -149,7 +149,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    imagekitio (2.3.0)
+    imagekitio (3.0.0)
       addressable (~> 2.8)
       multipart-post (>= 2.1.0)
       rest-client (~> 2.1, >= 2.1)
@@ -362,7 +362,7 @@ DEPENDENCIES
   dotenv-rails
   error_highlight (>= 0.4.0)
   faker
-  imagekitio (~> 2.3)
+  imagekitio (~> 3.0)
   importmap-rails
   inline_svg (~> 1.9)
   jbuilder
