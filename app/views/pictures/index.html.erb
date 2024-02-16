@@ -1,49 +1,10 @@
 <div class="p-3 md:p-5" data-controller="lightbox">
   <div class="columns-1 gap-3 lg:gap-5 sm:columns-2 lg:columns-3 xl:columns-4 [&>a:not(:first-child)]:mt-3 lg:[&>a:not(:first-child)]:mt-5">
-    <%= link_to asset_path("examples/photo-1.jpeg"), "data-src": asset_path("examples/photo-1.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-1.jpeg" %>
+    <% @pictures.each do |picture| %>
+      <%= link_to url_for(picture.image), "data-src": url_for(picture.image), class: "block item" do %>
+        <%= image_tag url_for(picture.image) %>
+      <% end %>
     <% end %>
-    <%= link_to asset_path("examples/photo-2.jpeg"), "data-src": asset_path("examples/photo-2.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-2.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-3.jpeg"), "data-src": asset_path("examples/photo-3.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-3.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-4.jpeg"), "data-src": asset_path("examples/photo-4.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-4.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-5.jpeg"), "data-src": asset_path("examples/photo-5.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-5.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-6.jpeg"), "data-src": asset_path("examples/photo-6.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-6.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-7.jpeg"), "data-src": asset_path("examples/photo-7.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-7.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-8.jpeg"), "data-src": asset_path("examples/photo-8.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-8.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-9.jpeg"), "data-src": asset_path("examples/photo-9.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-9.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-10.jpeg"), "data-src": asset_path("examples/photo-10.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-10.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-11.jpeg"), "data-src": asset_path("examples/photo-11.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-11.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-12.jpeg"), "data-src": asset_path("examples/photo-12.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-12.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-13.jpeg"), "data-src": asset_path("examples/photo-13.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-13.jpeg" %>
-    <% end %>
-    <%= link_to asset_path("examples/photo-14.jpeg"), "data-src": asset_path("examples/photo-14.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-14.jpeg" %>
-    <% end %> 
-    <%= link_to asset_path("examples/photo-15.jpeg"), "data-src": asset_path("examples/photo-15.jpeg"), class: "block item" do %>
-      <%= image_tag "examples/photo-15.jpeg" %>
-    <% end %>                                                        
+  </div>
 </div>
   

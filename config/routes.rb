@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # all from here only for examle stuff
   resources :pictures
+
   resources :users
   resources :dashboard, only: [:index]
   get 'landing', to: 'public/landing_page#index'
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
     get '/snippets/forms', to: 'snippets#forms'
     post '/snippets/forms', to: 'snippets#create'
     post '/snippets/fields', to: 'snippets#fields'
+    get '/upload', to: 'upload#new'
+    post '/upload/picture', to: 'upload#create'
   end
 
   # importmap stuff
