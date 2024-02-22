@@ -29,12 +29,11 @@ class Upload {
     const fileUpload = document.createElement("div");
 
     fileUpload.id = `upload_${this.directUpload.id}`;
-    fileUpload.className = "p-3 border-b";
-
+    fileUpload.className = "p-1 text-sm mb-2";
     fileUpload.textContent = this.directUpload.file.name;
 
     const progressWrapper = document.createElement("div");
-    progressWrapper.className = "relative h-4 overflow-hidden rounded-full bg-secondary w-[100%]";
+    progressWrapper.className = "relative h-3 overflow-hidden rounded-full bg-secondary w-[100%]";
     fileUpload.appendChild(progressWrapper);
 
     const progressBar = document.createElement("div");
@@ -47,8 +46,15 @@ class Upload {
   }
 
   directUploadWillStoreFileWithXHR(request) {
-    console.log("Progress event listener added", request)
     request.upload.addEventListener("progress", (event) => this.updateProgress(event));
+    request.upload.addEventListener("loadend", event => {
+      const id = `upload_${this.directUpload.id}`;
+      document.getElementById(id).remove();
+      const uploadList = document.querySelector("#uploads");
+      if (uploadList.children.length === 0) {
+        Alpine.store('uploadModal').toggle();
+      }
+    })
   }
 
   updateProgress(event) {
@@ -81,6 +87,7 @@ export default class extends Controller {
   }
 
   acceptFiles(event) {
+    Alpine.store('uploadModal').toggle();
     event.preventDefault();
     const files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     [...files].forEach((f) => {

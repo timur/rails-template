@@ -24,6 +24,14 @@ wasabi:
   region: eu-central-2
   bucket: rails-wasabi
 
+cloudflare:
+  service: S3
+  endpoint: https://f847343fcebb834f024e741e044d3552.r2.cloudflarestorage.com
+  access_key_id: de08d3df1babc94069c83f9434ef6284
+  secret_access_key: 386943223307193bba9c2de7285f685a70178f49dd462f308072f43021323f53
+  region: auto
+  bucket: rails-r2  
+
 production:
   service: S3
   endpoint: https://s3.eu-central-2.wasabisys.com
@@ -31,6 +39,3 @@ production:
   secret_access_key: <%= Rails.application.credentials.dig(:wasabi, :S3_SECRET_ACCESS_KEY) %>
   region: eu-central-2
   bucket: rails-wasabi
-
-imagekitio:
-  service: ImageKitIo

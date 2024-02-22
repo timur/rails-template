@@ -5,8 +5,6 @@
   </p>
 
   <%= image_tag url_for(picture.image) if picture.image.attached? %>
-  <%= image_tag picture.image.variant(resize_to_limit: [100, 100]), class: "mt-4" %>
-  <%= image_tag picture.image.variant(convert: :png), class: "mt-4" %>
 
   <% if action_name != "show" %>
     <%= link_to "Show this picture", picture, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
