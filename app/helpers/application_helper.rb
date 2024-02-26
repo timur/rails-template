@@ -120,5 +120,15 @@ module ApplicationHelper
               else                       'pagy.info.multiple_pages' # rubocop:disable Lint/ElseLayout
               end
     "Zeige #{pagy.from}-#{pagy.to} von #{p_count}"
-  end  
+  end
+
+  def gallery_style(width, height)
+    "width:#{width.to_f * 200 / height.to_f}px;flex-grow:#{width.to_f * 200 / height.to_f}"
+  end
+
+  def i_style(width, height)
+    ratio = (height.to_f / width.to_f) * 100
+    "padding-bottom:#{ratio}%"
+  end
+
 end

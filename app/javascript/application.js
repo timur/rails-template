@@ -1,10 +1,12 @@
-import "@hotwired/turbo-rails"
+import "@hotwired/turbo-rails";
 import * as ActiveStorage from "@rails/activestorage";
 import Alpine from "alpinejs";
 import ui from "@alpinejs/ui";
 import focus from "@alpinejs/focus";
 import mask from "@alpinejs/mask";
 import LocalTime from "local-time";
+import LazyLoadImages from 'lazy-load-images';
+import preloadImage from 'preload-images';
 import "controllers"
 
 Alpine.plugin(ui);

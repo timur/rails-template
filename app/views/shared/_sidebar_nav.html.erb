@@ -1,5 +1,10 @@
 <%= nav_link(path: dashboard_index_path, text: "Dashboard", svg: "heroicons-home.svg") %>
-<%= nav_link(path: pictures_path, text: "Bilder", svg: "heroicons-photo.svg", data: { turbo: "false"}) %>
+<%= nav_link_with_submenu(name: "pictures", text: "Bilder", svg: "heroicons-photo.svg", submenu: [
+    SubmenuEntry.new("Bilder Masonry 1", pictures_path),
+    SubmenuEntry.new("Bilder Upload Gridzy", examples_upload_path),
+    SubmenuEntry.new("Glitch", examples_glitch_path)
+  ])
+%>
 <%= nav_link_with_submenu(name: "calendar", text: "Kalender", svg: "heroicons-calendar-days.svg", submenu: [
     SubmenuEntry.new("Monatsansicht", examples_calendar_month_path),
     SubmenuEntry.new("Jahresansicht", examples_calendar_year_path),

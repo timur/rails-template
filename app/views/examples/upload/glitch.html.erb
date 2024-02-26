@@ -1,0 +1,8 @@
+ <section id="grid" data-controller="gallery">
+  <% @picture_imagekit_urls.each do |urls| %>
+    <%= tag.div style: "#{gallery_style(urls.width, urls.height)}", data: { width: urls.width, height: urls.height } do %>
+      <i style="<%= i_style(urls.width, urls.height)%>"></i>
+      <%= image_tag 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', class: "img-gallery js-lazy-image", data: { src: url_for(urls.thumb) } %>
+    <% end %>
+  <% end %> 
+</section>

@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'applications', 'data-turbolinks-track': 'reload' %>
 
 <div class="w-full">
   <div class="p-6">
@@ -13,10 +13,19 @@
   </div>
   <div class="gridzy">
     <% @picture_imagekit_urls.each do |urls| %>
-      <%= image_tag url_for(urls.thumb) %>
+      <div><%= image_tag url_for(urls.thumb), class: "gridzyImage" %></div>
     <% end %>
   </div>  
 </div>
+<script>
+  document.addEventListener("turbo:load", () => {
+    const gridzyInstance = new Gridzy(document.querySelector('.gridzy'), {
+      spaceBetween: 10,
+      layout: 'waterfall'
+    });
+  });
+</script>
+
 
 <div class="flex">
   <div x-dialog x-model="$store.uploadModal.open" style="display: none" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">

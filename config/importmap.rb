@@ -14,4 +14,6 @@ pin "local-time" # @3.0.2
 pin "@rails/request.js", to: "@rails--request.js" # @0.0.9
 pin "lightgallery" # @2.7.2
 pin "stimulus-lightbox" # @3.2.0
+pin "lazy-load-images"
+pin "preload-images"
 pin_all_from "app/javascript/controllers", under: "controllers"
