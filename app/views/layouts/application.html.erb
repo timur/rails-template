@@ -227,6 +227,15 @@
             this.open = ! this.open
           }
         })
+
+        Alpine.store('uploadModal', {
+          open: false,
+          title: '',
+          message: '',
+          toggle() {
+            this.open = ! this.open
+          }
+        })
       })
     </script>    
 

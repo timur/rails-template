@@ -19,7 +19,7 @@ module RailsReactImportmap
 
     config.middleware.use Rack::Deflater
 
-    config.active_storage.variant_processor = :vips
+    #config.active_storage.variant_processor = :vips
 
     # Configuration for the application, engines, and railties goes here.
     #

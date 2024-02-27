@@ -9,18 +9,29 @@ class Upload {
 
   process() {
     this.insertUpload();
+    this.insertImage();
 
-    this.directUpload.create((error, blob) => {
+    this.directUpload.create(async (error, blob) => {
       if (error) {
         // Handle the error
       } else {
         const pictureData = { picture: { filename: blob.filename }, signed_blob_id: blob.signed_id };
 
-        post("/examples/upload/picture", {
+        const response = await post("/examples/upload/picture", {
           body: pictureData,
           contentType: "application/json",
           responseKind: "json",
         });
+
+        if (response.ok) {
+          const responseJSON = await response.json;
+          console.log(responseJSON);
+          const imageDiv = document.querySelector(`#image_${this.directUpload.id}`);
+          const imgElement = document.createElement("img");
+          imgElement.src = responseJSON.thumb;
+          imgElement.className = "img-gallery";
+          imageDiv.appendChild(imgElement);
+        }
       }
     });
   }
@@ -43,6 +54,19 @@ class Upload {
 
     const uploadList = document.querySelector("#uploads");
     uploadList.appendChild(fileUpload);
+  }
+
+  insertImage() {
+    const imageDiv = document.createElement("div");
+    imageDiv.id = `image_${this.directUpload.id}`;
+    imageDiv.style = "width:133px;flex-grow:133";
+    const i = document.createElement("i");
+    i.style = "padding-bottom:150%";
+    
+    imageDiv.appendChild(i);
+
+    const grid = document.querySelector("#grid");
+    grid.prepend(imageDiv);
   }
 
   directUploadWillStoreFileWithXHR(request) {

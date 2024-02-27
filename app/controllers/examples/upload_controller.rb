@@ -9,10 +9,15 @@ module Examples
     end
 
     def create
-      @picture = Picture.new(picture_params)
-      @picture.image.attach(params[:signed_blob_id])
-      if @picture.save
-        render json: @picture, status: :created
+      imagekit_service = ImagekitService.new
+      picture = Picture.new(picture_params)
+      picture.image.attach(params[:signed_blob_id])
+      if picture.save
+        render json: {
+          id: picture.id,
+          name: picture.name,
+          thumb: imagekit_service.thumb_url(picture.image)
+        }, status: :created
       end
     end
 
