@@ -15,8 +15,7 @@ module Examples
       if picture.save
         render json: {
           id: picture.id,
-          name: picture.name,
-          thumb: imagekit_service.thumb_url(picture.image)
+          thumb: imagekit_service.thumb_url(picture.image),
         }, status: :created
       end
     end
@@ -32,7 +31,8 @@ module Examples
       imagekitio = ImageKitIo::Client.new(
         Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PRIVATE),
         Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PUBLIC),
-        'https://ik.imagekit.io/ojynjrt2uct/wasabi/'
+        #'https://ik.imagekit.io/ojynjrt2uct/wasabi/'
+        'https://ik.imagekit.io/ojynjrt2uct/cloudflare/'
       )
       pictures = Picture.with_attached_image
       pictures.each do |picture|

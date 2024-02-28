@@ -2,6 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 import { DirectUpload } from "@rails/activestorage";
 import { post } from "@rails/request.js";
 
+const preloadImage = url => {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.src = url;
+    image.onload = resolve;
+    image.onerror = reject;
+  });
+};
+
 class Upload {
   constructor(file) {
     this.directUpload = new DirectUpload(file, "/rails/active_storage/direct_uploads", this);
@@ -16,24 +25,45 @@ class Upload {
         // Handle the error
       } else {
         const pictureData = { picture: { filename: blob.filename }, signed_blob_id: blob.signed_id };
-
         const response = await post("/examples/upload/picture", {
           body: pictureData,
           contentType: "application/json",
-          responseKind: "json",
+          responseKind: "json"
         });
 
         if (response.ok) {
           const responseJSON = await response.json;
-          console.log(responseJSON);
           const imageDiv = document.querySelector(`#image_${this.directUpload.id}`);
-          const imgElement = document.createElement("img");
-          imgElement.src = responseJSON.thumb;
-          imgElement.className = "img-gallery";
-          imageDiv.appendChild(imgElement);
+          
+          const iElements = imageDiv.querySelectorAll('i');
+          iElements.forEach((iElement) => iElement.remove());
+          
+          preloadImage(responseJSON.thumb).then( (entry) => {
+            this.applyImage(entry.target, responseJSON.thumb, imageDiv);
+          });
         }
       }
     });
+  }
+
+  applyImage (img, src, div) {
+    // Prevent this from being lazy loaded a second time.
+    const width = img.width;
+    const height = img.height;
+    const w = width * 200 / height;
+    const fg = width * 200 / height;
+
+    div.style = `width:${w}px;flex-grow:${fg}`;
+
+    const i = document.createElement("i");
+    const ratio = (height / width) * 100;
+    i.style = `padding-bottom:${ratio}%`;
+    div.appendChild(i);
+
+    img.classList.add('img-gallery');
+    img.src = src;
+    img.classList.add('lazy-load');
+    div.appendChild(img);
   }
 
   insertUpload() {

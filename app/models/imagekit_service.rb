@@ -3,7 +3,7 @@ class ImagekitService
     @imagekitio = ImageKitIo::Client.new(
       Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PRIVATE),
       Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PUBLIC),
-      'https://ik.imagekit.io/ojynjrt2uct/wasabi/'
+      'https://ik.imagekit.io/ojynjrt2uct/cloudflare/'
     )
   end
 
