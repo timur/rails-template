@@ -58,6 +58,7 @@ class Upload {
     const i = document.createElement("i");
     const ratio = (height / width) * 100;
     i.style = `padding-bottom:${ratio}%`;
+
     div.appendChild(i);
 
     img.classList.add('img-gallery');
@@ -92,6 +93,15 @@ class Upload {
     imageDiv.style = "width:133px;flex-grow:133";
     const i = document.createElement("i");
     i.style = "padding-bottom:150%";
+
+    i.classList.add('bg-blue-50');
+    const innerHTMLContent = `
+      <div class="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>`;
+    i.innerHTML = innerHTMLContent;    
     
     imageDiv.appendChild(i);
 
