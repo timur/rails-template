@@ -34,7 +34,7 @@ module Examples
         #'https://ik.imagekit.io/ojynjrt2uct/wasabi/'
         'https://ik.imagekit.io/ojynjrt2uct/cloudflare/'
       )
-      pictures = Picture.with_attached_image
+      pictures = Picture.with_attached_image.order(created_at: :desc)
       pictures.each do |picture|
         urls = OpenStruct.new
         urls.thumb = imagekitio.url({

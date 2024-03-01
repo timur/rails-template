@@ -15,8 +15,7 @@ export default class extends Lightbox {
   // You can set default options in this getter.
   get defaultOptions() {
     return {
-      plugins: [lgThumbnail],
-      selector: '.item'
+      plugins: [lgThumbnail]
     }
   }
 }

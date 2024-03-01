@@ -10,11 +10,12 @@
     </div>
   </div>
 </div>
-<section id="grid" data-controller="gallery">
+
+<section class="flex flex-wrap after:content-[''] after:flex-grow-999999999" id="grid" data-controller="gallery lightbox">
   <% @picture_imagekit_urls.each do |urls| %>
-    <%= tag.div style: "#{gallery_style(urls.width, urls.height)}", data: { width: urls.width, height: urls.height } do %>
-      <i style="<%= i_style(urls.width, urls.height)%>"></i>
-      <%= image_tag 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', class: "img-gallery js-lazy-image", data: { src: url_for(urls.thumb) } %>
+    <%= link_to asset_path(urls.large), "data-src": asset_path(urls.large), class: "block relative m-1", style: "#{gallery_style(urls.width, urls.height)}" do %>  
+      <i class="block" style="<%= i_style(urls.width, urls.height)%>"></i>
+      <%= image_tag url_for(urls.thumb), class: "img-gallery js-lazy-image", data: { src: url_for(urls.thumb) } %>
     <% end %>
   <% end %> 
 </section>

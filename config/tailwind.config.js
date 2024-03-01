@@ -58,6 +58,9 @@ module.exports = {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
+      flexGrow: {
+        999999999: '999999999'
+      }
     },
   },
   plugins: [
