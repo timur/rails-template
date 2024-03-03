@@ -11,6 +11,10 @@ class ImagekitService
     @imagekitio.url(transform_options(blob, "800"))
   end
 
+  def large_url(blob)
+    @imagekitio.url(transform_options(blob, "1200"))
+  end
+
   def imagekit
     @imagekitio
   end

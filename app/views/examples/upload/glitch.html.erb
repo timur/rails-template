@@ -1,6 +1,6 @@
 <div class="w-full">
   <div class="p-6">
-    <div id="uploadzone" data-controller="uploadzone" data-action="click->uploadzone#trigger drop->uploadzone#acceptFiles">
+    <div id="uploadzone" data-controller="uploadzone" data-action="file-uploaded@window->uploadzone#uploaded click->uploadzone#trigger drop->uploadzone#acceptFiles">
       <input type="file" class="hidden" multiple data-uploadzone-target="fileInput" data-action="change->uploadzone#acceptFiles">
       <button
         class="w-full rounded-lg bg-muted border-2 border-dashed border-gray-300 p-8 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
@@ -11,9 +11,13 @@
   </div>
 </div>
 
-<section class="flex flex-wrap after:content-[''] after:flex-grow-999999999" id="grid" data-controller="gallery lightbox">
+<section 
+  class="flex flex-wrap after:content-[''] after:flex-grow-999999999"
+  id="grid"
+  data-action="refresh-lightbox@window->lightbox#refresh"
+  data-controller="gallery lightbox">
   <% @picture_imagekit_urls.each do |urls| %>
-    <%= link_to asset_path(urls.large), "data-src": asset_path(urls.large), class: "block relative m-1", style: "#{gallery_style(urls.width, urls.height)}" do %>  
+    <%= link_to asset_path(urls.large), "data-lightbox-target": "images", "data-src": asset_path(urls.large), class: "block relative m-1", style: "#{gallery_style(urls.width, urls.height)}" do %>  
       <i class="block" style="<%= i_style(urls.width, urls.height)%>"></i>
       <%= image_tag url_for(urls.thumb), class: "img-gallery js-lazy-image", data: { src: url_for(urls.thumb) } %>
     <% end %>

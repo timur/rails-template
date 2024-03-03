@@ -82,7 +82,6 @@ class LazyLoadImages {
   }
 
   _onIntersection (entries) {
-    console.log("onIntersection", entries);
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
         return;

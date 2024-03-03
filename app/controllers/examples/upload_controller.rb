@@ -8,6 +8,10 @@ module Examples
       picture_imagekit_urls
     end
 
+    def picture
+
+    end
+
     def create
       imagekit_service = ImagekitService.new
       picture = Picture.new(picture_params)
@@ -16,6 +20,7 @@ module Examples
         render json: {
           id: picture.id,
           thumb: imagekit_service.thumb_url(picture.image),
+          large: imagekit_service.large_url(picture.image),
         }, status: :created
       end
     end

@@ -18,7 +18,7 @@ class Upload {
 
   process() {
     this.insertUpload();
-    this.insertImage();
+    this.insertSpinner();
 
     this.directUpload.create(async (error, blob) => {
       if (error) {
@@ -33,45 +33,59 @@ class Upload {
 
         if (response.ok) {
           const responseJSON = await response.json;
-          const imageDiv = document.querySelector(`#image_${this.directUpload.id}`);
+          const divLoader = document.querySelector(`#image_${this.directUpload.id}`);
           
-          const iElements = imageDiv.querySelectorAll('i');
+          const iElements = divLoader.querySelectorAll('i');
           iElements.forEach((iElement) => iElement.remove());
           
           preloadImage(responseJSON.thumb).then( (entry) => {
-            this.applyImage(entry.target, responseJSON.thumb, imageDiv);
+            this.applyImage(entry.target, responseJSON.thumb, responseJSON.large, divLoader);
           });
         }
       }
     });
   }
 
-  applyImage (img, src, div) {
+  applyImage (img, thumb, large, divLoader) {
+    const link = document.createElement("a");
+    link.href = large;
+    link.setAttribute('data-src', large);
+    link.setAttribute('data-lightbox-target', "images");
     // Prevent this from being lazy loaded a second time.
     const width = img.width;
     const height = img.height;
     const w = width * 200 / height;
     const fg = width * 200 / height;
 
-    div.style = `width:${w}px;flex-grow:${fg}`;
+    link.style = `width:${w}px;flex-grow:${fg}`;
+    link.className = "block relative m-1";
 
     const i = document.createElement("i");
     const ratio = (height / width) * 100;
     i.style = `padding-bottom:${ratio}%`;
+    i.classList.add('block');
 
-    div.appendChild(i);
+    divLoader.remove();
+    link.appendChild(i);
 
     img.classList.add('img-gallery');
-    img.src = src;
+    img.src = thumb;
     img.classList.add('lazy-load');
-    div.appendChild(img);
+    link.appendChild(img);
+    const grid = document.querySelector("#grid");
+    grid.appendChild(link);
+
+    const uploadFinished = new CustomEvent("file-uploaded", { detail: { id: this.directUpload.id } });
+    window.dispatchEvent(uploadFinished);
+
   }
 
+  /** Insert upload in popup progress bar */
   insertUpload() {
     const fileUpload = document.createElement("div");
 
     fileUpload.id = `upload_${this.directUpload.id}`;
-    fileUpload.className = "p-1 text-sm mb-2";
+    fileUpload.className = "p-1 text-xs mb-2";
     fileUpload.textContent = this.directUpload.file.name;
 
     const progressWrapper = document.createElement("div");
@@ -87,14 +101,16 @@ class Upload {
     uploadList.appendChild(fileUpload);
   }
 
-  insertImage() {
+  insertSpinner() {
     const imageDiv = document.createElement("div");
+    imageDiv.className = "relative";
     imageDiv.id = `image_${this.directUpload.id}`;
     imageDiv.style = "width:133px;flex-grow:133";
+
+    /** Spinner temp */
     const i = document.createElement("i");
     i.style = "padding-bottom:150%";
-
-    i.classList.add('bg-blue-50');
+    i.className = 'block bg-blue-50';
     const innerHTMLContent = `
       <div class="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
@@ -130,8 +146,11 @@ class Upload {
 
 export default class extends Controller {
   static targets = ["fileInput"];
+  totalUploads = 0;
+  totalUploaded = 0;
 
   connect() {
+    this.totalUploads = 0;
     this.element.addEventListener("dragover", this.preventDragDefaults);
     this.element.addEventListener("dragenter", this.preventDragDefaults);
   }
@@ -139,6 +158,7 @@ export default class extends Controller {
   disconnect() {
     this.element.removeEventListener("dragover", this.preventDragDefaults);
     this.element.removeEventListener("dragenter", this.preventDragDefaults);
+    this.totalUploads = 0;
   }
 
   preventDragDefaults(e) {
@@ -150,10 +170,22 @@ export default class extends Controller {
     this.fileInputTarget.click();
   }
 
+  uploaded(e) {
+    this.totalUploaded++;
+
+    if (this.totalUploaded === this.totalUploads) {
+      const trigger = new CustomEvent("refresh-lightbox");
+      window.dispatchEvent(trigger);
+      this.totalUploaded = 0;
+      this.totalUploads = 0;
+    }
+  }
+
   acceptFiles(event) {
     Alpine.store('uploadModal').toggle();
     event.preventDefault();
     const files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    this.totalUploads = files.length;
     [...files].forEach((f) => {
       new Upload(f).process();
     });
