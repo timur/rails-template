@@ -19,6 +19,8 @@ module RailsReactImportmap
 
     config.middleware.use Rack::Deflater
 
+    config.active_record.sqlite3_production_warning=false
+
     #config.active_storage.variant_processor = :vips
 
     # Configuration for the application, engines, and railties goes here.

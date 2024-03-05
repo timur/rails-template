@@ -8,17 +8,20 @@ volumes:
 servers:
   web:
     hosts:
-      - 104.248.37.37 # digitalocean
+      - 116.203.43.230 # hetzner
     options:
       "add-host": host.docker.internal:host-gateway
     labels:
       # gzip
       traefik.http.middlewares.websecure-compress.compress: true
       traefik.http.routers.websecure.middlewares: websecure-compress@docker
-      traefik.http.routers.websecure.rule: Host(`saas.ruby-rails.net`)
+      traefik.http.routers.websecure.rule: Host(`template.ruby-rails.net`)
       traefik.http.routers.websecure.entrypoints: websecure
       traefik.http.routers.websecure.tls.certresolver: letsencrypt      
-
+  clock:
+    hosts:
+      - 116.203.43.230
+    cmd: "bundle exec clock"
 registry:
   username: tiyalcin
   password:
