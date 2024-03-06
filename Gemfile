@@ -86,3 +86,5 @@ gem "rouge", "~> 4.2"
 gem "rack", "~> 2.2"
 
 #gem "ruby-vips", "~> 2.2"
+
+gem "ruby-clock", "~> 2.0"

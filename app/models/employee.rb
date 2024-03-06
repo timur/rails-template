@@ -6,4 +6,8 @@ class Employee < ApplicationRecord
 
     where(arel_table[:name].matches("%#{name}%"))
   }
+
+  def self.scheduled_name
+    Employee.create(name: "Scheduled User at #{Time.now}")
+  end
 end
