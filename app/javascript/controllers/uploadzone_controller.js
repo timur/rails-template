@@ -85,7 +85,7 @@ class Upload {
     const fileUpload = document.createElement("div");
 
     fileUpload.id = `upload_${this.directUpload.id}`;
-    fileUpload.className = "p-1 text-xs mb-2";
+    fileUpload.className = "text-xs mb-3";
     fileUpload.textContent = this.directUpload.file.name;
 
     const progressWrapper = document.createElement("div");
@@ -93,7 +93,7 @@ class Upload {
     fileUpload.appendChild(progressWrapper);
 
     const progressBar = document.createElement("div");
-    progressBar.className = "progress h-full w-full flex-1 bg-green-500";
+    progressBar.className = "progress h-full w-full flex-1 bg-green-500 transition-all ease-out duration-200";
     progressBar.style = "transform: translateX(-100%);";
     progressWrapper.appendChild(progressBar);
 

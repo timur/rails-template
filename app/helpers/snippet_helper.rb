@@ -144,6 +144,24 @@ module SnippetHelper
 <%= button_tag "Button Text", class: button_classes.render(size: :lg, color: :"outline-dark-grey") %>   
     CODE
     c.strip
+  end
+
+  def button_icon_only_snippet
+    c = <<-CODE
+    <%= button_tag nil, class: button_classes.render(size: :"xs-rounded", color: :"outline-light-gray") do %>
+    <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-gray-400" %>
+  <% end %>
+  <%= button_tag nil, class: button_classes.render(size: :"sm-rounded", color: :"outline-light-gray") do %>
+    <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-gray-400" %>
+  <% end %>
+  <%= button_tag nil, class: button_classes.render(size: :"md-rounded", color: :"outline-light-gray") do %>
+    <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-gray-500" %>
+  <% end %>
+  <%= button_tag nil, class: button_classes.render(size: :"lg-rounded", color: :"outline-light-gray") do %>
+    <%= inline_svg_tag "heroicons-plus.svg", class: "h-5 w-5 text-gray-500" %>
+  <% end %>
+    CODE
+    c.strip
   end  
 end
 
