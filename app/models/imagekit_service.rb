@@ -19,6 +19,42 @@ class ImagekitService
     @imagekitio
   end
 
+  def picture_data_slim
+    picture_data = OpenStruct.new
+    picture_data.selected_count = Picture.with_attached_image.where(selected: true).count
+
+    picture_data
+  end
+
+  def picture_data
+    picture_data = OpenStruct.new
+    pictures = Picture.with_attached_image.order(created_at: :desc)
+
+    picture_data.selected_count = pictures.where(selected: true).count
+    picture_data.pictures = []
+
+    pictures.each do |picture|
+      data = OpenStruct.new
+      data.thumb = thumb_url(picture.image)
+      data.large = thumb_url(picture.image)
+      data.width = picture.image.metadata[:width]  
+      data.height = picture.image.metadata[:height] 
+      data.picture = picture
+      picture_data.pictures << data
+    end
+    picture_data
+  end
+
+  def data_for_picture(picture)
+    data = OpenStruct.new
+    data.thumb = thumb_url(picture.image)
+    data.large = thumb_url(picture.image)
+    data.width = picture.image.metadata[:width]  
+    data.height = picture.image.metadata[:height] 
+    data.picture = picture
+    data
+  end
+
   private
 
   def transform_options(blob, height)

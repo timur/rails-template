@@ -116,7 +116,7 @@ class LazyLoadImages {
     // Prevent this from being lazy loaded a second time.
     img.classList.add(LazyLoadImages.HANDLED_CLASS);
     img.src = src;
-    img.classList.add('lazy-load');
+    //img.classList.add('lazy-load');
   }
 }
 

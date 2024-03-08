@@ -1,0 +1,11 @@
+<%= turbo_stream.replace 'flash', partial: 'layouts/flash_message' %>
+<%= turbo_stream.replace 'select_bar', partial: 'examples/upload/select_bar' %>
+
+<%= turbo_stream.replace dom_id(@picture, :form), partial: 'examples/upload/form', locals: { picture: @picture } %>
+
+<%= turbo_stream.append :select_bar do %>
+  <template
+    data-controller="pictures"
+    data-pictures-item-value="<%= dom_id(@picture, :link) %>">
+  </template>
+<% end %>

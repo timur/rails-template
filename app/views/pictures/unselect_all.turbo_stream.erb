@@ -1,0 +1,9 @@
+<%= turbo_stream.replace 'select_bar', partial: 'examples/upload/select_bar' %>
+<% @picture_ids.each do |id| %>
+  <% picture = Picture.find(id) %>
+  <%= turbo_stream.replace dom_id(picture, :form), partial: 'examples/upload/form', locals: { picture: picture} %>
+  <template
+    data-controller="pictures"
+    data-pictures-item-value="<%= dom_id(picture, :link) %>">
+  </template>  
+<% end %>

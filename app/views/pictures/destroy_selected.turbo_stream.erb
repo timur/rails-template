@@ -1,0 +1,4 @@
+<%= turbo_stream.replace 'select_bar', partial: 'examples/upload/select_bar' %>
+<% @picture_ids.each do |id| %>
+  <%= turbo_stream.remove "picture_#{id}" %>
+<% end %>

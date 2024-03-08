@@ -1,0 +1,26 @@
+<%= turbo_frame_tag 'select_bar' do %>
+  <% if @picture_data.selected_count > 0 %>
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:px-6 sm:pb-5 lg:px-8 z-20 lg:ml-60">
+      <div class="pointer-events-auto flex items-center justify-between gap-x-6 bg-gray-900 px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5">
+        <p class="text-sm leading-6 text-white">
+          <a href="#">
+            <strong class="font-semibold"><%= @picture_data.selected_count %></strong> Bilder wurden selektiert
+          </a>
+          <%= button_to destroy_selected_pictures_path, method: :delete, class: "",
+                data: { turbo_frame: '_top', 
+                        turbo_method: :delete,
+                        turbo_confirm: { message: "Wollen Sie die Bilder wirklich löschen?", title: "Löschen" }
+                      } do %>
+            <%= inline_svg_tag "heroicons-trash.svg", class: "h-5 w-5 text-white" %>
+          <% end %>
+        </p>
+        <%= button_to unselect_all_pictures_path, method: :patch, class: "-m-3 flex-none p-3 focus-visible:outline-offset-[-4px]", data: { turbo_frame: '_top' } do %>
+          <span class="sr-only">Dismiss</span>
+          <svg class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+          </svg>        
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

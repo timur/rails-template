@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   # all from here only for examle stuff
-  resources :pictures
+  resources :pictures do
+    collection do
+      patch :unselect_all
+      delete :destroy_selected
+    end
+  end
 
   resources :users
   resources :dashboard, only: [:index]

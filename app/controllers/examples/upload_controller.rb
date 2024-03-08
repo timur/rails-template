@@ -5,7 +5,8 @@ module Examples
     end
 
     def glitch
-      picture_imagekit_urls
+      imagekit_service = ImagekitService.new
+      @picture_data = imagekit_service.picture_data
     end
 
     def picture
@@ -31,37 +32,5 @@ module Examples
       params.require(:picture).permit(:name)
     end
 
-    def picture_imagekit_urls
-      @picture_imagekit_urls = []
-      imagekitio = ImageKitIo::Client.new(
-        Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PRIVATE),
-        Rails.application.credentials.dig(:imagekit, :IMAGEKIT_PUBLIC),
-        #'https://ik.imagekit.io/ojynjrt2uct/wasabi/'
-        'https://ik.imagekit.io/ojynjrt2uct/cloudflare/'
-      )
-      pictures = Picture.with_attached_image.order(created_at: :desc)
-      pictures.each do |picture|
-        urls = OpenStruct.new
-        urls.thumb = imagekitio.url({
-          path: "/#{picture.image.key}",
-          transformation: [{
-            height: "800"
-          }],
-          signed: true,
-          expire_seconds: 300
-        })
-        urls.large = imagekitio.url({
-          path: "/#{picture.image.key}",
-          transformation: [{
-            height: "1200"
-          }],
-          signed: true,
-          expire_seconds: 300
-        })
-        urls.width = picture.image.metadata[:width]  
-        urls.height = picture.image.metadata[:height]  
-        @picture_imagekit_urls << urls
-      end
-    end
   end
 end
