@@ -73,7 +73,9 @@ class PicturesController < ApplicationController
     imagekit_service = ImagekitService.new
     @picture_data = imagekit_service.picture_data
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream {
+        flash.now[:notice] = "Die Bilder wurden gelöscht."
+      }
     end
   end
 
