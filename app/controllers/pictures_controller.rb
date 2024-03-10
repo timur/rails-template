@@ -40,9 +40,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.update(picture_params)
         @picture_data = imagekit_service.picture_data_slim
-        format.turbo_stream {
-          flash.now[:notice] = "Picture was successfully updated."
-        }  
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -78,6 +76,13 @@ class PicturesController < ApplicationController
       format.turbo_stream
     end
   end
+
+  def render_picture
+    imagekit_service = ImagekitService.new
+    @picture = Picture.find(params[:id])
+    data = imagekit_service.data_for_picture_alternate(@picture, params[:width], params[:height])
+    render partial: 'examples/upload/picture', locals: { picture: @picture, data: data }, layout: false
+  end    
 
   private
     # Use callbacks to share common setup or constraints between actions.

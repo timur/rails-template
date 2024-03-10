@@ -17,6 +17,7 @@ export default class extends Lightbox {
   }
 
   refresh() {
+    console.log('refreshed', this.lightGallery);
     this.lightGallery.refresh()
   }
 

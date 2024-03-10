@@ -2,3 +2,9 @@
 <% @picture_ids.each do |id| %>
   <%= turbo_stream.remove "picture_#{id}" %>
 <% end %>
+
+<script type="application/javascript">
+  console.log("refreshing lightbox");
+  const trigger = new CustomEvent("refresh-lightbox");
+  setTimeout(() => window.dispatchEvent(trigger), 1000);
+</script>

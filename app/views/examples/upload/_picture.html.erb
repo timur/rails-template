@@ -1,8 +1,8 @@
-<div id="<%= dom_id(data.picture) %>">
+<div id="<%= dom_id(picture) %>">
   <%= link_to asset_path(data.large), 
         "data-src": asset_path(data.large),
-        id: dom_id(data.picture, :link),
-        class: class_names('lightbox block relative m-1 group', { "border-2 border-indigo-600": data.picture.selected }), 
+        id: dom_id(picture, :link),
+        class: class_names('lightbox block relative m-1 group', { "border-2 border-indigo-600": picture.selected }), 
         style: "#{gallery_style(data.width, data.height)}" do %>
     <div class="absolute inset-0 hidden group-hover:block">
       <%= button_tag nil, class: button_classes("absolute z-10 right-2 top-2").render(size: :"sm-rounded", color: :"outline-light-gray") do %>
@@ -13,5 +13,5 @@
     <%= image_tag url_for(data.thumb), class: "img-gallery js-lazy-image", data: { src: url_for(data.thumb) } %>
   <% end %>
 
-  <%= render "form", picture: data.picture %> 
+  <%= render "/examples/upload/form", picture: picture %> 
 </div>

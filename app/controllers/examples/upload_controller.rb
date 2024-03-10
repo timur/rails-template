@@ -10,7 +10,6 @@ module Examples
     end
 
     def picture
-
     end
 
     def create

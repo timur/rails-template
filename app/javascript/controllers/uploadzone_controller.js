@@ -37,47 +37,31 @@ class Upload {
           
           const iElements = divLoader.querySelectorAll('i');
           iElements.forEach((iElement) => iElement.remove());
-          
+
+          // load the image from imagekit to get the width and height, because the metadata job wont't be done yet
           preloadImage(responseJSON.thumb).then( (entry) => {
-            this.applyImage(entry.target, responseJSON.thumb, responseJSON.large, divLoader);
+            this.applyImage(entry.target, responseJSON.id, divLoader);
           });
         }
       }
     });
   }
 
-  applyImage (img, thumb, large, divLoader) {
-    const link = document.createElement("a");
-    link.href = large;
-    link.setAttribute('data-src', large);
-    link.setAttribute('data-lightbox-target', "images");
-    // Prevent this from being lazy loaded a second time.
-    const width = img.width;
-    const height = img.height;
-    const w = width * 200 / height;
-    const fg = width * 200 / height;
-
-    link.style = `width:${w}px;flex-grow:${fg}`;
-    link.className = "block relative m-1";
-
-    const i = document.createElement("i");
-    const ratio = (height / width) * 100;
-    i.style = `padding-bottom:${ratio}%`;
-    i.classList.add('block');
-
-    divLoader.remove();
-    link.appendChild(i);
-
-    img.classList.add('img-gallery');
-    img.src = thumb;
-    img.classList.add('lazy-load');
-    link.appendChild(img);
+  async applyImage (img, id, divLoader) {
     const grid = document.querySelector("#grid");
-    grid.appendChild(link);
 
-    const uploadFinished = new CustomEvent("file-uploaded", { detail: { id: this.directUpload.id } });
-    window.dispatchEvent(uploadFinished);
+    fetch(`/pictures/${id}/render_picture?width=${img.width}&height=${img.height}`)
+      .then((r) => r.text())
+      .then((html) => {
+        const fragment = document
+          .createRange()
+          .createContextualFragment(html);
 
+        divLoader.remove();
+        grid.appendChild(fragment);
+        const uploadFinished = new CustomEvent("file-uploaded", { detail: { id: this.directUpload.id } });
+        window.dispatchEvent(uploadFinished);    
+    });
   }
 
   /** Insert upload in popup progress bar */
@@ -147,7 +131,6 @@ class Upload {
 export default class extends Controller {
   static targets = ["fileInput"];
   totalUploads = 0;
-  totalUploaded = 0;
 
   connect() {
     this.totalUploads = 0;
@@ -171,14 +154,8 @@ export default class extends Controller {
   }
 
   uploaded(e) {
-    this.totalUploaded++;
-
-    if (this.totalUploaded === this.totalUploads) {
-      const trigger = new CustomEvent("refresh-lightbox");
-      window.dispatchEvent(trigger);
-      this.totalUploaded = 0;
-      this.totalUploads = 0;
-    }
+    const trigger = new CustomEvent("refresh-lightbox");
+    window.dispatchEvent(trigger);
   }
 
   acceptFiles(event) {

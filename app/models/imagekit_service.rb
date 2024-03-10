@@ -55,6 +55,16 @@ class ImagekitService
     data
   end
 
+  def data_for_picture_alternate(picture, width, height)
+    data = OpenStruct.new
+    data.thumb = thumb_url(picture.image)
+    data.large = thumb_url(picture.image)
+    data.width = width
+    data.height = height
+    data.picture = picture
+    data
+  end  
+
   private
 
   def transform_options(blob, height)

@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+BASH_ENV=/rails/.cron.env
+
+* * * * * cd /rails && bin/rails runner 'Employee.scheduled_name' > /proc/1/fd/1 2>&1

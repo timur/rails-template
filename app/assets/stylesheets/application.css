@@ -27,7 +27,7 @@
 
 .lazy-load {
   animation-name: fade-in;
-  animation-duration: .5s;
+  animation-duration: .2s;
 }
 
 @keyframes fade-in {

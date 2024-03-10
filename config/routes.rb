@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       patch :unselect_all
       delete :destroy_selected
     end
+    member do
+      get :render_picture
+    end
   end
 
   resources :users

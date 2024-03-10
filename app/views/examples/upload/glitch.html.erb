@@ -17,7 +17,7 @@
   data-action="refresh-lightbox@window->lightbox#refresh"
   data-controller="gallery lightbox">
   <% @picture_data.pictures.each do |data| %>
-    <%= render 'picture', data: data %>
+    <%= render 'picture', data: data, picture: data.picture %>
   <% end %>
 </section>
 
