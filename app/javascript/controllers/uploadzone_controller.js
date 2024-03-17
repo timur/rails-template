@@ -11,6 +11,18 @@ const preloadImage = url => {
   });
 };
 
+function bytesToSize(bytes) {
+  const units = ['byte', 'kilobyte', 'megabyte', 'gigabyte', 'terabyte'];
+
+  const navigatorLocal = navigator.languages && navigator.languages.length >= 0 ? navigator.languages[0] : 'en-US'
+  const unitIndex      = Math.max(0, Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1));
+
+  return Intl.NumberFormat(navigatorLocal, {
+    style: 'unit',
+    unit : units[unitIndex]
+  }).format(bytes / (1024 ** unitIndex))
+}
+
 class Upload {
   constructor(file) {
     this.directUpload = new DirectUpload(file, "/rails/active_storage/direct_uploads", this);
@@ -68,18 +80,23 @@ class Upload {
   insertUpload() {
     const fileUpload = document.createElement("div");
 
-    fileUpload.id = `upload_${this.directUpload.id}`;
-    fileUpload.className = "text-xs mb-3";
-    fileUpload.textContent = this.directUpload.file.name;
-
-    const progressWrapper = document.createElement("div");
-    progressWrapper.className = "relative h-3 overflow-hidden rounded-full bg-secondary w-[100%]";
-    fileUpload.appendChild(progressWrapper);
-
-    const progressBar = document.createElement("div");
-    progressBar.className = "progress h-full w-full flex-1 bg-green-500 transition-all ease-out duration-200";
-    progressBar.style = "transform: translateX(-100%);";
-    progressWrapper.appendChild(progressBar);
+    fileUpload.innerHTML = `
+    <div id="upload_${this.directUpload.id}" class="my-1 flex max-w-md items-center bg-gray-100 px-2 py-1">
+      <div class="mt-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1" stroke="currentColor" class="h-10 w-10 text-slate-500">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+      </div>
+      <div class="m-2 flex w-full flex-col">
+        <div class="flex grow upload-container">
+          <div class="semibold grow max-w-56 truncate text-sm text-gray-700">${this.directUpload.file.name}</div>
+          <div class="progress-bar-percent ml-auto pl-2 percent text-sm text-gray-700"></div>
+        </div>
+        <div class="progress-bar mt-1 flex items-center rounded-full bg-gray-200">
+          <div class="progress h-3 w-0 rounded-full bg-green-400 transition-all duration-200 ease-out"></div>
+        </div>
+      </div>
+    </div>`;
 
     const uploadList = document.querySelector("#uploads");
     uploadList.appendChild(fileUpload);
@@ -112,19 +129,47 @@ class Upload {
   directUploadWillStoreFileWithXHR(request) {
     request.upload.addEventListener("progress", (event) => this.updateProgress(event));
     request.upload.addEventListener("loadend", event => {
-      const id = `upload_${this.directUpload.id}`;
-      document.getElementById(id).remove();
-      const uploadList = document.querySelector("#uploads");
-      if (uploadList.children.length === 0) {
-        Alpine.store('uploadModal').toggle();
+      const uploadItems = document.querySelector("#upload-items");
+      let count = Number.parseInt(uploadItems.innerHTML);
+      if (count === NaN) {
+        count = 1;
+      } else {
+        count++;
       }
+      uploadItems.innerHTML = count;
+      const id = `upload_${this.directUpload.id}`;
+
+      const svgHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-auto h-6 w-6 text-green-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      `;
+
+      document.querySelector(`#${id} .progress-bar`).remove();
+      let node = document.querySelector(`#${id} .progress-bar-percent`);
+      node.innerHTML = svgHTML;
+
+      setTimeout(() => {
+        const e = document.querySelector(`#${id}`);
+        e.parentElement.remove();
+      }, 2000);
+      const uploadList = document.querySelector("#uploads");
+
+      setTimeout(() => {
+        if (uploadList.children.length === 0) {
+          Alpine.store('uploadModal').toggle();
+        }
+      }, 2100);
     })
   }
 
   updateProgress(event) {
     const percentage = (event.loaded / event.total) * 100;
     const progress = document.querySelector(`#upload_${this.directUpload.id} .progress`);
-    progress.style.transform = `translateX(-${100 - percentage}%)`;
+    progress.style.width = `${0 + percentage}%`;
+
+    const percent = document.querySelector(`#upload_${this.directUpload.id} .percent`);
+    percent.innerHTML = `${Math.round(percentage)}%`;
   }
 }
 
@@ -163,6 +208,8 @@ export default class extends Controller {
     event.preventDefault();
     const files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     this.totalUploads = files.length;
+    const uploadTotal = document.querySelector("#upload-total");
+    uploadTotal.innerHTML = `${this.totalUploads} files uploaded`;
     [...files].forEach((f) => {
       new Upload(f).process();
     });
