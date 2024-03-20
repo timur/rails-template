@@ -8,7 +8,7 @@ class EventAggregatorService
     #   .where("properties LIKE ?", '%"controller":"dashboard","action":"index"%')
     #   .count
 
-      Ahoy::Event.group("strftime('%Y-%m-%d %H', time)").count      
+      Ahoy::Event.group("strftime('%Y-%m-%d', time)").count    
   end
 end
 

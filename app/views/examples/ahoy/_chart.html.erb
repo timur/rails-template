@@ -1,7 +1,7 @@
 <div
     x-data="{
-        values: [45, 55, 75, 25, 45, 110],
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
+        values: <%= @events.values %>,
+        labels: <%= @events.keys %>,
         init() {
             let chart = new ApexCharts(this.$refs.chart, this.options)
  
@@ -24,7 +24,7 @@
                 },
                 xaxis: { categories: this.labels },
                 series: [{
-                    name: 'Sales',
+                    name: 'Visits',
                     data: this.values,
                 }],
             }
