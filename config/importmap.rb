@@ -16,4 +16,5 @@ pin "lightgallery" # @2.7.2
 pin "stimulus-lightbox" # @3.2.0
 pin "lazy-load-images"
 pin "preload-images"
+pin "lg-thumbnail"
 pin_all_from "app/javascript/controllers", under: "controllers"

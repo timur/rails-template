@@ -27,7 +27,6 @@ Rails.application.routes.draw do
     get '/snippets/forms', to: 'snippets#forms'
     post '/snippets/forms', to: 'snippets#create'
     post '/snippets/fields', to: 'snippets#fields'
-    get '/upload', to: 'upload#new'
     get '/picture', to: 'upload#picture'
     get '/glitch', to: 'upload#glitch'
     post '/upload/picture', to: 'upload#create'
