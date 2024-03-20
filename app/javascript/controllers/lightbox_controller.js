@@ -1,31 +1,31 @@
-import Lightbox from 'stimulus-lightbox'
-import lgThumbnail from "https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.8.0-beta.1/plugins/thumbnail/lg-thumbnail.es5.min.js";
+import Lightbox from "stimulus-lightbox";
+import lgThumbnail from "lg-thumbnail";
 
 export default class extends Lightbox {
   connect() {
-    super.connect()
+    super.connect();
 
     // Get the lightgallery instance
-    this.lightGallery
+    this.lightGallery;
 
     // Default options for every lightboxes.
-    this.defaultOptions
+    this.defaultOptions;
   }
 
   disconnect() {
-    super.disconnect()
+    super.disconnect();
   }
 
   refresh() {
-    console.log('refreshed', this.lightGallery);
-    this.lightGallery.refresh()
+    console.log("refreshed", this.lightGallery);
+    this.lightGallery.refresh();
   }
 
   // You can set default options in this getter.
   get defaultOptions() {
     return {
       plugins: [lgThumbnail],
-      selector: '.lightbox'
-    }
+      selector: ".lightbox",
+    };
   }
 }
