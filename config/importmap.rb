@@ -17,3 +17,6 @@ pin "stimulus-lightbox" # @3.2.0
 pin "lazy-load-images"
 pin "preload-images"
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin "ahoy" # @1.0.1
+pin "os" # @2.0.1
+pin "apexcharts" # @3.48.0

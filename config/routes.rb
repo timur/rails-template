@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/picture', to: 'upload#picture'
     get '/glitch', to: 'upload#glitch'
     post '/upload/picture', to: 'upload#create'
+    get '/ahoy', to: 'ahoy#index'
   end
 
   # importmap stuff

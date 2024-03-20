@@ -1,4 +1,8 @@
-<%= nav_link(path: dashboard_index_path, text: "Dashboard", svg: "heroicons-home.svg") %>
+<%= nav_link_with_submenu(name: "dashboard", text: "Dashboard", svg: "heroicons-home.svg", submenu: [
+    SubmenuEntry.new("Dashboard", dashboard_index_path),
+    SubmenuEntry.new("Ahoy", examples_ahoy_path)
+  ])
+%>
 <%= nav_link_with_submenu(name: "pictures", text: "Bilder", svg: "heroicons-photo.svg", submenu: [
     SubmenuEntry.new("Bilder Masonry 1", pictures_path),
     SubmenuEntry.new("Bilder Upload Gridzy", examples_upload_path),

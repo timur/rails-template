@@ -1,0 +1,1 @@
+Groupdate.register_adapter "litedb", Groupdate::Adapters::SQLiteAdapter

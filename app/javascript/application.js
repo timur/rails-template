@@ -7,6 +7,7 @@ import mask from "@alpinejs/mask";
 import LocalTime from "local-time";
 import LazyLoadImages from 'lazy-load-images';
 import preloadImage from 'preload-images';
+import ApexCharts from 'apexcharts';
 import "controllers"
 
 Alpine.plugin(ui);
@@ -15,6 +16,7 @@ Alpine.plugin(mask);
 
 ActiveStorage.start();
 window.Alpine = Alpine;
+window.ApexCharts = ApexCharts;
 Alpine.start();
 
 LocalTime.start();

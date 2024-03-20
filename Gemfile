@@ -85,6 +85,7 @@ gem "class_variants", "~> 0.0.7"
 gem "rouge", "~> 4.2"
 gem "rack", "~> 2.2"
 
-#gem "ruby-vips", "~> 2.2"
-
 gem "ruby-clock", "~> 2.0"
+
+gem "ahoy_matey", "~> 5.0"
+gem "groupdate", "~> 6.4"
