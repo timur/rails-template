@@ -7,4 +7,15 @@ class Ahoy::Event < ApplicationRecord
   belongs_to :user, optional: true
 
   serialize :properties, coder: JSON
+  after_create_commit :broadcast_event
+
+  private
+
+  def broadcast_event
+    events = EventAggregatorService.new.aggregate_events
+    broadcast_replace_to "ahoy_events",
+                          target: "events_chart",
+                          partial: "examples/ahoy/chart",
+                          locals: { events: events }
+  end
 end

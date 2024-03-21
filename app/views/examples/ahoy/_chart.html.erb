@@ -1,36 +1,38 @@
-<div
-  x-data="{
-    values: <%= @events.values %>,
-    labels: <%= @events.keys %>,
-    init() {
-      let chart = new ApexCharts(this.$refs.chart, this.options)
+<%= turbo_frame_tag("events_chart") do %>
+  <div
+    x-data="{
+      values: <%= events.values %>,
+      labels: <%= events.keys %>,
+      init() {
+        let chart = new ApexCharts(this.$refs.chart, this.options)
 
-      chart.render()
+        chart.render()
 
-      this.$watch('values', () => {
-          chart.updateOptions(this.options)
-      })
-    },
-    get options() {
-      return {
-        chart: { type: 'line', toolbar: false },
-        tooltip: {
-          marker: false,
-          y: {
-            formatter(number) {
-              return '$'+number
+        this.$watch('values', () => {
+            chart.updateOptions(this.options)
+        })
+      },
+      get options() {
+        return {
+          chart: { type: 'line', toolbar: false },
+          tooltip: {
+            marker: false,
+            y: {
+              formatter(number) {
+                return number
+              }
             }
-          }
-        },
-        xaxis: { categories: this.labels },
-        series: [{
-          name: 'Visits',
-          data: this.values,
-        }],
+          },
+          xaxis: { categories: this.labels },
+          series: [{
+            name: 'Visits',
+            data: this.values,
+          }],
+        }
       }
-    }
-  }"
-  class="w-full"
->
-    <div x-ref="chart" class="rounded-lg bg-white p-8"></div>
-</div>
+    }"
+    class="w-full"
+  >
+      <div x-ref="chart" class="rounded-lg bg-white p-8"></div>
+  </div>
+<% end %>
