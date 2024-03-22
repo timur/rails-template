@@ -1,0 +1,76 @@
+<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+<div class="px-4 sm:px-6 lg:px-8" x-data>
+  <h1 class="text-xl font-semibold text-gray-900 mb-8">Mitarbeiter</h1>
+  <div class="max-w-sm">
+    <%= form_with url: examples_employees_path, method: :get, html: { "x-ref": "searchForm" } do |f| %>
+      <%= hidden_field_tag 'count', nil, "x-ref": "searchCount" %>
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+          <%= inline_svg_tag "heroicons-magnifying-glass.svg", class: "h-4 w-4" %>
+        </div>
+        <%= f.search_field :query, value: params[:query],
+          placeholder: "Suchen",
+          class: "focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md",
+          "@input.debounce.300ms": "$refs.searchForm.requestSubmit()" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-6 flex flex-col">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+          <div class="table min-w-full">
+            <div class="table-header-group bg-gray-50">
+              <div class="table-row">
+                <div class="table-cell border-t border-gray-200 py-3 pl-4 pr-3 text-left w-64 text-sm font-semibold text-gray-900 sm:pl-6">
+                  <%= sort_link_to "Name", :name, class: "group inline-flex" %>
+                </div>
+                <div class="table-cell border-t border-gray-200 px-3 py-3 text-left w-48 text-sm font-semibold text-gray-900">
+                  <%= sort_link_to "Position", :position, class: "group inline-flex" %>
+                </div>
+                <div class="table-cell border-t border-gray-200 px-3 py-3 text-left w-48 text-sm font-semibold text-gray-900">
+                  <%= sort_link_to "Office", :office, class: "group inline-flex" %>
+                </div>
+                <div class="table-cell border-t border-gray-200 px-3 py-3 text-left w-24 text-sm font-semibold text-gray-900">
+                  <%= sort_link_to "Age", :age, class: "group inline-flex" %>
+                </div>
+                <div class="table-cell border-t border-gray-200 px-3 py-3 text-left w-24 text-sm font-semibold text-gray-900">
+                  <%= sort_link_to "Start date", :start_date, class: "group inline-flex" %>
+                </div>                 
+                <div class="table-cell border-t border-gray-200 relative py-3 w-24 pl-3 pr-4 sm:pr-6">
+                  <span class="sr-only">Edit</span>
+                </div>
+              </div>
+            </div>
+            <div class="table-row-group bg-white">
+              <%= render @employees %>
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sm:flex flex-row justify-end items-center mt-4">
+    <label class="mr-2">Zeilen pro Seite</label>
+    <%= form_with url: "", method: :get do |f| %>
+      <%= f.select :count,
+        options_for_select(
+          PagesHelper::PAGINATE_OPTIONS,
+          selected: params[:count]),
+          {}, 
+          { 
+            "x-ref": "pageCount",
+            "@input": "$refs.searchCount.value = $refs.pageCount.value; $refs.searchForm.requestSubmit()",
+            class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+          }
+          %>
+    <% end %>
+    <div class="ml-4 flex flex-row">
+      <%== pagy_info(@pagy, item_i18n_key: 'activerecord.models.employee') %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+    </div>
+  </div>
+</div>

@@ -68,7 +68,7 @@
             %>
       <% end %>
       <div class="ml-4 flex flex-row">
-        <%== pagy_info(@pagy, i18n_key: 'activerecord.models.employee') %>
+        <%== pagy_info(@pagy, item_i18n_key: 'activerecord.models.employee') %>
         <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
       </div>
     </div>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     post '/create_datepicker', to: 'calendar#datepicker_create'
     resources :employees
     resources :people
+    get '/morph', to: 'morph#index'
     get '/snippets', to: 'snippets#index'
     get '/snippets/buttons', to: 'snippets#buttons'
     get '/snippets/forms', to: 'snippets#forms'
