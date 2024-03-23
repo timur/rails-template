@@ -49,10 +49,15 @@ module.exports = {
             opacity: '1'
           }
         },
+        skeletonLoading: {
+          '0%': { backgroundColor: 'hsl(200, 20%, 70%)' },
+          '100%': { backgroundColor: 'hsl(200, 20%, 95%)' },
+        },        
       },
       animation: {
         slidein: "slidein 1s ease var(--slidein-delay, 0) forwards",
         zoomin: "zoomin .3s ease-in forwards",
+        skeletonLoading: "skeletonLoading 1s linear infinite alternate",
         scaleincenter: "scaleincenter .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards"
       },
       fontFamily: {

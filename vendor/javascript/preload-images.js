@@ -9,6 +9,4 @@ const preloadImage = url => {
 };
 
 
-export default {
-  preloadImage
-};
+export default preloadImage;

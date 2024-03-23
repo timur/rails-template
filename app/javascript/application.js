@@ -7,6 +7,7 @@ import mask from "@alpinejs/mask";
 import LocalTime from "local-time";
 import ApexCharts from 'apexcharts';
 import "lazy-load-images";
+import "load-images";
 import "preload-images";
 import "lg-thumbnail";
 import "controllers";

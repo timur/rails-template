@@ -15,6 +15,7 @@ pin "@rails/request.js", to: "@rails--request.js" # @0.0.9
 pin "lightgallery" # @2.7.2
 pin "stimulus-lightbox" # @3.2.0
 pin "lazy-load-images"
+pin "load-images"
 pin "preload-images"
 pin "ahoy" # @1.0.1
 pin "os" # @2.0.1

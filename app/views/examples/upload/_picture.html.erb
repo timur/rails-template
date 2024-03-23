@@ -10,6 +10,6 @@
     <% end %>
     <%= render "/examples/upload/form", picture: picture %>       
   </div>
-  <i class="block" style="<%= i_style(data.width, data.height)%>"></i>
-  <%= image_tag url_for(data.thumb), class: "img-gallery js-lazy-image", data: { src: url_for(data.thumb) } %>
+  <i class="block animate-skeletonLoading" style="<%= i_style(data.width, data.height)%>"></i>
+  <%= image_tag url_for(data.thumb), class: "img-gallery js-lazy-image hidden", data: { src: url_for(data.thumb) } %>
 <% end %>
