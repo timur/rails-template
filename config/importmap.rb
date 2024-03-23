@@ -4,11 +4,11 @@ pin "application"
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
-pin "alpinejs" # @3.13.5
+pin "alpinejs" # @3.13.7
 pin "stimulus-use" # @0.52.2
-pin "@alpinejs/ui", to: "@alpinejs--ui.js" # @3.13.5
-pin "@alpinejs/focus", to: "@alpinejs--focus.js" # @3.13.5
-pin "@alpinejs/mask", to: "@alpinejs--mask.js" # @3.13.5
+pin "@alpinejs/ui", to: "@alpinejs--ui.js" # @3.13.7
+pin "@alpinejs/focus", to: "@alpinejs--focus.js" # @3.13.7
+pin "@alpinejs/mask", to: "@alpinejs--mask.js" # @3.13.7
 pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
 pin "local-time" # @3.0.2
 pin "@rails/request.js", to: "@rails--request.js" # @0.0.9
