@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     post '/snippets/fields', to: 'snippets#fields'
     get '/picture', to: 'upload#picture'
     get '/glitch', to: 'upload#glitch'
+    get '/reorder', to: 'upload#reorder'
     post '/upload/picture', to: 'upload#create'
     get '/ahoy', to: 'ahoy#index'
   end

@@ -1,0 +1,5 @@
+<div class="grid grid-cols-8 gap-4" data-controller="sortable">
+  <% @pictures.each do |picture| %>
+    <%= image_tag @service.thumb_url(picture.image), class: "item object-cover object-center w-36 h-36 rounded-lg" %>
+  <% end %>
+</div>

@@ -35,6 +35,7 @@ class Upload {
     this.directUpload.create(async (error, blob) => {
       if (error) {
         // Handle the error
+        console.error(error);
       } else {
         const pictureData = { picture: { filename: blob.filename }, signed_blob_id: blob.signed_id };
         const response = await post("/examples/upload/picture", {

@@ -11,6 +11,7 @@ import "load-images";
 import "preload-images";
 import "lg-thumbnail";
 import "controllers";
+import "@shopify/draggable";
 
 Alpine.plugin(ui);
 Alpine.plugin(focus);

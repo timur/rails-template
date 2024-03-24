@@ -21,4 +21,5 @@ pin "ahoy" # @1.0.1
 pin "os" # @2.0.1
 pin "apexcharts" # @3.48.0
 pin "lg-thumbnail"
+pin "@shopify/draggable", to: "@shopify--draggable.js" # @1.1.3
 pin_all_from "app/javascript/controllers", under: "controllers"

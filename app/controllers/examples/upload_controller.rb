@@ -4,6 +4,11 @@ module Examples
       picture_imagekit_urls
     end
 
+    def reorder
+      @service = ImagekitService.new
+      @pictures = Picture.rank(:picture_order).all
+    end
+
     def glitch
       imagekit_service = ImagekitService.new
       @picture_data = imagekit_service.picture_data

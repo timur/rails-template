@@ -105,11 +105,12 @@ class LazyLoadImages {
     Array.from(images).forEach(image => this._preloadImage(image));
   }
 
-  _applyImage (img, src) {
+  _applyImage (img) {
     // Prevent this from being lazy loaded a second time.
     img.classList.add(LazyLoadImages.HANDLED_CLASS);
-    img.src = src;
+    //img.src = src;
     img.classList.add('lazy-load');
+    img.classList.remove('hidden');
   }
 }
 

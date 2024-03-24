@@ -89,3 +89,5 @@ gem "ruby-clock", "~> 2.0"
 
 gem "ahoy_matey", "~> 5.0"
 gem "groupdate", "~> 6.4"
+
+gem "ranked-model", "~> 0.4.9"
