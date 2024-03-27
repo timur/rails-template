@@ -44,6 +44,9 @@ Rails.application.routes.draw do
 
   # This are the standard routes for the calendar pagination
   get '/calendar/month_picker', to: 'calendar#month_picker'
+  get '/calendar', to: 'calendar#index'
+  get '/calendar/month', to: 'calendar#month'
+  get '/calendar/week', to: 'calendar#week'
   get '/calendar/year', to: 'calendar#year'
   get '/calendar/datepicker', to: 'calendar#datepicker'
   # This is an example for a custom controller

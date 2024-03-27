@@ -3,6 +3,21 @@ require 'test_helper'
 class CalendarHelperTest < ActionView::TestCase
   include CalendarHelper
 
+  setup do
+    @events = []
+    @events << OpenStruct.new(title: "Der Name meines Events", date_time: DateTime.parse("10.01.2024 17:22") , color: "bg-green-500")
+    @events << OpenStruct.new(title: "Noch ein tolles Event", date_time: DateTime.parse("17.01.2024 08:30"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Ein anderes Event in der Vergangenheit", date_time: DateTime.parse("30.01.2024 15:00"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Der 24 Event", date_time: DateTime.parse("24.01.2024 12:00"), color: "bg-blue-500")
+    @events << OpenStruct.new(title: "Der 24 Event", date_time: DateTime.parse("24.01.2024 15:00"), color: "bg-blue-500")
+  end
+
+  test '#compact_month_calendar tests if the correct partial is rendered' do
+    date = Date.today
+    render partial: 'calendar/compact_month_calendar', locals: { date:, navigation: false, events: []}
+    assert_select 'div.font-semibold', text: "#{I18n.l(date, format: "%B")} #{date.year}"
+  end
+
   test '#first_day_of_month_range tests if the 15. of a month is the first date of a month range' do
     month_date = Date.today
     day = Date.new(month_date.year, month_date.month, 15)
@@ -65,14 +80,71 @@ class CalendarHelperTest < ActionView::TestCase
     assert last_day_of_month_range(range, day)
   end
 
-  test '#compact_month_calendar tests if the correct partial is rendered with custom options' do
-    month_date = Date.new(2022, 6, 1)
-    render partial: 'calendar/compact_month_calendar', locals: { month_date:, navigation: false, events: [], id: 10, param: :date, route: :root_path}
-    assert_select 'div.font-semibold', text: "#{I18n.l(date, format: "%B")} #{date.year}"
-    assert_select 'div.navigation', count: 1
+  test '#events_for_day tests if multipe events are returned' do
+    day = Date.new(2024, 1, 24)
+    result = events_for_day(day, @events)
+    assert_equal 2, result.count
   end
 
-  test '#compact_month_calendar_default_options' do
-    rendered = compact_month_calendar
-  end  
+  test '#events_for_day tests if one event is returned' do
+    day = Date.new(2024, 1, 10)
+    result = events_for_day(day, @events)
+    assert_equal 1, result.count
+  end
+
+  test '#find_event tests if one event is returned' do
+    day = Date.parse "10.01.2024"
+    result = find_event(day, @events)
+    assert_equal "Der Name meines Events", result.title
+  end
+
+  test '#wday_for_date Wednesday' do
+    day = Date.parse "10.01.2024"
+    assert_equal 3, wday_for_date(day)
+  end
+
+  test '#wday_for_date Sunday' do
+    day = Date.parse "14.01.2024"
+    assert_equal 7, wday_for_date(day)
+  end
+
+  test '#duration for event' do
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 18:00")
+    assert_equal 1, duration(start_time, end_time)
+
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 17:30")
+    assert_equal 0.5, duration(start_time, end_time)    
+
+    start_time = DateTime.parse("10.01.2024 00:00")
+    end_time = DateTime.parse("10.01.2024 00:30")
+    assert_equal 0.5, duration(start_time, end_time)
+
+    start_time = DateTime.parse("10.01.2024 03:00")
+    end_time = DateTime.parse("10.01.2024 15:30")
+    assert_equal 12.5, duration(start_time, end_time)
+  end
+
+  test '#week_event_classes' do
+    start_time = DateTime.parse("10.01.2024 17:00")
+    end_time = DateTime.parse("10.01.2024 18:00")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-3", "grid-row: 206 / span 12"], result
+
+    start_time = DateTime.parse("14.01.2024 00:00")
+    end_time = DateTime.parse("14.01.2024 00:30")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-7", "grid-row: 2 / span 6"], result    
+
+    start_time = DateTime.parse("14.01.2024 12:00")
+    end_time = DateTime.parse("14.01.2024 15:30")
+    result = week_event_classes(start_time, end_time)
+    assert_equal ["relative mt-px flex sm:col-start-7", "grid-row: 146 / span 42"], result        
+  end
+
+  test '#beginning_week_number' do
+    result = beginning_week_number(DateTime.parse("10.01.2024 17:00"))
+    assert_equal 206, result
+  end
 end
