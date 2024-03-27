@@ -11,7 +11,7 @@ module CalendarHelper
   # @option options [Date] :marked_date The date to be marked (default: nil).
   # @option options [String] :route The route to be used (default: "calendar_month_picker_path").
   def compact_month_calendar(options = {})
-    date = options[:date] || Date.today
+    month_date = options[:month_date] || Date.today
     navigation = options.key?(:navigation) ? options[:navigation] : true
     param = options[:param] || :month_date
     id = options[:id] || SecureRandom.random_number(10000000)
