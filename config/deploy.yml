@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: react-importmap
+service: rails-template
 
 # Name of the container image.
-image: tiyalcin/react-importmap
+image: tiyalcin/rails-template
 volumes:
   - "data:/data"
 servers:
