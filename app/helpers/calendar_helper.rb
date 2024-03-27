@@ -113,6 +113,12 @@ module CalendarHelper
     )
   end
 
+  def calendar_cell_classes_borderless(date, day)
+    TailwindClasses.calendar_cell_borderless.render(
+      in_current_month: is_in_month?(date, day)
+    )
+  end  
+
   def calendar_cell_month_classes(date, day)
     TailwindClasses.calendar_cell_month.render(
       in_current_month: is_in_month?(date, day)
@@ -146,11 +152,11 @@ module CalendarHelper
   end
 
   def find_event(day, events)
-    events.find { |e| e.date_time.to_date == day }
+    events.find { |e| e.date_time&.to_date == day }
   end
 
   def events_for_day(day, events)
-    events.select { |e| e.date_time.to_date == day }
+    events.select { |e| e.date_time&.to_date == day }
   end
 
   def calendar_cell_inside_classes(date, day, events = [])
