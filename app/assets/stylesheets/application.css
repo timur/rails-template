@@ -26,9 +26,16 @@
 }
 
 .lazy-load {
-  
 }
 
 @keyframes fade-in {
   from { opacity: 0 }
+}
+
+.draggable-source--is-dragging {
+  background-color: SlateGray;
+  position:relative;
+  width: 100%;
+  opacity: .5;
+  z-index: 2;
 }

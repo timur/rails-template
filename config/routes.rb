@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/picture', to: 'upload#picture'
     get '/glitch', to: 'upload#glitch'
     get '/reorder', to: 'upload#reorder'
+    patch '/patch_reorder', to: 'upload#patch_reorder'
     post '/upload/picture', to: 'upload#create'
     get '/ahoy', to: 'ahoy#index'
   end

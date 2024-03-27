@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  after_action :track_action
+  #after_action :track_action
 
   around_action :set_time_zone
   include Pagy::Backend  

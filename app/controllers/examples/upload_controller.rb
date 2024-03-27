@@ -9,6 +9,11 @@ module Examples
       @pictures = Picture.rank(:picture_order).all
     end
 
+    def patch_reorder
+      @picture = Picture.find(params[:id])
+      @picture.update(picture_order_position: params[:picture_order])
+    end
+
     def glitch
       imagekit_service = ImagekitService.new
       @picture_data = imagekit_service.picture_data
