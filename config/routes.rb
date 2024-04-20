@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get '/morph', to: 'morph#index'
     get '/snippets', to: 'snippets#index'
     get '/snippets/buttons', to: 'snippets#buttons'
+    get '/snippets/gallery', to: 'snippets#gallery'
     get '/snippets/forms', to: 'snippets#forms'
     post '/snippets/forms', to: 'snippets#create'
     post '/snippets/fields', to: 'snippets#fields'

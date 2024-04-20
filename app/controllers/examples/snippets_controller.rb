@@ -7,6 +7,15 @@ class Examples::SnippetsController < ApplicationController
   def buttons
   end
 
+  def gallery
+    @image_ids = [
+      "1500462918059-b1a0cb512f1d",
+      "1531581147762-5961e6e2e6b1",
+      "1626204327506-0d3ee11d7752",
+      "1549068106-b024baf5062d",
+    ];
+  end
+
   def forms
     @form = Examples::UserForm.new
     @criteria = 
