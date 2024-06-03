@@ -1,17 +1,3 @@
-<div id="flash-message-example" class="border rounded p-4">
-  <h2 class="text-lg font-bold">Flash Message Example</h2>
-  <div class="flex flex-col space-y-5">
-    <%=
-      render partial: 'flash_message/form',
-              locals: { form_type: :html }
-    %>
-    <%=
-      render partial: 'flash_message/form',
-              locals: { form_type: :turbo_stream }
-    %>
-  </div>
-</div>
-
 <p style="color: green"><%= notice %></p>
 
 <p>Signed as <%= Current.user.email %></p>

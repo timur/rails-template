@@ -91,3 +91,7 @@ gem "ahoy_matey", "~> 5.0"
 gem "groupdate", "~> 6.4"
 
 gem "ranked-model", "~> 0.4.9"
+
+gem "authentication-zero", "~> 3.0"
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"

@@ -1,13 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  firstname: MyString
-  lastname: MyString
-  birthdate: 2023-10-09
-  income: 9.99
-
-two:
-  firstname: MyString
-  lastname: MyString
-  birthdate: 2023-10-09
-  income: 9.99
+lazaro_nixon:
+  first_name: Lazaro
+  last_name: Nixon
+  email: lazaronixon@hotmail.com
+  password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
+  verified: true
