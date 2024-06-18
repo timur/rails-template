@@ -42,7 +42,6 @@
   </div>
 
   <fieldset class="mt-6">
-    <legend class="sr-only">Notifications</legend>
     <div class="space-y-5">
       <% Examples::UserForm::TAGS.each do |key| %>
         <div class="relative flex items-start">
@@ -56,6 +55,15 @@
       <% end %>
     </div>
   </fieldset>
+
+  <fieldset class="mt-6">
+    <legend class="text-sm font-semibold leading-6 text-gray-900">Notifications</legend>
+    <p class="mt-1 text-sm leading-6 text-gray-600">How do you prefer to receive notifications?</p>
+    <div class="mt-6 space-y-6">
+      <%= f.custom_radio_button :radio, "Das ist das Radio Label Value 1", {}, "Value 1" %>
+      <%= f.custom_radio_button :radio, "Das ist das Radio Label Value 2", {}, "Value 2" %>
+    </div>
+  </fieldset>  
 
   <div class="mt-6">
     <fieldset>

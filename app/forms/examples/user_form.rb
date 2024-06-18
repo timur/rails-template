@@ -7,6 +7,7 @@ class Examples::UserForm < ApplicationForm
   attribute :check_box_test, :string
   attribute :check_box_test2, :string
   attribute :check_box_test3, :string
+  attribute :radio, :string
   attribute :accept, :boolean
   attribute :accept2, :boolean, default: false
   attribute :tags, CustomArrayType.new
