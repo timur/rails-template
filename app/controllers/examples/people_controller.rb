@@ -51,11 +51,11 @@ class Examples::PeopleController < ApplicationController
     @person.destroy
     respond_to do |format|
       format.html do
-        flash[:notice] = "Person #{@person.name} was successfully deleted."
+        flash[:info] = { title: "Person gelöscht", message: "Person #{@person.name} was successfully deleted." }
         redirect_to examples_people_url, status: :see_other
       end
       format.turbo_stream {
-        flash.now[:notice] = "Person #{@person.name} was successfully deleted."
+        flash.now[:info] = { title: "Person gelöscht", message: "Die Person #{@person.name} wurde erfolgreich gelöscht." }
       }
     end
   end
