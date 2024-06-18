@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.2
+ARG RUBY_VERSION=3.3.2
 FROM ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
@@ -11,7 +11,6 @@ WORKDIR /rails
 ENV BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development:test" \
-    LITESTACK_DATA_PATH="/data" \
     RAILS_ENV="production"
 
 # Update gems and bundler
@@ -24,7 +23,7 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential pkg-config
+    apt-get install --no-install-recommends -y build-essential git pkg-config
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -58,11 +57,12 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     mkdir /data && \
-    chown -R 1000:1000 db log tmp /data
+    chown -R 1000:1000 db log storage tmp /data
 USER 1000:1000
 
 # Deployment options
-ENV DATABASE_URL="sqlite3:///data/production.sqlite3"
+ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
+    RUBY_YJIT_ENABLE="1"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
