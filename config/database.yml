@@ -4,31 +4,49 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
-# `Litesupport.root.join("data.sqlite3")` stores
-# application data in the path `./db/#{Rails.env}/data.sqlite3`
-#
-# idle_timeout should be set to zero, to avoid recycling sqlite connections
-# and losing the page cache
-# 
+# DEFAULT CONNECTION CONFIGURATION
 default: &default
-  adapter: litedb
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  idle_timeout: 0
-  database: <%= Litesupport.root.join("data.sqlite3") %>
+  timeout: 5000
 
-development:
+# DATABASE CONFIGURATIONS
+primary: &primary
   <<: *default
+  database: data/<%= Rails.env %>.sqlite3
+
+queue: &queue
+  <<: *default
+  migrations_paths: db/queue_migrate
+  database: data/<%= Rails.env %>-queue.sqlite3
+
+cache: &cache
+  <<: *default
+  migrations_paths: db/cache_migrate
+  database: data/<%= Rails.env %>-cache.sqlite3
+
+
+# ENVIRONMENT CONFIGURATIONS
+development:
+  primary: *primary
+  queue: *queue
+  cache: *cache
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  primary: *primary
+  queue: *queue
+  cache: *cache
 
-# Warning: Make sure your production database path is on a persistent
-# volume, otherwise your application data could be deleted between deploys.
+# SQLite3 write its data on the local filesystem, as such it requires
+# persistent disks. If you are deploying to a managed service, you should
+# make sure it provides disk persistence, as many don't.
 #
-# You may also set the Litesupport.root in production via the
-# `LITESTACK_DATA_PATH` environment variable.
+# Similarly, if you deploy your application as a Docker container, you must
+# ensure the database is located in a persisted volume.
 production:
-  <<: *default
+  primary: *primary
+  queue: *queue
+  cache: *cache

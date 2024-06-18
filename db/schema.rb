@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_23_105143) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_05_151602) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -81,14 +81,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_23_105143) do
     t.index ["visitor_token", "started_at"], name: "index_ahoy_visits_on_visitor_token_and_started_at"
   end
 
-  create_table "custom_fields", force: :cascade do |t|
-    t.string "name"
-    t.string "field_type"
-    t.string "value"
-    t.integer "registration_id"
-    t.index ["registration_id"], name: "index_custom_fields_on_registration_id"
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "position"
@@ -99,6 +91,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_23_105143) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_employees_on_name"
   end
+
+# Could not dump table "fts_people" because of following StandardError
+#   Unknown type '' for column 'name'
+
+
+# Could not dump table "fts_people_config" because of following StandardError
+#   Unknown type '' for column 'k'
+
+
+# Could not dump table "fts_people_content" because of following StandardError
+#   Unknown type '' for column 'c0'
+
+
+  create_table "fts_people_data", force: :cascade do |t|
+    t.binary "block"
+  end
+
+  create_table "fts_people_docsize", force: :cascade do |t|
+    t.binary "sz"
+  end
+
+# Could not dump table "fts_people_idx" because of following StandardError
+#   Unknown type '' for column 'segid'
+
 
   create_table "people", force: :cascade do |t|
     t.string "name"
@@ -120,12 +136,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_23_105143) do
     t.integer "picture_order"
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.string "name"
-    t.date "registration_date"
-    t.json "custom_fields_values", default: {}
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
@@ -137,5 +147,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_23_105143) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "custom_fields", "registrations"
 end

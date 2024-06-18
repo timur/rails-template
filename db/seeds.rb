@@ -2,6 +2,8 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
+Employee.destroy_all
+Person.destroy_all
 10_000.times do |i|
   Employee.create(
     name: Faker::Name.name,
@@ -22,3 +24,5 @@ end
     department: ["Accounting", "Business Development", "Engineering", "Human Resources", "Legal", "Marketing", "Product Management", "Research and Development", "Sales", "Services", "Support"].sample,
   )
 end
+
+Person.rebuild_search_index
