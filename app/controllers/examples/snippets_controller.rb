@@ -7,6 +7,9 @@ class Examples::SnippetsController < ApplicationController
   def buttons
   end
 
+  def flashes
+  end
+
   def gallery
     @image_ids = [
       "1500462918059-b1a0cb512f1d",
