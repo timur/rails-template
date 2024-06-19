@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 51f81267f8e2769d847cc563967feffefe6e2beb
+  revision: 869c7bf094c0478b101d4c0e55766501ca31a325
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -97,10 +97,10 @@ GIT
 
 GIT
   remote: https://github.com/rails/solid_queue.git
-  revision: afb5fe23b283c60cfe70b85558726ba0187f5609
+  revision: 6d10767f6f6f1678a026961221c2c72879dc7402
   branch: main
   specs:
-    solid_queue (0.3.2)
+    solid_queue (0.3.3)
       activejob (>= 7.1)
       activerecord (>= 7.1)
       concurrent-ruby (>= 1.3.1)
@@ -120,17 +120,17 @@ GEM
       device_detector (>= 1)
       safely_block (>= 0.4)
     aws-eventstream (1.3.0)
-    aws-partitions (1.939.0)
-    aws-sdk-core (3.196.1)
+    aws-partitions (1.944.0)
+    aws-sdk-core (3.197.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.8)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.82.0)
-      aws-sdk-core (~> 3, >= 3.193.0)
+    aws-sdk-kms (1.85.0)
+      aws-sdk-core (~> 3, >= 3.197.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.151.0)
-      aws-sdk-core (~> 3, >= 3.194.0)
+    aws-sdk-s3 (1.152.3)
+      aws-sdk-core (~> 3, >= 3.197.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.8)
     aws-sigv4 (1.8.0)
@@ -154,9 +154,9 @@ GEM
     concurrent-ruby (1.3.3)
     connection_pool (2.4.1)
     crass (1.0.6)
-    cuprite (0.15)
+    cuprite (0.15.1)
       capybara (~> 3.0)
-      ferrum (~> 0.14.0)
+      ferrum (~> 0.15.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -171,16 +171,16 @@ GEM
       railties (>= 6.1)
     drb (2.2.1)
     error_highlight (0.6.0)
-    erubi (1.12.0)
+    erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
     faker (3.4.1)
       i18n (>= 1.8.11, < 2)
-    ferrum (0.14)
+    ferrum (0.15)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
-      websocket-driver (>= 0.6, < 0.8)
+      websocket-driver (~> 0.7)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -205,21 +205,14 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.7.2)
-    irb (1.13.1)
+    irb (1.13.2)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
-    litestream (0.10.1)
-      logfmt (>= 0.0.10)
-      sqlite3
-    litestream (0.10.1-arm64-darwin)
-      logfmt (>= 0.0.10)
-      sqlite3
     local_time (3.0.2)
-    logfmt (0.0.10)
     logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -231,15 +224,14 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.1.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0507)
+    mime-types-data (3.2024.0604)
     mini_mime (1.1.5)
-    minitest (5.23.1)
+    minitest (5.24.0)
     msgpack (1.7.2)
     multipart-post (2.4.1)
-    net-imap (0.4.12)
+    net-imap (0.4.13)
       date
       net-protocol
     net-pop (0.1.2)
@@ -250,14 +242,22 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.3)
-    nokogiri (1.16.5-aarch64-linux)
+    nokogiri (1.16.6-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.6-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     pagy (7.0.11)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.5)
+    public_suffix (5.1.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
@@ -285,7 +285,7 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
-    reline (0.5.8)
+    reline (0.5.9)
       io-console (~> 0.5)
     requestjs-rails (0.0.11)
       railties (>= 6.1.0)
@@ -294,15 +294,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
-    rouge (4.2.1)
-    ruby-clock (2.0.1)
-      method_source
-      rufus-scheduler (~> 3.8)
+    rexml (3.3.0)
+      strscan
+    rouge (4.3.0)
     rubyzip (2.3.2)
-    rufus-scheduler (3.9.1)
-      fugit (~> 1.1, >= 1.1.6)
     safely_block (0.4.0)
     selenium-webdriver (4.21.1)
       base64 (~> 0.2)
@@ -312,19 +307,35 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
+    sprockets-rails (3.5.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (2.0.2-aarch64-linux-gnu)
+    sqlite3 (2.0.2-aarch64-linux-musl)
+    sqlite3 (2.0.2-arm-linux-gnu)
+    sqlite3 (2.0.2-arm-linux-musl)
     sqlite3 (2.0.2-arm64-darwin)
+    sqlite3 (2.0.2-x86-linux-gnu)
+    sqlite3 (2.0.2-x86-linux-musl)
+    sqlite3 (2.0.2-x86_64-darwin)
+    sqlite3 (2.0.2-x86_64-linux-gnu)
+    sqlite3 (2.0.2-x86_64-linux-musl)
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
-    stringio (3.1.0)
+    stringio (3.1.1)
     strscan (3.1.0)
-    tailwindcss-rails (2.6.0-aarch64-linux)
+    tailwindcss-rails (2.6.1)
       railties (>= 7.0.0)
-    tailwindcss-rails (2.6.0-arm64-darwin)
+    tailwindcss-rails (2.6.1-aarch64-linux)
+      railties (>= 7.0.0)
+    tailwindcss-rails (2.6.1-arm-linux)
+      railties (>= 7.0.0)
+    tailwindcss-rails (2.6.1-arm64-darwin)
+      railties (>= 7.0.0)
+    tailwindcss-rails (2.6.1-x86_64-darwin)
+      railties (>= 7.0.0)
+    tailwindcss-rails (2.6.1-x86_64-linux)
       railties (>= 7.0.0)
     thor (1.3.1)
     timeout (0.4.1)
@@ -347,11 +358,23 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   aarch64-linux
-  arm64-darwin-23
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux
+  arm-linux-gnu
+  arm-linux-musl
+  arm64-darwin
+  x86-linux
+  x86-linux-gnu
+  x86-linux-musl
+  x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   activerecord-enhancedsqlite3-adapter (~> 0.8.0)
@@ -371,7 +394,6 @@ DEPENDENCIES
   importmap-rails
   inline_svg (~> 1.9)
   jbuilder
-  litestream (~> 0.10.1)
   local_time
   pagy (~> 7.0.9)
   puma (>= 5.0)
@@ -381,7 +403,6 @@ DEPENDENCIES
   ranked-model (~> 0.4.9)
   requestjs-rails
   rouge (~> 4.2)
-  ruby-clock (~> 2.0)
   selenium-webdriver
   solid_queue!
   sprockets-rails
@@ -396,4 +417,4 @@ RUBY VERSION
    ruby 3.3.2p78
 
 BUNDLED WITH
-   2.5.11
+   2.5.13

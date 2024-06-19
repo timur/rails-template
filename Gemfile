@@ -84,15 +84,8 @@ gem "class_variants", "~> 0.0.7"
 gem "rouge", "~> 4.2"
 gem "rack", "~> 2.2"
 
-gem "ruby-clock", "~> 2.0"
-
 gem "ahoy_matey", "~> 5.0"
 gem "groupdate", "~> 6.4"
-
 gem "ranked-model", "~> 0.4.9"
-
 gem "activerecord-enhancedsqlite3-adapter", "~> 0.8.0"
-
-gem "litestream", "~> 0.10.1"
-
 gem "solid_queue", github: "rails/solid_queue", branch: "main"
