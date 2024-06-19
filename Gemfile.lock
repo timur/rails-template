@@ -304,6 +304,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    solid_cache (0.6.0)
+      activejob (>= 7)
+      activerecord (>= 7)
+      railties (>= 7)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -367,7 +371,7 @@ PLATFORMS
   arm-linux
   arm-linux-gnu
   arm-linux-musl
-  arm64-darwin
+  arm64-darwin-23
   x86-linux
   x86-linux-gnu
   x86-linux-musl
@@ -404,6 +408,7 @@ DEPENDENCIES
   requestjs-rails
   rouge (~> 4.2)
   selenium-webdriver
+  solid_cache
   solid_queue!
   sprockets-rails
   sqlite3 (>= 2.0)
