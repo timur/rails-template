@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: rails-template
+service: rails-sqlite
 
 # Name of the container image.
-image: tiyalcin/rails-template
+image: tiyalcin/rails-sqlite
 volumes:
   - "data:/data"
 servers:
