@@ -4,7 +4,8 @@ service: rails-sqlite
 # Name of the container image.
 image: tiyalcin/rails-sqlite
 volumes:
-  - "data:/data"
+  - "data:/rails/data"
+  - "storage:/rails/storage"
 servers:
   web:
     hosts:
@@ -23,7 +24,6 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 env:
-  clear:
   secret:
     - RAILS_MASTER_KEY
 traefik:

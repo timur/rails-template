@@ -57,7 +57,8 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     mkdir /data && \
-    chown -R 1000:1000 db log storage tmp /data
+    mkdir /storage && \
+    chown -R 1000:1000 db log tmp /data /storage
 USER 1000:1000
 
 # Deployment options
@@ -70,4 +71,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 VOLUME /data
+VOLUME /storage
 CMD ["./bin/rails", "server"]
