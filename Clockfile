@@ -1,5 +1,0 @@
-using RubyClock::DSL
-
-#every('1 minutes') do
-#  Employee.scheduled_name
-#end
