@@ -1,11 +1,19 @@
+default: &default
+  adapter: solid_cable
+  polling_interval: 1.second
+  keep_messages_around_for: 1.day
+
 development:
-  adapter: litecable
+  <<: *default
+  silence_polling: true
+  connects_to:
+    database:
+      writing: cable
+      reading: cable
 
 test:
   adapter: test
 
-staging:
-  adapter: litecable
-
 production:
-  adapter: litecable
+  <<: *default
+  polling_interval: 0.1.seconds
