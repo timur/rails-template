@@ -5,7 +5,7 @@ class Examples::PeopleController < ApplicationController
 
   def index
     @people = Person.all
-    @people = Person.by_name(params[:query]) if params[:query].present?
+    @people = Person.full_search(Person.search_string(params[:query])) if params[:query].present?
 
     @pagy, @people = pagy @people.reorder(sort_column => sort_direction), items: validate_count(params.fetch(:count, DEFAULT_COUNT))
   end

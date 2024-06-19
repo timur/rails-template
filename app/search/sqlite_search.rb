@@ -49,7 +49,7 @@ module SqliteSearch
 
       sql = <<~SQL.strip
         SELECT #{scope_foreign_key} AS id FROM fts_#{table_name}
-        WHERE fts_#{table_name} MATCH '#{query}' ORDER BY rank;
+        WHERE fts_#{table_name} MATCH #{query} ORDER BY rank;
       SQL
       ids = connection.execute(sql).map(&:values).flatten
       where(id: ids)
