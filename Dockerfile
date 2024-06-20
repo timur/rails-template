@@ -61,11 +61,7 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Deployment options
-ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
-    DATABASE_QUEUE_URL="sqlite3:///data/production-queue.sqlite3" \
-    DATABASE_CACHE_URL="sqlite3:///data/production-cache.sqlite3" \
-    DATABASE_CABLE_URL="sqlite3:///data/production-cable.sqlite3" \
-    RUBY_YJIT_ENABLE="1"
+ENV RUBY_YJIT_ENABLE="1"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

@@ -41,13 +41,13 @@ test:
 production:
   primary:
     <<: *default
-    database: <%= ENV['DATABASE_URL'] %>
+    database: /data/production.sqlite3  
   queue:
     <<: *default
-    database: <%= ENV['DATABASE_QUEUE_URL'] %>
+    database: /data/production-queue.sqlite3  
   cache:
     <<: *default
-    database: <%= ENV['DATABASE_CACHE_URL'] %>
+    database: /data/production-cache.sqlite3  
   cable:
     <<: *default
-    database: <%= ENV['DATABASE_CABLE_URL'] %>
+    database: /data/production-cable.sqlite3  
