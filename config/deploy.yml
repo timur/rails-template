@@ -4,8 +4,8 @@ service: rails-sqlite
 # Name of the container image.
 image: tiyalcin/rails-sqlite
 volumes:
-  - "data:/rails/data"
-  - "storage:/rails/storage"
+  # first argument is the volume name, second is the path in the container
+  - "rails-sqlite-data:/data"
 servers:
   web:
     hosts:

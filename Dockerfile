@@ -56,13 +56,15 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    mkdir /data && \
-    mkdir /storage && \
-    chown -R 1000:1000 db log tmp /data /storage
+    mkdir -p /data && \
+    chown -R 1000:1000 db log tmp storage /data
 USER 1000:1000
 
 # Deployment options
 ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
+    DATABASE_QUEUE_URL="sqlite3:///data/production-queue.sqlite3" \
+    DATABASE_CACHE_URL="sqlite3:///data/production-cache.sqlite3" \
+    DATABASE_CABLE_URL="sqlite3:///data/production-cable.sqlite3" \
     RUBY_YJIT_ENABLE="1"
 
 # Entrypoint prepares the database.
@@ -70,6 +72,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-VOLUME /data
-VOLUME /storage
 CMD ["./bin/rails", "server"]
