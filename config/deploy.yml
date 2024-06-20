@@ -5,7 +5,8 @@ service: rails-sqlite
 image: tiyalcin/rails-sqlite
 volumes:
   # first argument is the volume name, second is the path in the container
-  - "rails-sqlite-data:/data"
+  # - "rails-sqlite-data:/data"
+  - "rails-sqlite-data:/rails/sqlite3"
 servers:
   web:
     hosts:
