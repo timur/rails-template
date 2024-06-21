@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_120729) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_21_114246) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -92,6 +92,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_120729) do
     t.index ["name"], name: "index_employees_on_name"
   end
 
+  create_table "fts_people_data", force: :cascade do |t|
+    t.binary "block"
+  end
+
+  create_table "fts_people_docsize", force: :cascade do |t|
+    t.binary "sz"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "position"
@@ -135,4 +143,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_120729) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "sessions", "users"
+  add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
 end

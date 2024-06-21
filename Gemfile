@@ -1,15 +1,15 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.1"
+gem "rails", github: "rails/rails", branch: "main"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3"
+gem "sqlite3", ">= 2.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -73,7 +73,6 @@ group :test do
 
 end
 
-gem "litestack", "~> 0.4.x"
 gem "aws-sdk-s3", "~> 1.135"
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -85,12 +84,13 @@ gem "class_variants", "~> 0.0.7"
 gem "rouge", "~> 4.2"
 gem "rack", "~> 2.2"
 
-gem "ruby-clock", "~> 2.0"
-
 gem "ahoy_matey", "~> 5.0"
 gem "groupdate", "~> 6.4"
-
 gem "ranked-model", "~> 0.4.9"
+gem "activerecord-enhancedsqlite3-adapter", "~> 0.8.0"
+gem "solid_queue", github: "rails/solid_queue", branch: "main"
+gem "solid_cache"
+gem "solid_cable"
 
 gem "authentication-zero", "~> 3.0"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

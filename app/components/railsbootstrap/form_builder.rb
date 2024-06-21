@@ -53,6 +53,18 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def custom_radio_button(method, label, options = {}, radio_value = "1")
+    set_error_attributes(options, method)
+    @template.render_radio_button(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object.send(method),
+      label: "#{label}",
+      radio_value: radio_value,
+      **options
+    )
+  end  
+
   def datepicker(method, options = {})
     set_error_attributes(options, method)
     @template.render_datepicker(

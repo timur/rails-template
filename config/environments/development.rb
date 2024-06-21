@@ -38,7 +38,10 @@ Rails.application.configure do
   config.active_storage.service = :cloudflare
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.perform_caching = false
 
@@ -59,6 +62,7 @@ Rails.application.configure do
 
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
+  config.solid_queue.silence_polling = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true

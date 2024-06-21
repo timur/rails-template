@@ -1,10 +1,11 @@
 # Name of your application. Used to uniquely configure containers.
-service: rails-template
+service: rails-sqlite
 
 # Name of the container image.
-image: tiyalcin/rails-template
+image: tiyalcin/rails-sqlite
 volumes:
-  - "data:/data"
+  # first argument is the volume name, second is the path in the container
+  - "rails-sqlite-data:/data"
 servers:
   web:
     hosts:
@@ -15,19 +16,18 @@ servers:
       # gzip
       traefik.http.middlewares.websecure-compress.compress: true
       traefik.http.routers.websecure.middlewares: websecure-compress@docker
-      traefik.http.routers.websecure.rule: Host(`template.ruby-rails.net`)
+      traefik.http.routers.websecure.rule: Host(`sqlite.ruby-rails.net`)
       traefik.http.routers.websecure.entrypoints: websecure
-      traefik.http.routers.websecure.tls.certresolver: letsencrypt      
-  clock:
+      traefik.http.routers.websecure.tls.certresolver: letsencrypt
+  job:
     hosts:
-      - 116.203.43.230
-    cmd: "bundle exec clock"
+      - 116.203.43.230 # hetzner
+    cmd: bundle exec rake solid_queue:start
 registry:
   username: tiyalcin
   password:
     - KAMAL_REGISTRY_PASSWORD
 env:
-  clear:
   secret:
     - RAILS_MASTER_KEY
 traefik:

@@ -1,0 +1,12 @@
+<div class="flex items-center">
+  <%= radio_button_tag name, radio_value, checked, id: id, class: input_classes, required: options[:required] %>
+  <label for="<%= id %>" class="ml-3 block text-sm font-medium leading-6 text-gray-900 <%= options[:has_error] ? 'text-red-600' : '' %>""><%= label %></label>
+  <span class="text-gray-500 <%= options[:has_error] ? 'text-red-600' : '' %>"><span class="sr-only"><%= label %> </span><%= options[:hint] %></span>
+</div>
+<% if options[:has_error] %>
+  <p class="ml-7 mt-1 text-sm text-red-600">
+    <% options[:errors].each do |error| %>
+      <%= error %>
+    <% end %>
+  </p>
+<% end %>

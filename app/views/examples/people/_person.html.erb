@@ -45,7 +45,7 @@
         data: {
           turbo_frame: "slide-over"
         } do %>
-        <%= inline_svg_tag "heroicons-pencil", class: "w-5 h-5" %>
+        <%= inline_svg_tag "heroicons-pencil.svg", class: "w-5 h-5" %>
       <% end %>
       <%= link_to examples_person_path(person),
             data: {
@@ -53,7 +53,7 @@
               turbo_confirm: { message: "Wollen Sie die Person löschen?", title: "Löschen" }
             },
             class: "text-red-600 hover:text-red-700" do %>
-        <%= inline_svg_tag "heroicons-trash", class: "w-5 h-5 text-red-600" %>
+        <%= inline_svg_tag "heroicons-trash.svg", class: "w-5 h-5 text-red-600" %>
       <% end %>
     </div>
   </div>

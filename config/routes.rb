@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     get '/calendar/year', to: 'calendar#year'
     get '/calendar/datepicker', to: 'calendar#datepicker'
     post '/create_datepicker', to: 'calendar#datepicker_create'
+    get '/snippets/flashes', to: 'snippets#flashes'
+    post '/flash_message', to: 'flash_message#create'
     resources :employees
     resources :people
     get '/morph', to: 'morph#index'
@@ -63,8 +65,6 @@ Rails.application.routes.draw do
   get '/calendar/datepicker', to: 'calendar#datepicker'
   # This is an example for a custom controller
   get '/calendar/custom', to: 'calendar#custom'
-
-  resource :flash_message, controller: 'flash_message', only: %i[create]
 
   namespace :api do
     resources :widget_form, only: %i[ new create ]
