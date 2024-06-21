@@ -9,11 +9,6 @@ primary: &primary
   <<: *default
   database: storage/<%= Rails.env %>.sqlite3
 
-queue: &queue
-  <<: *default
-  migrations_paths: db/queue_migrate
-  database: storage/<%= Rails.env %>-queue.sqlite3
-
 cache: &cache
   <<: *default
   migrations_paths: db/cache_migrate
@@ -28,13 +23,11 @@ cable: &cable
 # ENVIRONMENT CONFIGURATIONS
 development:
   primary: *primary
-  queue: *queue
   cache: *cache
   cable: *cable
 
 test:
   primary: *primary
-  queue: *queue
   cache: *cache
   cable: *cable
 
@@ -42,9 +35,6 @@ production:
   primary:
     <<: *default
     database: /data/production.sqlite3  
-  queue:
-    <<: *default
-    database: /data/production-queue.sqlite3  
   cache:
     <<: *default
     database: /data/production-cache.sqlite3  

@@ -22,7 +22,7 @@ servers:
   job:
     hosts:
       - 116.203.43.230 # hetzner
-    cmd: bundle exec rake solid_queue:start         
+    cmd: bundle exec rake solid_queue:start
 registry:
   username: tiyalcin
   password:
