@@ -5,7 +5,7 @@ default: &default
       recurring_tasks:
         my_periodic_job:
           class: GmailJob
-          schedule: every 10 seconds
+          schedule: every 1 hour
   workers:
     - queues: "*"
       threads: 3
