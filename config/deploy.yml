@@ -18,7 +18,11 @@ servers:
       traefik.http.routers.websecure.middlewares: websecure-compress@docker
       traefik.http.routers.websecure.rule: Host(`sqlite.ruby-rails.net`)
       traefik.http.routers.websecure.entrypoints: websecure
-      traefik.http.routers.websecure.tls.certresolver: letsencrypt      
+      traefik.http.routers.websecure.tls.certresolver: letsencrypt
+  job:
+    hosts:
+      - 116.203.43.230 # hetzner
+    cmd: bundle exec rake solid_queue:start         
 registry:
   username: tiyalcin
   password:
