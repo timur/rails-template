@@ -2,6 +2,8 @@ module ApplicationHelper
   DEFAULT_LINK_CLASSES = %w(text-gray-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:text-primary-600 hover:bg-gray-50)
   DEFAULT_LINK_CLASSES_PLAIN = %w(text-gray-700 group flex gap-x-3 rounded-md text-sm leading-6 font-semibold hover:text-primary-600 hover:bg-gray-50)
 
+  DEFAULT_STANDARD_LINK_CLASSES = %w(font-semibold text-primary-600 hover:text-primary-500)
+
   include Pagy::Frontend
 
   def nav_link(path:, text:, **options)
@@ -62,6 +64,10 @@ module ApplicationHelper
 
   def svg_classes_plain
     "h-6 w-6 text-gray-400 group-hover:text-primary-600"
+  end
+
+  def link_classes
+    DEFAULT_STANDARD_LINK_CLASSES
   end
 
   private
