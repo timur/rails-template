@@ -1,35 +1,50 @@
-<h1>Sign up</h1>
+<div class="border-b border-gray-200 pb-5 pt-5">
+  <h1 class="text-base font-semibold leading-6 text-gray-900">Neuer Account</h1>
+</div>
 
-<%= form_with(url: sign_up_path) do |form| %>
+<%= render_form_for(@user, url: sign_up_path, class: "space-y-6") do |f| %>
   <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="rounded-md bg-red-50 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">Es gab <%= pluralize(@user.errors.count, "error") %> beim Absenden</h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul role="list" class="list-disc space-y-1 pl-5">
+              <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
   <% end %>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, label: "Email" %>
+    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
-    <div>12 characters minimum.</div>
+    <%= f.label :password, label: "Passwort" %>
+    <%= f.password_field :password, autocomplete: "new-password", hint: "Das Passwort muss mindestens 12 Zeichen lang sein" %>
   </div>
 
   <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
-  </div>
+    <%= f.label :password_confirmation, label: "Passwort Wiederholung" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>  
 
   <div>
-    <%= form.submit "Sign up" %>
+    <%= f.submit "Neuen Account erstellen", class: button_classes.render(size: :lg) %>
   </div>
+
+  <div class="text-sm leading-6">
+    <%= link_to "zurück", sign_in_path, class: link_classes %>
+  </div>  
 <% end %>
