@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rails Base</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <main>
+      <div class="flex min-h-full flex-col justify-center py-6 sm:px-6 lg:px-8">
+        <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Bitte melde dich an</h2>
+      </div>
+      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+        <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+          <%= yield %>
+        </form>
+      </div>
+    </div>
+  </body>
+</html></div></main><script type="module">import Cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+const {timeZone} = new Intl
+  .DateTimeFormat()
+  .resolvedOptions()
+  Cookies
+  .set("time_zone", timeZone, {expires: 365})</script></body></html>
