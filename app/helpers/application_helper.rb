@@ -1,5 +1,6 @@
 module ApplicationHelper
   DEFAULT_LINK_CLASSES = %w(text-gray-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:text-primary-600 hover:bg-gray-50)
+  DEFAULT_LINK_CLASSES_PLAIN = %w(text-gray-700 group flex gap-x-3 rounded-md text-sm leading-6 font-semibold hover:text-primary-600 hover:bg-gray-50)
 
   include Pagy::Frontend
 
@@ -14,6 +15,16 @@ module ApplicationHelper
       options:
     }
   end
+
+  def nav_link_button(text:, **options)
+    classes = DEFAULT_LINK_CLASSES_PLAIN
+    
+    render partial: "shared/nav_link_button_template", locals: {
+      text:,
+      classes:,
+      options:
+    }
+  end  
 
   def nav_link_with_submenu(name:, text:, **options)
     current_path = false
@@ -47,6 +58,10 @@ module ApplicationHelper
 
   def svg_classes(path)
     current_page?(path) ? "h-6 w-6 text-primary-600" : "h-6 w-6 text-gray-400 group-hover:text-primary-600"
+  end
+
+  def svg_classes_plain
+    "h-6 w-6 text-gray-400 group-hover:text-primary-600"
   end
 
   private
