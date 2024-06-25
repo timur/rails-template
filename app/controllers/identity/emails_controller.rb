@@ -1,4 +1,6 @@
 class Identity::EmailsController < ApplicationController
+  layout "sessions"
+
   before_action :set_user
 
   def edit
