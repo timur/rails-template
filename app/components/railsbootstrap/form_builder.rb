@@ -1,6 +1,6 @@
 class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, options = {})
-    error_class = @object.errors[method].any? ? "text-red-500" : ""
+    error_class = @object && @object.errors &&  @object&.errors[method].any? ? "text-red-500" : ""
     options[:class] = "#{options[:class]} #{error_class}"
     @template.render_label(name: "#{object_name}[#{method}]", label: label_for(@object, method), **options)
   end
@@ -10,8 +10,19 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     @template.render_input(
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
-      value: @object.send(method),
+      value: @object&.send(method),
       type: "text", 
+      **options
+    )
+  end
+
+  def password_field(method, options = {})
+    set_error_attributes(options, method)
+    @template.render_input(
+      name: "#{object_name}[#{method}]",
+      id: "#{object_name}_#{method}",
+      value: @object&.send(method),
+      type: "password", 
       **options
     )
   end
@@ -23,7 +34,7 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
     @template.render_input(
       name: "#{object_name}[#{method}]",
       id: "#{object_name}_#{method}",
-      value: @object.send(method),
+      value: @object&.send(method),
       type: "text",
       template: "components/ui/input_money",
       **options
@@ -89,13 +100,13 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def has_error?(method)
-    @object.errors[method].any?
+    @obejct && @object&.errors[method].any?
   end
 
   # Refactor
   def set_error_attributes(options, method)
     options[:class] = error_class_for(method, options[:class])
     options[:has_error] = has_error?(method)
-    options[:errors] = @object.errors[method]
+    options[:errors] = @object && @object&.errors[method]
   end
 end
