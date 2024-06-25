@@ -1,6 +1,6 @@
 class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, options = {})
-    error_class = @object && @object.errors &&  @object&.errors[method].any? ? "text-red-500" : ""
+    error_class = @object && @object.errors && @object.errors[method].any? ? "text-red-500" : ""
     options[:class] = "#{options[:class]} #{error_class}"
     @template.render_label(name: "#{object_name}[#{method}]", label: label_for(@object, method), **options)
   end
@@ -100,13 +100,14 @@ class Railsbootstrap::FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def has_error?(method)
-    @obejct && @object&.errors[method].any?
+    return false unless @object
+    @object.errors[method].any?
   end
 
   # Refactor
   def set_error_attributes(options, method)
     options[:class] = error_class_for(method, options[:class])
     options[:has_error] = has_error?(method)
-    options[:errors] = @object && @object&.errors[method]
+    options[:errors] = @object.errors[method] if @object
   end
 end
