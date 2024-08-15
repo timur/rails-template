@@ -1,2 +1,2 @@
 <%= turbo_stream.remove @employee %>
-<%= turbo_stream.replace 'flash', partial: 'layouts/flash_message' %>
+<%= turbo_stream.update 'flash-messages', partial: 'layouts/flash_wrapper' %>

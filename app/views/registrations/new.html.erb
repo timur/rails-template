@@ -2,8 +2,8 @@
   <h1 class="text-base font-semibold leading-6 text-gray-900">Neuer Account</h1>
 </div>
 
-<%= render_form_for(@user, url: sign_up_path, class: "space-y-6") do |f| %>
-  <% if @user.errors.any? %>
+<%= render_form_for(@user_form, url: sign_up_path, class: "space-y-6") do |f| %>
+  <% if @user_form.errors.any? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">
         <div class="flex-shrink-0">
@@ -12,10 +12,10 @@
           </svg>
         </div>
         <div class="ml-3">
-          <h3 class="text-sm font-medium text-red-800">Es gab <%= pluralize(@user.errors.count, "error") %> beim Absenden</h3>
+          <h3 class="text-sm font-medium text-red-800">Es gab <%= pluralize(@user_form.errors.count, "Fehler") %> beim Absenden</h3>
           <div class="mt-2 text-sm text-red-700">
             <ul role="list" class="list-disc space-y-1 pl-5">
-              <% @user.errors.each do |error| %>
+              <% @user_form.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>
             </ul>

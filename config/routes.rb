@@ -3,16 +3,23 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
+
+  get "settings", to: "settings#index"
+  patch "settings", to: "settings#update"
+  patch "settings_email", to: "settings#email"
+  patch "settings_password", to: "settings#password"
+  patch "settings_avatar", to: "settings#avatar"
+  delete "settings_delete_avatar", to: "settings#delete"
   
   resources :sessions, only: [:index, :show, :destroy]
   
   resource  :password, only: [:edit, :update]
   
   namespace :identity do
-    resource :email,              only: [:edit, :update]
     resource :email_verification, only: [:show, :create]
-    resource :password_reset,     only: [:new, :edit, :create, :update]
+    resource :password_reset,     only: [:new, :create, :update]
   end
+
   # all from here only for example stuff
   resources :pictures do
     collection do

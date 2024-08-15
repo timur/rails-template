@@ -15,6 +15,14 @@ class ImagekitService
     @imagekitio.url(transform_options(blob, "1200"))
   end
 
+  def face_url(blob)
+    @imagekitio.url(transform_face_options(blob))
+  end
+
+  def face_url_small(blob)
+    @imagekitio.url(transform_face_options_small(blob))
+  end
+
   def imagekit
     @imagekitio
   end
@@ -75,4 +83,22 @@ class ImagekitService
       expire_seconds: 300
     }
   end
+
+  def transform_face_options(blob)
+    {
+      path: "/#{blob.key}",
+      transformation: [{ width: 150, height: 150, raw: "fo-auto" }],
+      signed: true,
+      expire_seconds: 300
+    }
+  end
+
+  def transform_face_options_small(blob)
+    {
+      path: "/#{blob.key}",
+      transformation: [{ width: 40, height: 40, raw: "fo-auto" }],
+      signed: true,
+      expire_seconds: 600
+    }
+  end  
 end

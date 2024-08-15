@@ -9,7 +9,7 @@ module ApplicationHelper
   def nav_link(path:, text:, **options)
     classes = DEFAULT_LINK_CLASSES
     classes = current_page?(path) ? current_link(classes) : classes
-    
+
     render partial: "shared/nav_link_template", locals: {
       path:,
       text:,
@@ -152,4 +152,17 @@ module ApplicationHelper
     "padding-bottom:#{ratio}%"
   end
 
+  def link_classes_plain
+    DEFAULT_LINK_CLASSES_PLAIN
+  end
+
+  def user_avatar_round_small
+    imagekit_service = ImagekitService.new
+    if Current.user && Current.user.avatar.attached?
+      avatar_url = imagekit_service.face_url_small(Current.user.avatar)
+      return image_tag Current.user.avatar.url, class: "h-8 w-8 rounded-full bg-gray-50", "data-turbo-permanent": ""
+    else
+      return inline_svg_tag "heroicons-user-circle-solid.svg", class: "h-8 w-8 bg-gray-100"
+    end
+  end
 end

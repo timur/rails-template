@@ -1,4 +1,4 @@
-<%= turbo_stream.replace 'flash', partial: 'layouts/flash_message' %>
+<%= turbo_stream.update 'flash-messages', partial: 'layouts/flash_wrapper' %>
 <%= turbo_stream.replace 'select_bar', partial: 'examples/upload/select_bar' %>
 <% @picture_ids.each do |id| %>
   <%= turbo_stream.remove "link_picture_#{id}" %>

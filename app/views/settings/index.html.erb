@@ -1,0 +1,63 @@
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+  <div>
+    <div class="grid grid-cols-1 gap-x-8 gap-y-4 border-b border-gray-900/10 pb-8 md:grid-cols-3">
+      <div>
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Profil</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">Ändere Deinen Namen und dein Profil Foto.</p>
+      </div>
+      
+      <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-8 md:col-span-2">
+        <div class="col-span-full">
+          <%= render_form_for(@user, url: settings_avatar_path) do |f| %>
+            <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Foto</label>
+            <div class="mt-2 flex items-center gap-x-3">
+              <% if @user.avatar.present? %>
+                <%= image_tag @avatar_url, class: "rounded-full h-16 w-16" %>
+              <% else %>
+                <%= inline_svg_tag "heroicons-user-circle-solid.svg", class: "h-16 w-16 text-gray-300" %>
+              <% end %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Speichere Dein Profil", class: button_classes.render(size: :lg) %>
+            </div>
+          <% end %>
+          <% if @user.avatar.present? %>
+            <div class="mt-2">
+              <%= button_to "Entferne Foto", settings_delete_avatar_path, method: :delete, class: button_classes.render(size: :lg, color: :"outline-red") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+        
+    <%= render_form_for(@user, url: settings_path) do |f| %>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pt-10 pb-10 md:grid-cols-3">
+        <div>
+          <h2 class="text-base font-semibold leading-7 text-gray-900">Name</h2>
+          <p class="mt-1 text-sm leading-6 text-gray-600">Hier kannst Du deinen Namen ändern.</p>
+        </div>
+        <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+          <div class="sm:col-span-4">
+            <%= f.label :first_name, label: "Vorname" %>
+            <%= f.text_field :first_name, autofocus: true %>
+          </div>
+
+          <div class="sm:col-span-4">
+            <%= f.label :last_name, label: "Nachname" %>
+            <%= f.text_field :last_name %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.submit "Speichere Deinen Namen", class: button_classes.render(size: :lg) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <%= turbo_frame_tag "email_form" do %>
+      <%= render 'email_form' %> 
+    <% end %>
+
+    <%= turbo_frame_tag "password_form" do %>
+      <%= render partial: 'password_form', locals: { form: @password_form } %>
+    <% end %>
+  </div>
+</div>

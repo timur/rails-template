@@ -4,7 +4,7 @@
 #
 Employee.destroy_all
 Person.destroy_all
-10_000.times do |i|
+1_000.times do |i|
   Employee.create(
     name: Faker::Name.name,
     position: ['Accountant', 'Accountant', 'Chief Executive Officer (CEO)', 'Chief Financial Officer (CFO)', 'Chief Marketing Officer (CMO)', 'Chief Operating Officer (COO)', 'Customer Support', 'Data Coordinator', 'Developer', 'Developer', 'Developer', 'Developer', 'Development Lead', 'Director', 'Financial Controller', 'Integration Specialist', 'Integration Specialist', 'Integration Specialist', 'Javascript Developer', 'Javascript Developer', 'Junior Javascript Developer', 'Junior Technical Author', 'Marketing Designer', 'Marketing Designer', 'Office Manager', 'Office Manager', 'Office Manager', 'Personnel Lead', 'Post-Sales support', 'Pre-Sales Support', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Marketing', 'Sales Assistant', 'Sales Assistant', 'Sales Assistant', 'Secretary', 'Senior Javascript Developer', 'Senior Marketing Designer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Support Engineer', 'Support Engineer', 'Support Engineer', 'Support Lead', 'System Architect', 'Systems Administrator', 'Systems Administrator', 'Team Leader', 'Technical Author'].sample,
@@ -14,7 +14,7 @@ Person.destroy_all
   )
 end
 
-10_000.times do |i|
+1_000.times do |i|
   Person.create(
     name: Faker::Name.name,
     position: ['Accountant', 'Accountant', 'Chief Executive Officer (CEO)', 'Chief Financial Officer (CFO)', 'Chief Marketing Officer (CMO)', 'Chief Operating Officer (COO)', 'Customer Support', 'Data Coordinator', 'Developer', 'Developer', 'Developer', 'Developer', 'Development Lead', 'Director', 'Financial Controller', 'Integration Specialist', 'Integration Specialist', 'Integration Specialist', 'Javascript Developer', 'Javascript Developer', 'Junior Javascript Developer', 'Junior Technical Author', 'Marketing Designer', 'Marketing Designer', 'Office Manager', 'Office Manager', 'Office Manager', 'Personnel Lead', 'Post-Sales support', 'Pre-Sales Support', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Director', 'Regional Marketing', 'Sales Assistant', 'Sales Assistant', 'Sales Assistant', 'Secretary', 'Senior Javascript Developer', 'Senior Marketing Designer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Software Engineer', 'Support Engineer', 'Support Engineer', 'Support Engineer', 'Support Lead', 'System Architect', 'Systems Administrator', 'Systems Administrator', 'Team Leader', 'Technical Author'].sample,

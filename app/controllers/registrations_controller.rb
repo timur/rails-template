@@ -4,23 +4,21 @@ class RegistrationsController < ApplicationController
   skip_before_action :authenticate
 
   def new
-    @user = UserRegistrationForm.new
+    @user_form = UserRegistrationForm.new
   end
 
   def create
-    @user = UserRegistrationForm.new(user_params)
+    user = User.find_by(email: params[:user_registration_form][:email])
 
-    if @user.save
-      user = User.find_by(email: @user.email)
+    if user
+      @user_form = UserRegistrationForm.new(user_params)
+      @user_form.errors.add(:email, "Die Email-Adresse ist bereits vergeben.")
+      render :new, status: :unprocessable_entity
+    else
+      @user_form = UserRegistrationForm.new(user_params)
 
-      if user
-        @user.errors.add(:email, "Die Email-Adresse ist bereits vergeben.")
-        render :new, status: :unprocessable_entity
-      end
-
-      user = User.new(user_params)
-
-      if user.save
+      if @user_form.save
+        user = User.create(user_params)
         session_record = user.sessions.create!
         cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
 
@@ -28,9 +26,7 @@ class RegistrationsController < ApplicationController
         redirect_to root_path, notice: "Willkommen! Du hast dich erfolgreich registriert. Bitte bestätige deine E-Mail-Adresse."
       else
         render :new, status: :unprocessable_entity
-      end
-    else
-      render :new, status: :unprocessable_entity
+      end  
     end
   end
 

@@ -63,6 +63,8 @@ group :development do
   # Use Redis adapter to run Action Cable in production
   gem "dockerfile-rails", ">= 1.5"
   #gem "rails_live_reload"
+
+  gem "letter_opener"
 end
 
 group :test do

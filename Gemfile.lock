@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 869c7bf094c0478b101d4c0e55766501ca31a325
+  revision: de4d8744744acab2dd9db0683ccf784ea45810b2
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -152,6 +152,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    childprocess (5.0.0)
     class_variants (0.0.7)
     concurrent-ruby (1.3.3)
     connection_pool (2.4.1)
@@ -214,6 +215,11 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
+    launchy (3.0.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
     local_time (3.0.2)
     logger (1.6.0)
     loofah (2.22.0)
@@ -233,7 +239,7 @@ GEM
     minitest (5.24.0)
     msgpack (1.7.2)
     multipart-post (2.4.1)
-    net-imap (0.4.13)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -405,6 +411,7 @@ DEPENDENCIES
   importmap-rails
   inline_svg (~> 1.9)
   jbuilder
+  letter_opener
   local_time
   pagy (~> 7.0.9)
   puma (>= 5.0)

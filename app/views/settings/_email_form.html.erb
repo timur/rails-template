@@ -1,0 +1,19 @@
+<%= render 'layouts/flash_wrapper' %>
+<%= render_form_for(@email_form, url: settings_email_path, method: :patch) do |f| %>
+  <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pt-10 pb-10 md:grid-cols-3">
+    <div>
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Email</h2>
+      <p class="mt-1 text-sm leading-6 text-gray-600">Hier kannst Du eine neue Email Adresse angeben.</p>
+    </div>
+
+    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+      <div class="sm:col-span-4">
+        <%= f.label :email, label: "Email" %>
+        <%= f.text_field :email, autocomplete: "email" %>
+      </div>
+      <div class="sm:col-span-4">
+        <%= f.submit "Speichere Deine Email", class: button_classes.render(size: :lg) %>
+      </div>          
+    </div>
+  </div>
+<% end %>

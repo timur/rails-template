@@ -1,4 +1,4 @@
-<%= turbo_stream.replace 'flash', partial: 'layouts/flash_message' %>
+<%= turbo_stream.update 'flash-messages', partial: 'layouts/flash_wrapper' %>
 <%= turbo_stream.replace 'select_bar', partial: 'examples/upload/select_bar' %>
 
 <%= turbo_stream.replace dom_id(@picture, :form), partial: 'examples/upload/form', locals: { picture: @picture } %>

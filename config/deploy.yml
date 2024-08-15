@@ -35,15 +35,20 @@ traefik:
     publish:
       - "443:443"
     volume:
+      # The file acme.json is used to store Let's Encrypt certificates.
+      # the file has to be created before running the container
+      # chmod 600 /letsencrypt/acme.json
       - "/letsencrypt/acme.json:/letsencrypt/acme.json"
   args:
+    # web and websecure are the entrypoints the names are arbitrary
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
     entryPoints.web.http.redirections.entryPoint.to: websecure
     entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entrypoint.permanent: true
-    entrypoints.websecure.http.tls: true
+    entryPoints.web.http.redirections.entryPoint.permanent: true
+    entryPoints.websecure.http.tls: true
+    # letsencrypt is the name of the certificate resolver
     certificatesResolvers.letsencrypt.acme.email: "tiyalcin@gmail.com"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
     certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: "web"x
