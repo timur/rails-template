@@ -59,6 +59,7 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "htmlbeautifier"
 
   # Use Redis adapter to run Action Cable in production
   gem "dockerfile-rails", ">= 1.5"

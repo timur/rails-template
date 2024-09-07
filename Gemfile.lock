@@ -188,6 +188,7 @@ GEM
       activesupport (>= 6.1)
     groupdate (6.4.0)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.3)
     http-accept (1.7.0)
     http-cookie (1.0.6)
       domain_name (~> 0.5)
@@ -397,6 +398,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   faker
   groupdate (~> 6.4)
+  htmlbeautifier
   imagekitio (~> 3.0)
   importmap-rails
   inline_svg (~> 1.9)
