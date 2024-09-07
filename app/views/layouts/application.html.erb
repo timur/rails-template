@@ -14,7 +14,7 @@
   </head>
   <body x-data>
     <div x-data="{ open: false }" class="sticky top-0 z-20">
-      <!-- Main menu Desktop --> 
+      <!-- Main menu Desktop -->
       <nav id="main-nav" class="flex bg-gray-100 p-4 top-0 h-16 items-center justify-between">
         <div class="hidden md:block shrink-0 w-1/6">Brand</div>
         <!-- Burger svg icon -->
@@ -111,7 +111,7 @@
              x-transition:leave-end="opacity-0">
         </div>
         <div class="fixed inset-0 flex">
-          <div class="relative mr-16 flex w-full max-w-xs flex-1" 
+          <div class="relative mr-16 flex w-full max-w-xs flex-1"
                x-dialog:panel
                x-transition:enter="transition ease-in-out duration-300 transform"
                x-transition:enter-start="-translate-x-full"
@@ -136,7 +136,7 @@
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">
                   <li>
                     <ul role="list" class="-mx-2 space-y-1">
-                      <%= render "shared/sidebar_nav" %>                      
+                      <%= render "shared/sidebar_nav" %>
                     </ul>
                   </li>
                   <li class="mt-auto">
@@ -157,7 +157,7 @@
       <!-- Main menu Mobile Ende -->
     </div>
     <div class="flex">
-    
+
       <!-- Sidebar Menu -->
       <aside class="p-4 hidden md:flex flex-col justify-between bg-white w-1/6 sticky top-16 h-[calc(100vh-64px)]">
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -243,7 +243,7 @@
           }
         })
       })
-    </script>    
+    </script>
 
     <script type="module">
       import Cookies from "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
