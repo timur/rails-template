@@ -14,7 +14,6 @@
       </div>
     <% end %>
   </div>
-
   <%= turbo_frame_tag "employees" do %>
     <div class="mt-6 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -37,7 +36,7 @@
                   </div>
                   <div class="table-cell border-t border-gray-200 px-3 py-3 text-left w-24 text-sm font-semibold text-gray-900">
                     <%= sort_link_to "Start date", :start_date, class: "group inline-flex", data: { turbo_action: "advance" } %>
-                  </div>                 
+                  </div>
                   <div class="table-cell border-t border-gray-200 relative py-3 w-24 pl-3 pr-4 sm:pr-6">
                     <span class="sr-only">Edit</span>
                   </div>
@@ -51,7 +50,6 @@
         </div>
       </div>
     </div>
-
     <div class="sm:flex flex-row justify-end items-center mt-4">
       <label class="mr-2">Zeilen pro Seite</label>
       <%= form_with url: "", method: :get, data: { turbo_frame: "employees", turbo_action: "advance" } do |f| %>
@@ -59,8 +57,8 @@
           options_for_select(
             PagesHelper::PAGINATE_OPTIONS,
             selected: params[:count]),
-            {}, 
-            { 
+            {},
+            {
               "x-ref": "pageCount",
               "@input": "$refs.searchCount.value = $refs.pageCount.value; $refs.searchForm.requestSubmit()",
               class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
