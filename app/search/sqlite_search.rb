@@ -37,7 +37,7 @@ module SqliteSearch
 
   def quote_string(s)
     s.gsub("\\", '\&\&').gsub("'", "''")
-  end 
+  end
 
   included do
     after_save_commit :update_search_index
@@ -63,7 +63,7 @@ module SqliteSearch
 
     def quote_string(s)
       s.gsub("\\", '\&\&').gsub("'", "''")
-    end 
+    end
 
     def rebuild_search_index(*ids)
       target_ids = Array(ids)
