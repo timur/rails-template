@@ -1,6 +1,6 @@
 <div x-data data-controller="datepicker" <%= tag.attributes(class: container_classes) %>
      data-action="keydown.esc->datepicker#close"
-     data-datepicker-url-value="<%= calendar_datepicker_path %>">
+  data-datepicker-url-value="<%= calendar_datepicker_path %>">
   <%= hidden_field_tag name, value, data: { "datepicker-target": "viewValue" } %>
   <%= text_field_tag nil, "#{value.blank? ? "" : I18n.l(value)}",
     type: type,
@@ -11,8 +11,8 @@
     required: options[:required],
     readonly: options[:readonly],
     "x-mask:": "99.99.9999",
-    data: { 
-      "datepicker-target": "viewInput", 
+    data: {
+      "datepicker-target": "viewInput",
       "action": "input->datepicker#change focus->datepicker#focus"
     }
   %>
@@ -23,7 +23,7 @@
   <% else %>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
       <%= inline_svg_tag "heroicons-calendar.svg", class: "h-5 w-5" %>
-    </div> 
+    </div>
   <% end %>
   <div class="absolute top-10 w-3/4 inset-y-0 left-0 hidden z-10"
        data-datepicker-target="datepicker">

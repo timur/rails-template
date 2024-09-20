@@ -59,12 +59,12 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "htmlbeautifier"
 
   # Use Redis adapter to run Action Cable in production
   gem "dockerfile-rails", ">= 1.5"
-  #gem "rails_live_reload"
-
   gem "letter_opener"
+  gem "hotwire-livereload", "~> 1.4"
 end
 
 group :test do
@@ -72,7 +72,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "cuprite"
-
 end
 
 gem "aws-sdk-s3", "~> 1.135"

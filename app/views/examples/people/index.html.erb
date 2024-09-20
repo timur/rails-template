@@ -3,7 +3,7 @@
     <div class="max-w-sm">
       <%= form_with url: examples_people_path,
             method: :get,
-            data: { turbo_frame: "people", turbo_action: "advance" }, 
+            data: { turbo_frame: "people", turbo_action: "advance" },
             html: { "x-ref": "searchForm" } do |f| %>
         <%= hidden_field_tag 'count', nil, "x-ref": "searchCount" %>
         <div class="mt-1 relative rounded-md shadow-sm">
@@ -50,7 +50,7 @@
               <div class="table min-w-full">
                 <div class="table-header-group bg-gray-50 ">
                   <div class="table-row">
-                    <div class="table-cell px-6 text-start border-b border-gray-200 align-center">           
+                    <div class="table-cell px-6 text-start border-b border-gray-200 align-center">
                     </div>
 
                     <div class="table-cell px-6 py-3 text-start border-b border-gray-200">
@@ -67,7 +67,7 @@
                           <%= sort_link_to_preline "Position", :position, data: { turbo_action: "advance" } %>
                         </span>
                       </div>
-                    </div>                
+                    </div>
 
                     <div class="table-cell px-6 py-3 text-start border-b border-gray-200">
                       <div class="flex items-center gap-x-2">
@@ -75,7 +75,7 @@
                           <%= sort_link_to_preline "Status", :status, data: { turbo_action: "advance" } %>
                         </span>
                       </div>
-                    </div> 
+                    </div>
 
                     <div class="table-cell px-6 py-3 text-start border-b border-gray-200">
                       <div class="flex items-center gap-x-2">
@@ -83,7 +83,7 @@
                           Portfolio
                         </span>
                       </div>
-                    </div> 
+                    </div>
 
                     <div class="table-cell px-6 py-3 text-start border-b border-gray-200">
                       <div class="flex items-center gap-x-2">
@@ -91,7 +91,7 @@
                           Created
                         </span>
                       </div>
-                    </div> 
+                    </div>
 
                     <div class="table-cell px-6 py-3 text-end border-b border-gray-200"></div>
                   </div>
@@ -117,15 +117,15 @@
                         options_for_select(
                           PagesHelper::PAGINATE_OPTIONS,
                           selected: params[:count]),
-                          {}, 
-                          { 
+                          {},
+                          {
                             "x-ref": "pageCount",
                             "@input": "$refs.searchCount.value = $refs.pageCount.value; $refs.searchForm.requestSubmit()",
                             class: "mt-1 block w-full pl-3 pl-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                           }
                           %>
                     <% end %>
-                  </div>              
+                  </div>
                 </div>
 
                 <div>

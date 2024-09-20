@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": Rails.env.production? ? "reload" : "" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": Rails.env.production? ? "reload" : "" %>
+
     <%= javascript_importmap_tags "landing" %>
   </head>
   <body>
@@ -66,7 +67,7 @@
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </header>
       <main>
         <div class="relative bg-gradient-to-b from-green-50 to-blue-100">
@@ -90,7 +91,7 @@
               <div class="flex items-center space-x-2 border-gray-300 rounded-2xl px-4 py-2 mt-6 mb-2 animate-slidein opacity-0 [--slidein-delay:700ms]">
                 <div class="space-y-8 max-w-md mx-auto w-full">
                   <form class="flex flex-col sm:flex-row sm:items-center form-control w-full">
-                    <input required="" type="email" autocomplete="email" placeholder="Enter your email address" 
+                    <input required="" type="email" autocomplete="email" placeholder="Enter your email address"
                            class="shrink h-12 px-4 text-size text-base leading-6 rounded-lg focus:outline-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:border-gray-400 focus:ring-0 focus:ring-offset-0 border-gray-400 placeholder:opacity-60 w-full sm:mr-4 mb-2 md:mb-0" value="">
                     <button class="inline-flex h-12 min-h-12 shrink-0 cursor-pointer items-center justify-center rounded-lg flex-wrap px-4 text-sm bg-indigo-600 text-white font-semibold sm:w-auto hover:bg-indigo-700" type="submit">Unlock Free Articles</button>
                   </form>
@@ -132,7 +133,7 @@
                   </div>
                   <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
                     <%= image_tag "clusterly/people/alice.webp", class: "h-full w-full object-cover", alt: "Alice" %>
-                  </div> 
+                  </div>
                   <div class="relative inline-flex w-12 h-12 rounded-full overflow-hidden border-4 border-gray-100">
                     <%= image_tag "clusterly/people/joseph.webp", class: "h-full w-full object-cover", alt: "Joseph" %>
                   </div>
@@ -547,7 +548,7 @@
               </p>
             </div>
           </div>
-        </section>        
+        </section>
       </main>
       <footer class="bg-white border-t border-base-content/10">
         <div class="max-w-7xl mx-auto px-8 py-24">

@@ -40,7 +40,7 @@ class Examples::PeopleController < ApplicationController
         @person.update(people_params)
         format.turbo_stream {
           flash.now[:notice] = "Person #{@person.name} was successfully updated."
-        }        
+        }
       else
         format.html { render partial: 'examples/people/form', locals: { form: } }
       end
@@ -70,6 +70,8 @@ class Examples::PeopleController < ApplicationController
       %w{ asc desc }.include?(params[:direction]) ? params[:direction] : "asc"
     end
 
+    # Validate the count parameter
+    # If the count parameter is not in the list of allowed values, set it to the default value
     def validate_count value
       count = PagesHelper::PAGINATE_OPTIONS.include?(value.to_i) ? value : DEFAULT_COUNT
       params[:count] = count

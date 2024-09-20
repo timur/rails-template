@@ -5,7 +5,7 @@ import { useClickOutside } from "stimulus-use";
 export default class extends Controller {
   static targets = ["viewInput", "viewValue", "datepicker"];
   static values = {
-    url: String
+    url: String,
   };
 
   connect() {
@@ -61,11 +61,11 @@ export default class extends Controller {
 
   loadPicker() {
     this.datepickerTarget.classList.remove("hidden");
-    const turboFrame = this.datepickerTarget.querySelector('turbo-frame');
-    const turboFrameId = turboFrame ? turboFrame.id : '';
-    if (turboFrameId !== '' && this.viewValueTarget.value !== '') {
+    const turboFrame = this.datepickerTarget.querySelector("turbo-frame");
+    const turboFrameId = turboFrame ? turboFrame.id : "";
+    if (turboFrameId !== "" && this.viewValueTarget.value !== "") {
       const newUrl = `${this.urlValue}?id=${turboFrameId}&month_date=${this.viewValueTarget.value}&current_date=${this.viewValueTarget.value}&route=calendar_datepicker_path`;
-      Turbo.visit(newUrl, { turbo: true, acceptsStreamResponse: true });      
+      Turbo.visit(newUrl, { turbo: true, acceptsStreamResponse: true });
     }
   }
 }
