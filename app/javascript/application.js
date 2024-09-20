@@ -1,17 +1,17 @@
-import "@hotwired/turbo-rails";
-import * as ActiveStorage from "@rails/activestorage";
-import Alpine from "alpinejs";
-import ui from "@alpinejs/ui";
 import focus from "@alpinejs/focus";
 import mask from "@alpinejs/mask";
-import LocalTime from "local-time";
-import ApexCharts from 'apexcharts';
-import "lazy-load-images";
-import "load-images";
-import "preload-images";
-import "lg-thumbnail";
-import "controllers";
+import ui from "@alpinejs/ui";
+import "@hotwired/turbo-rails";
+import * as ActiveStorage from "@rails/activestorage";
 import "@shopify/draggable";
+import Alpine from "alpinejs";
+import ApexCharts from "apexcharts";
+import "controllers";
+import "lazy-load-images";
+import "lg-thumbnail";
+import "load-images";
+import LocalTime from "local-time";
+import "preload-images";
 
 Alpine.plugin(ui);
 Alpine.plugin(focus);
@@ -24,7 +24,7 @@ Alpine.start();
 
 LocalTime.start();
 
-Turbo.setConfirmMethod((message, element) => {
+const confirmMethod = (message, element) => {
   const data = JSON.parse(`${message}`);
   Alpine.store("confirmModal").toggle();
   Alpine.store("confirmModal").title = data.title;
@@ -39,4 +39,6 @@ Turbo.setConfirmMethod((message, element) => {
       { once: true }
     );
   });
-});
+};
+
+Turbo.config.forms.confirm = confirmMethod;
